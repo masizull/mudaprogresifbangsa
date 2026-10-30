@@ -1,53 +1,46 @@
-# Yayasan Muda Progresif Bangsa (MPB)
+# Yayasan Muda Progresif Bangsa (MPB) — Interactive React App
 
 > **"Muda Bergerak, Bangsa Serentak."**
 
-Situs resmi dan landing page resmi **Yayasan Muda Progresif Bangsa** — yayasan kepemudaan independen yang mendedikasikan seluruh daya untuk penguatan kapasitas, etos kepemimpinan, kapabilitas ekonomi, dan kesadaran ekologis generasi muda Indonesia melalui pembinaan terstruktur.
+Situs web resmi dan aplikasi interaktif **Yayasan Muda Progresif Bangsa** dibangun menggunakan **React 18**, **Vite**, **Tailwind CSS**, dan **Lucide Icons**.
 
 ---
 
-## 🌟 Pilar Program Utama
+## 🚀 Fitur Interaktif Baru
 
-1. **Akademi Progresif (Pendidikan & Kepemimpinan)**: Wadah pembinaan karakter, refleksi diri, dan peta karier bagi generasi muda (Tunas Progresif & Penggerak Progresif).
-2. **Inkubator Karya Muda (Ekonomi & Kemandirian)**: Pemberdayaan wirausaha pemuda, literasi finansial, dan penguatan unit usaha komunitas.
-3. **Satuan Aksi Ekologis (Lingkungan & Iklim)**: Aksi mitigasi krisis iklim berbasis lokal, konservasi, dan pengelolaan limbah sirkular.
-
----
-
-## 🎨 Identitas Visual & Brand Guidelines
-
-- **Primary Orange**: `#FF5500` (Aksen dinamis, keberanian bertindak)
-- **Primary Blue**: `#0066FF` (Intelektual, jalur pemuda, harapan)
-- **Deep Navy**: `#031B3A` (Ketegasan, landasan filosofis, teks & background gelap)
-- **Slate Off-White**: `#F8FAFC` (Latar bersih, ruang bernapas)
-- **Font**: Plus Jakarta Sans / Inter
+- 🎯 **Interactive Multi-Step Registration Modal**: Alur pendaftaran peserta baru (Tunas & Penggerak Progresif) dengan validasi langsung dan generator konfirmasi WhatsApp.
+- 🏢 **Interactive CSR & Partnership Modal**: Formulir terstruktur bagi institusi, perusahaan, dan BUMN untuk pengajuan kemitraan program kepemudaan.
+- 📚 **Interactive Curriculum Inspector**: Penjelajah 12 sesi silabus pembelajaran berjenjang.
+- ⚡ **Dynamic Program Pillar Filter**: Navigasi interaktif antara 3 matra (Pendidikan, Ekonomi, Lingkungan).
+- 📈 **Animated Impact Counter**: Penghitung dinamis capaian dampak (14.200+ pemuda, 128+ proyek, 34 kota/kabupaten).
+- 💬 **Real Stories Slider**: Testimoni inspiratif alumni dan inisiator komunitas pemuda.
+- ❓ **Interactive FAQ Accordion**: Tanya jawab seputar beasiswa, seleksi, dan mekanisme program.
+- 📱 **Floating Contact Actions & Scroll Progress Bar**: Akses cepat WhatsApp dan tombol kembali ke atas.
 
 ---
 
-## 🚀 Panduan Menjalankan & Preview Lokal
+## 💻 Panduan Menjalankan Secara Lokal
 
-Cukup buka berkas `index.html` langsung di peramban (browser) pilihan Anda:
+Pastikan Node.js sudah terpasang di komputer Anda.
+
+### 1. Mode Pengembangan (Hot-Reloading Dev Server):
 ```bash
-# Buka via peramban langsung
-start index.html
+npm install
+npm run dev
 ```
+Buka browser di: `http://localhost:5173/dev.html`
 
-Atau menggunakan local server (opsional):
+### 2. Build untuk Produksi:
 ```bash
-# Menggunakan npx serve
-npx serve .
+npm run build
 ```
 
 ---
 
-## 🌐 Deploy ke GitHub Pages
+## 🌐 Live Website (GitHub Pages)
 
-Repositori ini sudah siap untuk langsung di-deploy ke **GitHub Pages**:
-1. Buat repository baru di GitHub (misal: `muda-progresif-bangsa`).
-2. Sambungkan remote dan push branch `main`.
-3. Buka tab **Settings** > **Pages** di repository GitHub Anda.
-4. Pada bagian **Build and deployment**, pilih Source: **Deploy from a branch** (`main` / root `/`).
-5. Situs Anda akan langsung online dalam hitungan detik!
+Aplikasi web ini aktif dan dapat diakses publik di:  
+👉 **[https://masizull.github.io/mudaprogresifbangsa/](https://masizull.github.io/mudaprogresifbangsa/)**
 
 ---
 

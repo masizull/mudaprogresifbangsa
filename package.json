@@ -1,0 +1,20 @@
+{
+  "name": "muda-progresif-bangsa",
+  "version": "1.0.0",
+  "description": "Yayasan Muda Progresif Bangsa - Official Interactive React Web Application",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev.html",
+    "build": "vite build && powershell -Command \"Copy-Item -Path 'dist/assets' -Destination 'assets' -Recurse -Force; Copy-Item -Path 'dist/index.html' -Destination 'index.html' -Force\"",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lucide-react": "^1.16.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.7"
+  }
+}
