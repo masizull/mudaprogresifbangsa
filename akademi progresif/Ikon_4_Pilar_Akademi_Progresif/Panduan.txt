@@ -1,0 +1,10 @@
+IKON EMPAT PILAR AKADEMI PROGRESIF
+
+Pendidikan, kesehatan, kemanusiaan, pemberdayaan.
+Setiap ikon tersedia sebagai PNG tanpa tulisan, latar transparan, dalam versi biru-jingga serta draf putih.
+
+CATATAN KUALITAS: versi putih hasil generatif masih memiliki artefak di tepi dan celah; belum disarankan untuk produksi. File diberi akhiran Putih_Draf agar tidak tertukar dengan hasil final. Bentuk antarekspor dapat sedikit bervariasi; belum master vektor dengan geometri identik.
+
+Palet acuan: biru #2864F0 dan jingga #FF861C. Pertahankan rasio gambar dan sisakan ruang kosong di sekeliling ikon. Jangan meregangkan atau menambahkan efek bayangan.
+
+Dibuat melalui imagegen. Ringkasan prompt: pisahkan masing-masing ikon pilihan pengguna dari papan empat pilar, pertahankan siluet bidang geometris membuka, celah negatif, sudut lembut, dan warna biru-jingga; buat satu ikon per kanvas persegi transparan, tanpa label, dalam versi warna dan putih.

@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yayasan Muda Progresif Bangsa | Muda Bergerak, Bangsa Serentak</title>
+  <meta name="description" content="Yayasan kepemudaan independen yang mengkatalisasi daya kepemimpinan, kapabilitas ekonomi, dan kesadaran ekologis generasi muda Indonesia melalui pembinaan terstruktur." />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./logo/LOGO MPB - WARNA.png" />
+
+  <!-- Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#FF5500',
+              'orange-hover': '#E04B00',
+              blue: '#0066FF',
+              'blue-hover': '#0052CC',
+              navy: '#031B3A',
+              'navy-light': '#08254D',
+              'slate-bg': '#F8FAFC',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          boxShadow: {
+            'ambient': '0 4px 20px -2px rgba(18, 25, 38, 0.05)',
+            'ambient-hover': '0 12px 32px -4px rgba(3, 27, 58, 0.09)',
+            'cta-orange': '0 4px 14px 0 rgba(255, 85, 0, 0.28)',
+            'cta-blue': '0 4px 14px 0 rgba(0, 102, 255, 0.25)',
+          },
+          borderRadius: {
+            'card': '12px',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' },
+            }
+          },
+          animation: {
+            marquee: 'marquee 28s linear infinite',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom subtle transitions & typography tuning */
+    body {
+      font-family: 'Plus Jakarta Sans', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #F8FAFC;
+      color: #031B3A;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    ::selection {
+      background-color: #FF5500;
+      color: #FFFFFF;
+    }
+
+    /* Clean marquee pause on hover */
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Subdued border utilities */
+    .border-subtle {
+      border-color: rgba(226, 232, 240, 0.85);
+    }
+  </style>
+</head>
+<body class="bg-brand-slate-bg text-brand-navy antialiased selection:bg-brand-orange selection:text-white flex flex-col min-h-screen">
+
+  <!-- =========================================================================
+       SECTION A: STICKY NAVBAR
+       ========================================================================= -->
+  <header class="sticky top-0 z-50 w-full bg-brand-slate-bg/90 backdrop-blur-md border-b border-subtle transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo & Identity -->
+      <a href="#hero" class="flex items-center gap-3.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue rounded-lg p-1">
+        <div class="relative w-10 h-10 flex-shrink-0 flex items-center justify-center">
+          <img 
+            src="./logo/LOGO MPB - WARNA.png" 
+            alt="Logo Muda Progresif Bangsa" 
+            class="w-full h-full object-contain"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <!-- Fallback Graphic Emblem if image path is altered -->
+          <div class="hidden w-10 h-10 rounded-lg bg-brand-navy items-center justify-center text-white font-bold text-base tracking-tight shadow-sm">
+            <span class="text-brand-orange">M</span>PB
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-base sm:text-lg tracking-tight text-brand-navy leading-none group-hover:text-brand-blue transition-colors duration-200">
+            Muda Progresif Bangsa
+          </span>
+          <span class="text-[11px] font-semibold tracking-wider uppercase text-slate-500 mt-1">
+            Yayasan Kepemudaan
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-[14px] font-medium text-slate-600">
+        <a href="#manifesto" class="hover:text-brand-navy transition-colors duration-200">Manifesto</a>
+        <a href="#visi-misi" class="hover:text-brand-navy transition-colors duration-200">Visi & Misi</a>
+        <a href="#pilar-program" class="hover:text-brand-navy transition-colors duration-200">Pilar Program</a>
+        <a href="#dampak" class="hover:text-brand-navy transition-colors duration-200">Dampak</a>
+        <a href="#mitra" class="hover:text-brand-navy transition-colors duration-200">Mitra</a>
+      </nav>
+
+      <!-- Desktop CTAs -->
+      <div class="hidden md:flex items-center gap-4">
+        <a 
+          href="#kemitraan" 
+          class="text-[14px] font-semibold text-slate-700 hover:text-brand-blue transition-colors duration-200 px-3 py-2"
+        >
+          Kemitraan
+        </a>
+        <a 
+          href="#gabung" 
+          class="inline-flex items-center justify-center rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white px-5 py-2.5 text-[14px] font-semibold shadow-cta-orange transition-all duration-200 ease-in-out hover:-translate-y-0.5 active:translate-y-0"
+        >
+          Gabung Bergerak
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Toggle -->
+      <div class="flex md:hidden items-center">
+        <button 
+          id="mobile-menu-btn" 
+          type="button" 
+          class="p-2 rounded-lg text-slate-700 hover:text-brand-navy hover:bg-slate-100 transition-colors focus:outline-none"
+          aria-label="Buka Menu Navigasi"
+          aria-expanded="false"
+        >
+          <svg id="menu-icon-bars" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="menu-icon-close" class="hidden w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-subtle bg-white px-4 pt-3 pb-6 space-y-3">
+      <a href="#manifesto" class="block py-2 text-base font-medium text-slate-700 hover:text-brand-orange mobile-nav-link">Manifesto</a>
+      <a href="#visi-misi" class="block py-2 text-base font-medium text-slate-700 hover:text-brand-orange mobile-nav-link">Visi & Misi</a>
+      <a href="#pilar-program" class="block py-2 text-base font-medium text-slate-700 hover:text-brand-orange mobile-nav-link">Pilar Program</a>
+      <a href="#dampak" class="block py-2 text-base font-medium text-slate-700 hover:text-brand-orange mobile-nav-link">Dampak Nyata</a>
+      <a href="#mitra" class="block py-2 text-base font-medium text-slate-700 hover:text-brand-orange mobile-nav-link">Mitra Strategis</a>
+      <div class="pt-4 border-t border-slate-100 flex flex-col gap-3">
+        <a href="#kemitraan" class="text-center py-2.5 text-base font-semibold text-slate-800 border border-slate-200 rounded-full hover:bg-slate-50 mobile-nav-link">Kemitraan & CSR</a>
+        <a href="#gabung" class="text-center py-3 text-base font-semibold bg-brand-orange text-white rounded-full shadow-cta-orange mobile-nav-link">Gabung Bergerak</a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- =========================================================================
+       SECTION B: HERO SECTION
+       ========================================================================= -->
+  <section id="hero" class="relative pt-16 pb-20 md:pt-24 md:pb-28 overflow-hidden bg-brand-slate-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Badge / Kicker -->
+      <div class="flex justify-center mb-6">
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-blue-50/80 border border-blue-100 text-[#0055D4] text-xs sm:text-sm font-semibold tracking-wide">
+          <span class="w-2 h-2 rounded-full bg-brand-blue animate-pulse"></span>
+          <span>Inisiatif Pembinaan Pemuda Berkelanjutan</span>
+          <span class="text-blue-300">|</span>
+          <span class="text-slate-500 font-medium hidden sm:inline">Basis Bekasi Menuju Nasional</span>
+        </div>
+      </div>
+
+      <!-- Massive Editorial Headline -->
+      <div class="text-center max-w-4xl mx-auto mb-8">
+        <h1 class="text-4xl sm:text-6xl lg:text-[72px] font-extrabold tracking-[-0.035em] text-brand-navy leading-[1.12]">
+          Muda Bergerak,<br />
+          <span class="text-brand-orange">Bangsa Serentak.</span>
+        </h1>
+        
+        <p class="mt-6 text-base sm:text-lg lg:text-xl text-slate-600 leading-[1.6] max-w-2xl mx-auto font-normal">
+          Mengkatalisasi daya kepemimpinan, kapabilitas sosio-ekonomi, dan aksi ekologis generasi muda. Kami membangun ruang tempa nyata agar pemuda beralih dari pengamat menjadi penentu kemajuan Indonesia.
+        </p>
+      </div>
+
+      <!-- 2 Clean CTA Buttons (Pill-shaped only for CTAs) -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <a 
+          href="#gabung" 
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white px-8 py-4 text-base font-semibold shadow-cta-orange transition-all duration-200 ease-in-out hover:-translate-y-0.5 active:translate-y-0"
+        >
+          <span>Ambil Peran Sekarang</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+        <a 
+          href="#visi-misi" 
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-slate-50 text-brand-navy border border-slate-300 px-7 py-4 text-base font-semibold shadow-ambient transition-all duration-200 ease-in-out hover:-translate-y-0.5"
+        >
+          <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <span>Pelajari Cetak Biru Gerakan</span>
+        </a>
+      </div>
+
+      <!-- Structural Hero Showcase Frame (Clean architectural layout, zero generic floating glass clutter) -->
+      <div class="relative max-w-5xl mx-auto rounded-card bg-white border border-slate-200/90 shadow-ambient overflow-hidden">
+        <!-- Structural Browser-like Meta Header -->
+        <div class="px-5 py-3.5 bg-slate-50/90 border-b border-slate-200/80 flex items-center justify-between text-xs text-slate-500 font-medium">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+            <span class="ml-2 font-mono text-[11px] text-slate-400 tracking-wider">MPB-FRAMEWORK // VERIFIED V.2.6</span>
+          </div>
+          <div class="flex items-center gap-2 text-brand-blue font-semibold">
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
+            Kohort Aktif 2026: Tunas & Penggerak Progresif
+          </div>
+        </div>
+
+        <!-- Inner Grid of Strategic Focus -->
+        <div class="p-6 sm:p-10 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          
+          <div class="flex flex-col p-5 rounded-lg bg-slate-50/70 border border-slate-200/60 transition-all duration-200 hover:border-slate-300">
+            <div class="w-8 h-8 rounded-lg bg-orange-100 text-brand-orange flex items-center justify-center font-bold text-sm mb-4">
+              01
+            </div>
+            <h4 class="font-bold text-brand-navy text-base tracking-tight mb-2">Refleksi & Karakter</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Mengenali kekuatan diri, membedah potensi kepemimpinan, dan menyusun peta jalan pendidikan yang presisi sejak bangku sekolah.
+            </p>
+          </div>
+
+          <div class="flex flex-col p-5 rounded-lg bg-slate-50/70 border border-slate-200/60 transition-all duration-200 hover:border-slate-300">
+            <div class="w-8 h-8 rounded-lg bg-blue-100 text-brand-blue flex items-center justify-center font-bold text-sm mb-4">
+              02
+            </div>
+            <h4 class="font-bold text-brand-navy text-base tracking-tight mb-2">Analisis & Aksi Nyata</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Pelatihan memetakan kebutuhan akar rumput, merancang intervensi sosial, dan memimpin kolaborasi tim tanpa sekat birokrasi.
+            </p>
+          </div>
+
+          <div class="flex flex-col p-5 rounded-lg bg-slate-50/70 border border-slate-200/60 transition-all duration-200 hover:border-slate-300">
+            <div class="w-8 h-8 rounded-lg bg-slate-200 text-brand-navy flex items-center justify-center font-bold text-sm mb-4">
+              03
+            </div>
+            <h4 class="font-bold text-brand-navy text-base tracking-tight mb-2">Regenerasi Penggerak</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Lulusan dibimbing menjadi tutor, relawan terampil, dan inisiator gerakan mandiri yang berkelanjutan di daerah asal.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Trust Metric Strip -->
+        <div class="px-6 py-4 bg-slate-100/70 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm text-slate-600">
+          <span class="font-semibold text-brand-navy">Fokus Operasional:</span>
+          <div class="flex items-center gap-6">
+            <span>• 12 Modul Kurikulum Aplikatif</span>
+            <span>• 120 Menit Mentorship Intensif</span>
+            <span>• Pendampingan Hingga Perguruan Tinggi</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION C: MANIFESTO (Replaces generic 'About Us' with bold typography)
+       ========================================================================= -->
+  <section id="manifesto" class="py-24 sm:py-32 bg-white border-y border-subtle">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Label -->
+      <div class="flex items-center gap-3 mb-8">
+        <span class="h-px w-8 bg-brand-orange"></span>
+        <span class="text-xs font-bold tracking-widest uppercase text-brand-orange font-mono">
+          Manifesto Gerakan // 01
+        </span>
+      </div>
+
+      <!-- Oversized Editorial Quote -->
+      <blockquote class="text-2xl sm:text-3xl lg:text-[40px] font-bold text-brand-navy leading-[1.28] tracking-[-0.02em]">
+        “Indonesia tidak kekurangan narasi tentang bonus demografi. Yang langka adalah ruang tempa yang disiplin, kesempatan yang setara, dan keyakinan nyata untuk membiarkan anak muda memimpin solusi di tanahnya sendiri.”
+      </blockquote>
+
+      <!-- Contextual Grounded Narrative -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-start pt-8 border-t border-slate-100">
+        <div class="md:col-span-4">
+          <p class="text-xs font-mono uppercase tracking-wider text-slate-400">Pernyataan Sikap Yayasan</p>
+          <h3 class="text-lg font-bold text-brand-navy mt-1">Muda Progresif Bangsa</h3>
+          <p class="text-xs text-slate-500 mt-0.5">Berdiri atas inisiatif pemuda, dikelola untuk kemaslahatan publik.</p>
+        </div>
+
+        <div class="md:col-span-8 space-y-4 text-slate-600 text-base leading-[1.6]">
+          <p>
+            Kami menolak gagasan bahwa generasi muda adalah objek pasif penerima kebijakan. Progresif bagi kami bukan sekadar jargon modernitas, melainkan kesediaan untuk terus belajar, terbuka terhadap koreksi, dan mengambil langkah konkret yang dapat dipertanggungjawabkan di hadapan masyarakat.
+          </p>
+          <p>
+            Dimulai dari ruang kelas dan komunitas di Kota serta Kabupaten Bekasi, kami merekonstruksi pembinaan kepemudaan: bukan seremoni panggung, melainkan laboratorium aksi yang teruji dalam empat matra esensial—pendidikan, kesehatan, kemanusiaan, dan kemandirian ekonomi.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION D: VISI & MISI (Asymmetrical Bento Grid Layout)
+       ========================================================================= -->
+  <section id="visi-misi" class="py-24 sm:py-32 bg-brand-slate-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="max-w-2xl mb-16">
+        <span class="text-xs font-bold tracking-widest uppercase text-brand-blue font-mono mb-2 block">
+          Arah & Fondasi // 02
+        </span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-navy leading-[1.15]">
+          Arsitektur Gagasan Menuju Transformasi Nyata
+        </h2>
+        <p class="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
+          Struktur visi dan misi dirancang asimetris untuk membedakan antara landasan filosofis jangka panjang dengan strategi intervensi lapangan.
+        </p>
+      </div>
+
+      <!-- Bento Grid Architecture -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        
+        <!-- Bento Item 1: Visi Utama (Featured Large Card) -->
+        <div class="md:col-span-7 bg-brand-navy text-white rounded-card p-8 sm:p-10 flex flex-col justify-between shadow-ambient relative overflow-hidden group">
+          <!-- Subtle corner accent line -->
+          <div class="absolute top-0 right-0 w-32 h-1 bg-brand-orange"></div>
+          
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white text-xs font-mono font-medium mb-6">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
+              VISI STRATEGIS 2030
+            </div>
+            
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-[1.2] mb-6">
+              Mewujudkan generasi pemuda berkarakter tangguh, berdaya saing mandiri, dan berani memimpin masa depan bagi kedaulatan bangsa.
+            </h3>
+            
+            <p class="text-slate-300 text-base leading-relaxed max-w-xl">
+              Visi ini menempatkan anak muda bukan sebagai pelengkap angka statistik ketenagakerjaan, melainkan subjek berdikari yang berakar pada integritas etis dan empati sosial tinggi.
+            </p>
+          </div>
+
+          <div class="pt-8 mt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-slate-300">
+            <span>PARAMETER: KEPEMIMPINAN BERKELANJUTAN</span>
+            <span class="text-brand-orange font-bold">AKUNTABEL & INKLUSIF</span>
+          </div>
+        </div>
+
+        <!-- Bento Item 2: Misi 01 (Pendidikan Akseleratif) -->
+        <div class="md:col-span-5 bg-white rounded-card p-8 border border-subtle shadow-ambient flex flex-col justify-between hover:border-slate-300 transition-all duration-200">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="text-xs font-mono font-bold text-brand-blue tracking-wider">MISI // 01</span>
+              <span class="w-8 h-8 rounded-lg bg-blue-50 text-brand-blue flex items-center justify-center font-bold text-sm">
+                01
+              </span>
+            </div>
+            <h4 class="text-xl font-bold text-brand-navy tracking-tight mb-3">Pendidikan & Literasi Kontekstual</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Menyelenggarakan kurikulum alternatif yang menutup jurang antara sistem belajar formal dengan keahlian berpikir kritis, navigasi karier, serta kepemimpinan diri di era kecerdasan buatan.
+            </p>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-brand-blue">
+            <span>Inisiatif: Akademi Progresif Berjenjang</span>
+          </div>
+        </div>
+
+        <!-- Bento Item 3: Misi 02 (Kemandirian Sosio-Ekonomi) -->
+        <div class="md:col-span-4 bg-white rounded-card p-8 border border-subtle shadow-ambient flex flex-col justify-between hover:border-slate-300 transition-all duration-200">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="text-xs font-mono font-bold text-brand-orange tracking-wider">MISI // 02</span>
+              <span class="w-8 h-8 rounded-lg bg-orange-50 text-brand-orange flex items-center justify-center font-bold text-sm">
+                02
+              </span>
+            </div>
+            <h4 class="text-xl font-bold text-brand-navy tracking-tight mb-3">Kemandirian Sosio-Ekonomi</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Membangun ruang inkubasi wirausaha muda dan keterampilan vokasi praktis guna memperkuat resiliensi finansial keluarga prasejahtera di sentra komunitas.
+            </p>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-brand-orange">
+            <span>Fokus: Koperasi & Wirausaha Pemuda</span>
+          </div>
+        </div>
+
+        <!-- Bento Item 4: Misi 03 (Ekologi & Aksi Lingkungan) -->
+        <div class="md:col-span-4 bg-white rounded-card p-8 border border-subtle shadow-ambient flex flex-col justify-between hover:border-slate-300 transition-all duration-200">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="text-xs font-mono font-bold text-emerald-600 tracking-wider">MISI // 03</span>
+              <span class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm">
+                03
+              </span>
+            </div>
+            <h4 class="text-xl font-bold text-brand-navy tracking-tight mb-3">Ketahanan Ekologis Berkelanjutan</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Menggerakkan kesadaran iklim melalui restorasi lingkungan lokal, pengelolaan limbah sirkular, dan advokasi ruang hijau publik berbasis pemuda.
+            </p>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-emerald-700">
+            <span>Fokus: Konservasi & Ekonomi Sirkular</span>
+          </div>
+        </div>
+
+        <!-- Bento Item 5: Misi 04 (Kolaborasi Multipihak) -->
+        <div class="md:col-span-4 bg-slate-100/80 rounded-card p-8 border border-slate-200/90 shadow-ambient flex flex-col justify-between hover:border-slate-300 transition-all duration-200">
+          <div>
+            <div class="flex items-center justify-between mb-5">
+              <span class="text-xs font-mono font-bold text-slate-600 tracking-wider">MISI // 04</span>
+              <span class="w-8 h-8 rounded-lg bg-white text-brand-navy flex items-center justify-center font-bold text-sm shadow-sm">
+                04
+              </span>
+            </div>
+            <h4 class="text-xl font-bold text-brand-navy tracking-tight mb-3">Ekosistem Kemitraan Multipihak</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Menjembatani energi pemuda akar rumput dengan jejaring filantropi, dunia usaha, institusi pendidikan, dan pembuat regulasi demi dampak terukur.
+            </p>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-slate-200 flex items-center gap-2 text-xs font-semibold text-brand-navy">
+            <span>Fokus: Sinergi CSR & Filantropi Terarah</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION E: PILAR PROGRAM (3 Interactive Cards for Education, Economy, Environment)
+       ========================================================================= -->
+  <section id="pilar-program" class="py-24 sm:py-32 bg-white border-y border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div class="max-w-2xl">
+          <span class="text-xs font-bold tracking-widest uppercase text-brand-orange font-mono mb-2 block">
+            Pilar Operasional // 03
+          </span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-navy leading-[1.15]">
+            Tiga Matra Intervensi Nyata
+          </h2>
+          <p class="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
+            Program kami dirancang modular dan saling terhubung, menjamin pertumbuhan holistik dari ranah intelektual, kemandirian finansial, hingga tanggung jawab ekologis.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-medium text-slate-500 hidden sm:inline">Pilih kartu untuk melihat rincian modul:</span>
+          <div class="inline-flex rounded-full bg-slate-100 p-1 border border-slate-200 text-xs font-semibold" role="tablist">
+            <button id="tab-btn-all" onclick="filterPrograms('all')" class="tab-btn active px-3.5 py-1.5 rounded-full bg-brand-navy text-white transition-all duration-200">Semua</button>
+            <button id="tab-btn-edu" onclick="filterPrograms('edu')" class="tab-btn px-3.5 py-1.5 rounded-full text-slate-600 hover:text-brand-navy transition-all duration-200">Pendidikan</button>
+            <button id="tab-btn-eco" onclick="filterPrograms('eco')" class="tab-btn px-3.5 py-1.5 rounded-full text-slate-600 hover:text-brand-navy transition-all duration-200">Ekonomi</button>
+            <button id="tab-btn-env" onclick="filterPrograms('env')" class="tab-btn px-3.5 py-1.5 rounded-full text-slate-600 hover:text-brand-navy transition-all duration-200">Lingkungan</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Interactive Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- CARD 1: EDUCATION (Pendidikan) -->
+        <article id="card-edu" class="program-card bg-brand-slate-bg rounded-card border border-subtle p-8 flex flex-col justify-between shadow-ambient hover:shadow-ambient-hover hover:border-slate-300 transition-all duration-200 group">
+          <div>
+            <!-- Header Badges -->
+            <div class="flex items-center justify-between mb-6">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-blue-50 text-brand-blue font-semibold text-xs border border-blue-100">
+                Pilar I &bull; Pendidikan
+              </span>
+              <span class="text-xs font-mono text-slate-400">12 Sesi Terarah</span>
+            </div>
+
+            <!-- Title & Pitch -->
+            <h3 class="text-2xl font-bold text-brand-navy tracking-tight group-hover:text-brand-blue transition-colors duration-200 mb-3">
+              Akademi Progresif
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              Wadah pembinaan kepemimpinan dan peta karier bagi pelajar SMA/SMK sederajat melalui jenjang Tunas Progresif (fondasi diri) dan Penggerak Progresif (analisis sosial).
+            </p>
+
+            <!-- Curricular Checklist -->
+            <ul class="space-y-3 mb-8 text-sm text-slate-700">
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-brand-blue mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Pemetaan Minat, Bakat, & Desain Peta Pendidikan</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-brand-blue mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Pelatihan Komunikasi, Debat Etis, & Problem Solving</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-brand-blue mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Mentoring 1-on-1 dengan Alumni Perguruan Tinggi</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bottom Meta & Link -->
+          <div class="pt-6 border-t border-slate-200/70 flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">Target: 1.200 Pelajar / Tahun</span>
+            <a href="#gabung" class="text-sm font-bold text-brand-blue hover:text-brand-blue-hover inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+              Lihat Silabus &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- CARD 2: ECONOMY (Ekonomi & Kemandirian) -->
+        <article id="card-eco" class="program-card bg-brand-slate-bg rounded-card border border-subtle p-8 flex flex-col justify-between shadow-ambient hover:shadow-ambient-hover hover:border-slate-300 transition-all duration-200 group">
+          <div>
+            <!-- Header Badges -->
+            <div class="flex items-center justify-between mb-6">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-orange-50 text-brand-orange font-semibold text-xs border border-orange-100">
+                Pilar II &bull; Ekonomi
+              </span>
+              <span class="text-xs font-mono text-slate-400">Inkubasi Mandiri</span>
+            </div>
+
+            <!-- Title & Pitch -->
+            <h3 class="text-2xl font-bold text-brand-navy tracking-tight group-hover:text-brand-orange transition-colors duration-200 mb-3">
+              Inkubator Karya Muda
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              Pemberdayaan keterampilan vokasional terapan dan wirausaha mikro berbasis komunitas agar anak muda mampu mandiri secara finansial dan menggerakkan sirkulasi modal daerah.
+            </p>
+
+            <!-- Curricular Checklist -->
+            <ul class="space-y-3 mb-8 text-sm text-slate-700">
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-brand-orange mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Bootcamp Wirausaha Sosial & Literasi Finansial</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-brand-orange mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Hibah Bibit Usaha & Penguatan Koperasi Komunitas</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-brand-orange mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Pendampingan Akses Pasar & Ekosistem Digital</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bottom Meta & Link -->
+          <div class="pt-6 border-t border-slate-200/70 flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">Target: 45 Usaha Rintisan / Thn</span>
+            <a href="#gabung" class="text-sm font-bold text-brand-orange hover:text-brand-orange-hover inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+              Katalog Usaha &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- CARD 3: ENVIRONMENT (Lingkungan Hidup & Aksi Iklim) -->
+        <article id="card-env" class="program-card bg-brand-slate-bg rounded-card border border-subtle p-8 flex flex-col justify-between shadow-ambient hover:shadow-ambient-hover hover:border-slate-300 transition-all duration-200 group">
+          <div>
+            <!-- Header Badges -->
+            <div class="flex items-center justify-between mb-6">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-emerald-50 text-emerald-700 font-semibold text-xs border border-emerald-100">
+                Pilar III &bull; Lingkungan
+              </span>
+              <span class="text-xs font-mono text-slate-400">Aksi Kolaboratif</span>
+            </div>
+
+            <!-- Title & Pitch -->
+            <h3 class="text-2xl font-bold text-brand-navy tracking-tight group-hover:text-emerald-700 transition-colors duration-200 mb-3">
+              Satuan Aksi Ekologis
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              Menggerakkan generasi muda dalam mitigasi krisis iklim berbasis lokal: rehabilitasi DAS, bank sampah mandiri, serta advokasi lingkungan berwawasan lestari.
+            </p>
+
+            <!-- Curricular Checklist -->
+            <ul class="space-y-3 mb-8 text-sm text-slate-700">
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Audit Sampah Komunitas & Tata Kelola Sirkular</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Restorasi Hijau Wilayah Pesisir & Sempadan Sungai</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                <span>Pendidikan Iklim Masuk Sekolah & Komunitas Muda</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bottom Meta & Link -->
+          <div class="pt-6 border-t border-slate-200/70 flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500">Capaian: 15 Ton Sampah Terolah</span>
+            <a href="#gabung" class="text-sm font-bold text-emerald-700 hover:text-emerald-800 inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+              Lihat Proyek &rarr;
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION F: IMPACT STATS (Clean, Dark-Themed Section with 3 Massive Numbers)
+       ========================================================================= -->
+  <section id="dampak" class="py-24 sm:py-32 bg-brand-navy text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Label & Title -->
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <span class="text-xs font-bold tracking-widest uppercase text-brand-orange font-mono mb-3 block">
+          Akuntabilitas Dampak // 04
+        </span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
+          Bukan Sekadar Narasi, Diukur Lewat Kontribusi
+        </h2>
+        <p class="mt-4 text-slate-300 text-base sm:text-lg leading-relaxed">
+          Setiap angka merepresentasikan kehidupan pemuda yang dibekali ruang belajar, komunitas yang terdampingi, dan inisiatif riil yang hidup berkelanjutan di lapangan.
+        </p>
+      </div>
+
+      <!-- 3 Massive Typography Numbers Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8 pt-6 border-t border-white/10">
+        
+        <!-- Metric 1 -->
+        <div class="flex flex-col">
+          <div class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-none mb-4">
+            14.200<span class="text-brand-orange">+</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-100 tracking-tight mb-2">
+            Pemuda Terbina & Terkoneksi
+          </h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Menyelesaikan rangkaian kurikulum karakter, pelatihan kepemimpinan diri, dan pembekalan vokasi di sekolah maupun gelanggang publik.
+          </p>
+        </div>
+
+        <!-- Metric 2 -->
+        <div class="flex flex-col">
+          <div class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#3385FF] leading-none mb-4">
+            128<span class="text-white">+</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-100 tracking-tight mb-2">
+            Inisiatif Komunitas Mandiri
+          </h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Proyek sosial, sanggar belajar mandiri, dan unit usaha mikro yang diinisiasi langsung oleh para alumni kelas Penggerak Progresif.
+          </p>
+        </div>
+
+        <!-- Metric 3 -->
+        <div class="flex flex-col">
+          <div class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-brand-orange leading-none mb-4">
+            34
+          </div>
+          <h3 class="text-lg font-bold text-slate-100 tracking-tight mb-2">
+            Kota & Kabupaten Terjangkau
+          </h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Jaringan relawan dan alumni yang aktif terkoordinasi di wilayah Jabodetabek, Jawa Barat, hingga simpul gerakan pemuda di luar Jawa.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Transparency & Assurance Footnote -->
+      <div class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+          </svg>
+          <span>DATA DIAUDIT BERKALA OLEH DEWAN PENGAWAS YAYASAN</span>
+        </div>
+        <a href="#kemitraan" class="text-white hover:text-brand-orange transition-colors font-semibold">
+          UNDUH LAPORAN DAMPAK 2025/2026 (PDF) &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION G: MITRA STRATEGIS (Minimalist Grayscale Logo Marquee)
+       ========================================================================= -->
+  <section id="mitra" class="py-20 bg-white border-b border-subtle overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
+      <p class="text-xs font-mono font-bold uppercase tracking-widest text-slate-400">
+        Didukung & Berkolaborasi Bersama Ekosistem Multipihak
+      </p>
+    </div>
+
+    <!-- Infinite Minimalist Grayscale Marquee Container -->
+    <div class="relative w-full overflow-hidden">
+      <!-- Side gradient overlays for natural edge fading -->
+      <div class="pointer-events-none absolute top-0 left-0 h-full w-20 sm:w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+      <div class="pointer-events-none absolute top-0 right-0 h-full w-20 sm:w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+      <!-- Marquee Track (Repeated for Seamless CSS Loop) -->
+      <div class="marquee-track flex items-center gap-12 sm:gap-16 w-max animate-marquee py-2">
+        
+        <!-- Partner Item 1 -->
+        <div class="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-slate-800 text-white flex items-center justify-center font-bold text-xs">BP</div>
+          <span class="font-bold tracking-tight text-slate-700 text-sm">Balai Pemuda Mandiri</span>
+        </div>
+
+        <!-- Partner Item 2 -->
+        <div class="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-brand-blue text-white flex items-center justify-center font-bold text-xs">JK</div>
+          <span class="font-bold tracking-tight text-slate-700 text-sm">Jejaring Komunitas Bekasi</span>
+        </div>
+
+        <!-- Partner Item 3 -->
+        <div class="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-brand-orange text-white flex items-center justify-center font-bold text-xs">FL</div>
+          <span class="font-bold tracking-tight text-slate-700 text-sm">Forum Literasi Inklusif</span>
+        </div>
+
+        <!-- Partner Item 4 -->
+        <div class="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-slate-900 text-white flex items-center justify-center font-bold text-xs">IK</div>
+          <span class="font-bold tracking-tight text-slate-700 text-sm">Inkubasi Koperasi Pemuda</span>
+        </div>
+
+        <!-- Partner Item 5 -->
+        <div class="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-emerald-700 text-white flex items-center justify-center font-bold text-xs">LH</div>
+          <span class="font-bold tracking-tight text-slate-700 text-sm">Aliansi Aksi Iklim Lestari</span>
+        </div>
+
+        <!-- Partner Item 6 -->
+        <div class="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-slate-800 text-white flex items-center justify-center font-bold text-xs">AP</div>
+          <span class="font-bold tracking-tight text-slate-700 text-sm">Asosiasi Pendidik Progresif</span>
+        </div>
+
+        <!-- DUPLICATE SET FOR INFINITE SEAMLESS LOOP -->
+        <div class="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-slate-800 text-white flex items-center justify-center font-bold text-xs">BP</div>
+          <span class="font-bold tracking-tight text-slate-700 text-sm">Balai Pemuda Mandiri</span>
+        </div>
+
+        <div class="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-brand-blue text-white flex items-center justify-center font-bold text-xs">JK</div>
+          <span class="font-bold tracking-tight text-slate-700 text-sm">Jejaring Komunitas Bekasi</span>
+        </div>
+
+        <div class="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-brand-orange text-white flex items-center justify-center font-bold text-xs">FL</div>
+          <span class="font-bold tracking-tight text-slate-700 text-sm">Forum Literasi Inklusif</span>
+        </div>
+
+        <div class="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-slate-900 text-white flex items-center justify-center font-bold text-xs">IK</div>
+          <span class="font-bold tracking-tight text-slate-700 text-sm">Inkubasi Koperasi Pemuda</span>
+        </div>
+
+        <div class="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-emerald-700 text-white flex items-center justify-center font-bold text-xs">LH</div>
+          <span class="font-bold tracking-tight text-slate-700 text-sm">Aliansi Aksi Iklim Lestari</span>
+        </div>
+
+        <div class="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer">
+          <div class="w-8 h-8 rounded bg-slate-800 text-white flex items-center justify-center font-bold text-xs">AP</div>
+          <span class="font-bold tracking-tight text-slate-700 text-sm">Asosiasi Pendidik Progresif</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION H: FINAL CTA SECTION & MINIMALIST FOOTER
+       ========================================================================= -->
+  
+  <!-- Final CTA Container -->
+  <section id="gabung" class="py-24 bg-brand-slate-bg">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-brand-navy rounded-card p-8 sm:p-14 text-white shadow-ambient relative overflow-hidden border border-slate-800">
+        <!-- Subtle Top Orange Accent Line -->
+        <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-orange via-brand-blue to-brand-orange"></div>
+
+        <div class="max-w-2xl">
+          <span class="text-xs font-mono font-bold tracking-widest uppercase text-brand-orange mb-3 block">
+            Panggilan Aksi // 2026-2027
+          </span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.15]">
+            Setiap Generasi Punya Panggilan Zaman. Ini Panggilan Kita.
+          </h2>
+          <p class="mt-4 text-slate-300 text-base leading-relaxed">
+            Apakah Anda seorang pelajar yang mencari arah hidup, profesional muda yang ingin mendedikasikan waktu sebagai mentor, atau institusi yang ingin berkolaborasi? Pintu kami selalu terbuka.
+          </p>
+        </div>
+
+        <!-- Action Form / Pathways -->
+        <div class="mt-10 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Card Action 1: Untuk Pelajar & Pemuda -->
+          <div class="p-6 rounded-lg bg-white/5 border border-white/10 hover:border-brand-orange transition-colors duration-200 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono text-brand-orange uppercase tracking-wider mb-2">Jalur Kaderisasi</div>
+              <h3 class="text-lg font-bold text-white mb-2">Daftar Akademi Progresif</h3>
+              <p class="text-xs text-slate-300 leading-relaxed mb-6">
+                Ikuti seleksi kohort baru untuk jenjang Tunas & Penggerak Progresif di Kota/Kabupaten Bekasi dan sekitarnya.
+              </p>
+            </div>
+            <a 
+              href="https://wa.me/?text=Halo%20Yayasan%20Muda%20Progresif%20Bangsa,%20saya%20tertarik%20mengikuti%20Akademi%20Progresif" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center rounded-full bg-brand-orange hover:bg-brand-orange-hover text-white px-5 py-3 text-sm font-semibold shadow-cta-orange transition-all duration-200"
+            >
+              Registrasi Peserta Baru
+            </a>
+          </div>
+
+          <!-- Card Action 2: Untuk Mitra & Filantropi -->
+          <div id="kemitraan" class="p-6 rounded-lg bg-white/5 border border-white/10 hover:border-brand-blue transition-colors duration-200 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono text-brand-blue uppercase tracking-wider mb-2">Jalur Kelembagaan</div>
+              <h3 class="text-lg font-bold text-white mb-2">Kemitraan & Penyaluran CSR</h3>
+              <p class="text-xs text-slate-300 leading-relaxed mb-6">
+                Dukung beasiswa kelas, penyediaan mentor ahli, atau kolaborasi penyelenggaraan program sosial terukur.
+              </p>
+            </div>
+            <a 
+              href="mailto:kemitraan@mudaprogresif.org?subject=Pengajuan%20Kemitraan%20Yayasan%20Muda%20Progresif%20Bangsa" 
+              class="inline-flex items-center justify-center rounded-full bg-white hover:bg-slate-100 text-brand-navy px-5 py-3 text-sm font-semibold transition-all duration-200"
+            >
+              Hubungi Tim Kemitraan
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Minimalist Footer -->
+  <footer class="bg-brand-navy text-slate-400 border-t border-slate-800/80 pt-16 pb-12 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-16 border-b border-white/10">
+        
+        <!-- Col 1: Identity & Legal Foundation -->
+        <div class="md:col-span-5 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <img 
+                src="./logo/LOGO MPB - PUTIH.png" 
+                alt="Logo MPB Putih" 
+                class="h-8 w-auto object-contain"
+                onerror="this.style.display='none';"
+              />
+              <span class="text-lg font-extrabold tracking-tight text-white">
+                Muda Progresif Bangsa
+              </span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed max-w-sm mb-6">
+              Yayasan nirlaba independen yang mendedikasikan seluruh daya untuk penguatan kapasitas, etos kepemimpinan, dan kemandirian generasi muda Indonesia.
+            </p>
+          </div>
+          <div class="text-xs text-slate-500 font-mono space-y-1">
+            <p>SK Kemenkumham RI: Terdaftar Resmi</p>
+            <p>Sekretariat: Kota & Kabupaten Bekasi, Jawa Barat, Indonesia</p>
+          </div>
+        </div>
+
+        <!-- Col 2: Inisiatif & Program -->
+        <div class="md:col-span-3">
+          <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4">
+            Program Inti
+          </h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#pilar-program" class="hover:text-white transition-colors">Tunas Progresif (Dasar)</a></li>
+            <li><a href="#pilar-program" class="hover:text-white transition-colors">Penggerak Progresif (Lanjutan)</a></li>
+            <li><a href="#pilar-program" class="hover:text-white transition-colors">Inkubator Wirausaha Muda</a></li>
+            <li><a href="#pilar-program" class="hover:text-white transition-colors">Satgas Restorasi Ekologi</a></li>
+            <li><a href="#pilar-program" class="hover:text-white transition-colors">Duta Kepemimpinan Muda</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Tata Kelola & Transparansi -->
+        <div class="md:col-span-2">
+          <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4">
+            Tata Kelola
+          </h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#manifesto" class="hover:text-white transition-colors">Manifesto Etik</a></li>
+            <li><a href="#dampak" class="hover:text-white transition-colors">Laporan Kinerja</a></li>
+            <li><a href="#mitra" class="hover:text-white transition-colors">Jejaring Mitra</a></li>
+            <li><a href="#visi-misi" class="hover:text-white transition-colors">Struktur Dewan</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Narahubung -->
+        <div class="md:col-span-2">
+          <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-white mb-4">
+            Komunikasi
+          </h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="mailto:kontak@mudaprogresif.org" class="hover:text-white transition-colors">kontak@mudaprogresif.org</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Instagram Resmi</a></li>
+            <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">LinkedIn Lembaga</a></li>
+            <li><a href="#gabung" class="hover:text-white transition-colors">Kanal WhatsApp</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>&copy; 2026 Yayasan Muda Progresif Bangsa. Hak Cipta Dilindungi Undang-Undang.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-slate-300 transition-colors">Kebijakan Privasi</a>
+          <a href="#" class="hover:text-slate-300 transition-colors">Syarat & Ketentuan</a>
+          <a href="#hero" class="hover:text-slate-300 transition-colors">Kembali ke Atas &uarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MINIMALIST VANILLA JAVASCRIPT FOR MICRO-INTERACTIONS
+       ========================================================================= -->
+  <script>
+    // 1. Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuBars = document.getElementById('menu-icon-bars');
+    const menuClose = document.getElementById('menu-icon-close');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+        mobileBtn.setAttribute('aria-expanded', !isExpanded);
+        mobileMenu.classList.toggle('hidden');
+        menuBars.classList.toggle('hidden');
+        menuClose.classList.toggle('hidden');
+      });
+
+      // Close mobile menu when a nav link is clicked
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuBars.classList.remove('hidden');
+          menuClose.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // 2. Program Pillar Interactive Tab Filter
+    function filterPrograms(type) {
+      const cards = {
+        edu: document.getElementById('card-edu'),
+        eco: document.getElementById('card-eco'),
+        env: document.getElementById('card-env')
+      };
+      
+      const buttons = {
+        all: document.getElementById('tab-btn-all'),
+        edu: document.getElementById('tab-btn-edu'),
+        eco: document.getElementById('tab-btn-eco'),
+        env: document.getElementById('tab-btn-env')
+      };
+
+      // Reset button styles
+      Object.values(buttons).forEach(btn => {
+        if (btn) {
+          btn.className = 'tab-btn px-3.5 py-1.5 rounded-full text-slate-600 hover:text-brand-navy transition-all duration-200';
+        }
+      });
+
+      // Set active button style
+      if (buttons[type]) {
+        buttons[type].className = 'tab-btn active px-3.5 py-1.5 rounded-full bg-brand-navy text-white transition-all duration-200';
+      }
+
+      // Filter cards
+      if (type === 'all') {
+        Object.values(cards).forEach(c => {
+          if (c) c.classList.remove('hidden');
+        });
+      } else {
+        Object.entries(cards).forEach(([key, card]) => {
+          if (card) {
+            if (key === type) {
+              card.classList.remove('hidden');
+            } else {
+              card.classList.add('hidden');
+            }
+          }
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>
