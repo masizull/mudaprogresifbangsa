@@ -43,7 +43,7 @@ export default function Navbar() {
           <Link href="#hero" className="flex items-center gap-3.5 group focus:outline-none rounded-lg p-1">
             <div className="relative w-10 h-10 flex-shrink-0 flex items-center justify-center">
               <img 
-                src="./logo/LOGO MPB - WARNA.png" 
+                src={`${process.env.NODE_ENV === 'production' ? '/mudaprogresifbangsa' : ''}/logo/LOGO MPB - WARNA.png`} 
                 alt="Logo Muda Progresif Bangsa" 
                 className="w-full h-full object-contain"
                 onError={(e) => {

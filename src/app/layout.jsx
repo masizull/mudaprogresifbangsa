@@ -22,7 +22,7 @@ export const metadata = {
     type: 'website',
   },
   icons: {
-    icon: './logo/LOGO MPB - WARNA.png',
+    icon: '/mudaprogresifbangsa/logo/LOGO MPB - WARNA.png',
   },
 };
 

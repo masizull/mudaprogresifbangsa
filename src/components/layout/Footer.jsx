@@ -18,7 +18,7 @@ export default function Footer() {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <img 
-                  src="./logo/LOGO MPB - PUTIH.png" 
+                  src={`${process.env.NODE_ENV === 'production' ? '/mudaprogresifbangsa' : ''}/logo/LOGO MPB - PUTIH.png`} 
                   alt="Logo MPB Putih" 
                   className="h-8 w-auto object-contain"
                   onError={(e) => { e.currentTarget.style.display = 'none'; }}
