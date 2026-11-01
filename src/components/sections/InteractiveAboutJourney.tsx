@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -26,6 +27,7 @@ interface MilestoneData {
   pillarHref: string;
   stats: { label: string; value: string };
   icon: React.ElementType;
+  image: string;
   glowColor: string;
   badgeBg: string;
 }
@@ -47,6 +49,7 @@ const MILESTONES: MilestoneData[] = [
     pillarHref: "/program/akademi-progresif",
     stats: { label: "Fokus Gerakan", value: "Pendidikan & Karakter" },
     icon: BookOpen,
+    image: "/images/milestone-fase1.jpg",
     glowColor: "rgba(37, 99, 235, 0.4)",
     badgeBg: "bg-blue-50 text-blue-700 border-blue-200"
   },
@@ -66,6 +69,7 @@ const MILESTONES: MilestoneData[] = [
     pillarHref: "/program/vokasi-progresif",
     stats: { label: "Fokus Gerakan", value: "Keahlian & Usaha Mandiri" },
     icon: Briefcase,
+    image: "/images/milestone-fase2.jpg",
     glowColor: "rgba(2, 132, 199, 0.4)",
     badgeBg: "bg-sky-50 text-sky-700 border-sky-200"
   },
@@ -85,6 +89,7 @@ const MILESTONES: MilestoneData[] = [
     pillarHref: "/program/progresif-care",
     stats: { label: "Fokus Gerakan", value: "Riset & Aksi Sosial" },
     icon: BarChart3,
+    image: "/images/milestone-fase3.jpg",
     glowColor: "rgba(79, 70, 229, 0.4)",
     badgeBg: "bg-indigo-50 text-indigo-700 border-indigo-200"
   }
@@ -94,6 +99,7 @@ export default function InteractiveAboutJourney() {
   const [activeStep, setActiveStep] = useState(0);
   const current = MILESTONES[activeStep];
   const IconComponent = current.icon;
+  const basePath = process.env.NODE_ENV === "production" ? "/mudaprogresifbangsa" : "";
 
   const nextStep = () => {
     setActiveStep((prev) => (prev + 1) % MILESTONES.length);
@@ -203,14 +209,22 @@ export default function InteractiveAboutJourney() {
                   </span>
                 </div>
 
-                {/* Center 3D Floating Icon Showcase */}
-                <div className="relative z-10 flex flex-col items-center justify-center my-auto py-4">
+                {/* Center 3D Model Image Showcase */}
+                <div className="relative z-10 flex flex-col items-center justify-center my-auto py-2">
                   <motion.div
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="relative w-20 h-20 sm:w-22 sm:h-22 rounded-2xl bg-gradient-to-br from-blue-500/30 to-indigo-600/30 backdrop-blur-md border border-blue-400/40 shadow-[0_0_30px_rgba(37,99,235,0.35)] flex items-center justify-center"
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden shadow-[0_16px_36px_rgba(0,0,0,0.6)] border border-blue-400/40 group bg-slate-950"
                   >
-                    <IconComponent className="w-10 h-10 text-white drop-shadow-[0_0_12px_rgba(59,130,246,0.8)]" />
+                    <Image
+                      src={`${basePath}${current.image}`}
+                      alt={current.title}
+                      fill
+                      priority
+                      sizes="(max-width: 640px) 150px, 180px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#081426]/70 via-transparent to-transparent pointer-events-none" />
                   </motion.div>
                 </div>
 
