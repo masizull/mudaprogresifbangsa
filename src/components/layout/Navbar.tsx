@@ -88,7 +88,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <Link
             href="/kolaborasi"
-            className="px-4 py-2 rounded-lg text-xs font-bold bg-[#2454BE] hover:bg-[#1D469E] text-white shadow-sm transition-all"
+            className="px-4 py-2 rounded-xl text-xs font-extrabold bg-[#2454BE] hover:bg-[#1D469E] text-white shadow-[0_0_15px_rgba(36,84,190,0.5)] hover:shadow-[0_0_24px_rgba(36,84,190,0.8)] border border-blue-400/40 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
             Bermitra
           </Link>

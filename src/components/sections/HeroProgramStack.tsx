@@ -25,7 +25,7 @@ export default function HeroProgramStack() {
   const nextSlide = () => setActive((c) => (c + 1) % total);
 
   return (
-    <section className="relative -mt-20 pt-36 sm:pt-40 lg:pt-44 pb-14 sm:pb-16 lg:pb-20 overflow-hidden bg-[#0A1838] text-white">
+    <section className="relative -mt-20 pt-26 sm:pt-28 lg:pt-30 pb-10 sm:pb-12 lg:pb-14 overflow-hidden bg-[#0A1838] text-white">
       {/* 1. Independent Clean Background (TIDAK menyambung dengan gambar slides pilar) */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#091738] via-[#102A63] to-[#173B8A]" />
       
@@ -64,17 +64,19 @@ export default function HeroProgramStack() {
             Menyambung pendidikan kebangsaan melalui Muda Progresif Bangsa Foundation untuk membuka akses pendidikan berkualitas dan memutus rantai kemiskinan.
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center gap-3">
+          {/* CTA Buttons dengan Efek Neon Glow Berkilau */}
+          <div className="pt-2 flex flex-wrap items-center gap-3.5">
             <Link
               href="/program/akademi-progresif"
-              className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-2"
+              className="group relative px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 hover:from-amber-400 hover:via-orange-400 hover:to-amber-400 text-slate-950 font-extrabold text-xs sm:text-sm border border-amber-300/80 shadow-[0_0_20px_rgba(249,115,22,0.7),0_0_40px_rgba(245,158,11,0.4)] hover:shadow-[0_0_30px_rgba(249,115,22,0.95),0_0_60px_rgba(245,158,11,0.65)] transition-all duration-300 flex items-center gap-2 hover:scale-[1.03] active:scale-[0.98]"
             >
-              <span>Jelajahi Program</span>
-              <ArrowRight className="w-4 h-4" />
+              <span className="tracking-wide">Jelajahi Program</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
+            
             <Link
               href="/kolaborasi"
-              className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/20 transition-all"
+              className="px-5 py-2.5 rounded-xl bg-sky-950/40 hover:bg-sky-900/60 text-sky-200 hover:text-white font-extrabold text-xs sm:text-sm border-2 border-sky-400/70 hover:border-sky-300 shadow-[0_0_18px_rgba(56,189,248,0.45),inset_0_0_12px_rgba(56,189,248,0.2)] hover:shadow-[0_0_28px_rgba(56,189,248,0.8),inset_0_0_16px_rgba(56,189,248,0.35)] backdrop-blur-md transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
             >
               Ajukan Sinergi
             </Link>
@@ -86,7 +88,7 @@ export default function HeroProgramStack() {
           <div
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
-            className="relative w-full max-w-[540px] h-[375px] sm:h-[395px] flex items-center justify-center select-none"
+            className="relative w-full max-w-[540px] h-[345px] sm:h-[360px] flex items-center justify-center select-none"
             style={{ perspective: "1000px" }}
           >
             {PILLARS_DATA.map((pillar, i) => {
@@ -185,7 +187,7 @@ export default function HeroProgramStack() {
                     {isCenter ? (
                       <Link
                         href={`/program/${pillar.slug}`}
-                        className="mt-3 block w-full py-2 sm:py-2.5 rounded-xl bg-[#2454BE] hover:bg-[#1D469E] text-white text-center font-bold text-xs sm:text-[13px] shadow transition-colors"
+                        className="mt-3 block w-full py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-[#1D4ED8] to-[#2563EB] hover:from-[#1E40AF] hover:to-[#1D4ED8] text-white text-center font-extrabold text-xs sm:text-[13px] border border-blue-400/40 shadow-[0_0_18px_rgba(37,99,235,0.6),0_0_35px_rgba(59,130,246,0.35)] hover:shadow-[0_0_26px_rgba(37,99,235,0.9),0_0_50px_rgba(59,130,246,0.6)] transition-all duration-300 hover:scale-[1.01]"
                       >
                         Lihat Program
                       </Link>
@@ -200,8 +202,8 @@ export default function HeroProgramStack() {
             })}
           </div>
 
-          {/* Tombol Navigasi Bulat & Indikator Titik dengan Jarak Bersih (Anti-Tertimpa) */}
-          <div className="mt-6 sm:mt-7 flex items-center gap-3.5 relative z-40">
+          {/* Tombol Navigasi Bulat & Indikator Titik (Dinaikkan sedikit agar pas & dekat tanpa bertabrakan) */}
+          <div className="mt-3 sm:mt-3.5 flex items-center gap-3.5 relative z-40">
             <button
               type="button"
               onClick={prevSlide}
@@ -219,7 +221,7 @@ export default function HeroProgramStack() {
                   onClick={() => setActive(i)}
                   aria-label={`Slide ${i + 1}`}
                   className={`h-1.5 rounded-full transition-all ${
-                    i === active ? "w-6 bg-amber-400" : "w-2.5 bg-white/40 hover:bg-white/70"
+                    i === active ? "w-6 bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.7)]" : "w-2.5 bg-white/40 hover:bg-white/70"
                   }`}
                 />
               ))}
