@@ -91,6 +91,7 @@ export default function Footer() {
               <li><Link href="/tentang-kami/legalitas" className="hover:text-white transition-colors">Legalitas Resmi</Link></li>
               <li><Link href="/tentang-kami/pengurus" className="hover:text-white transition-colors">Struktur Pengurus</Link></li>
               <li><Link href="/kolaborasi" className="hover:text-white transition-colors">Portal Sinergi</Link></li>
+              <li><Link href="/admin" className="text-amber-400 hover:text-amber-300 transition-colors font-semibold">CMS Panel (Admin)</Link></li>
             </ul>
           </div>
 
