@@ -2,6 +2,8 @@ const basePath = process.env.NODE_ENV === 'production' ? '/mudaprogresifbangsa' 
 
 export interface PillarItem {
   id: string;
+  slug: string;
+  nameOnly: string;
   number: string;
   title: string;
   subtitle: string;
@@ -66,6 +68,8 @@ export const FOUNDATION_INFO = {
 export const PILLARS_DATA: PillarItem[] = [
   {
     id: "akademi-progresif",
+    slug: "akademi-progresif",
+    nameOnly: "Akademi Progresif",
     number: "01",
     title: "Akademi Progresif",
     subtitle: "Pusat Riset, Pemikiran Kritis & Sekolah Rakyat",
@@ -76,7 +80,7 @@ export const PILLARS_DATA: PillarItem[] = [
     themeBorder: "border-sky-500",
     themeText: "text-sky-400",
     themeBg: "bg-sky-500/10",
-    themeBadge: "bg-sky-500/15 text-sky-300 border-sky-400/30",
+    themeBadge: "text-sky-300 bg-sky-950/60 border border-sky-400/30",
     image: `${basePath}/images/pilar-akademi.jpg`,
     imageAlt: "Akademi Progresif - Diskusi Pemikiran dan Riset Kebijakan",
     tags: ["Pusat Riset", "PKBM Berdaya", "Sekolah Pemikiran", "Advokasi"],
@@ -110,6 +114,8 @@ export const PILLARS_DATA: PillarItem[] = [
   },
   {
     id: "vokasi-progresif",
+    slug: "vokasi-progresif",
+    nameOnly: "Vokasi Progresif",
     number: "02",
     title: "Vokasi Progresif",
     subtitle: "Pemberdayaan Keahlian & Kemandirian Finansial",
@@ -120,7 +126,7 @@ export const PILLARS_DATA: PillarItem[] = [
     themeBorder: "border-amber-500",
     themeText: "text-amber-400",
     themeBg: "bg-amber-500/10",
-    themeBadge: "bg-amber-500/15 text-amber-300 border-amber-400/30",
+    themeBadge: "text-amber-300 bg-amber-950/60 border border-amber-400/30",
     image: `${basePath}/images/pilar-vokasi.jpg`,
     imageAlt: "Vokasi Progresif - Pelatihan Keterampilan dan Sertifikasi Kerja",
     tags: ["Digital Skills", "Sertifikasi Kerja", "Inkubasi UMKM", "Kewirausahaan"],
@@ -149,6 +155,8 @@ export const PILLARS_DATA: PillarItem[] = [
   },
   {
     id: "progresif-care",
+    slug: "progresif-care",
+    nameOnly: "Progresif Care",
     number: "03",
     title: "Progresif Care",
     subtitle: "Kesehatan Preventif & Jaring Pengaman Sosial",
@@ -159,7 +167,7 @@ export const PILLARS_DATA: PillarItem[] = [
     themeBorder: "border-emerald-500",
     themeText: "text-emerald-400",
     themeBg: "bg-emerald-500/10",
-    themeBadge: "bg-emerald-500/15 text-emerald-300 border-emerald-400/30",
+    themeBadge: "text-emerald-300 bg-emerald-950/60 border border-emerald-400/30",
     image: `${basePath}/images/pilar-care.jpg`,
     imageAlt: "Progresif Care - Pemeriksaan Kesehatan dan Solidaritas Sosial",
     tags: ["Kesehatan Preventif", "Beasiswa Binaan", "Gizi Anak", "Solidaritas"],
@@ -188,6 +196,8 @@ export const PILLARS_DATA: PillarItem[] = [
   },
   {
     id: "tanggap-progresif",
+    slug: "tanggap-progresif",
+    nameOnly: "Tanggap Progresif",
     number: "04",
     title: "Tanggap Progresif",
     subtitle: "Relawan Kemanusiaan & Respons Cepat Bencana",
@@ -198,7 +208,7 @@ export const PILLARS_DATA: PillarItem[] = [
     themeBorder: "border-orange-500",
     themeText: "text-orange-400",
     themeBg: "bg-orange-500/10",
-    themeBadge: "bg-orange-500/15 text-orange-300 border-orange-400/30",
+    themeBadge: "text-orange-300 bg-orange-950/60 border border-orange-400/30",
     image: `${basePath}/images/pilar-tanggap.jpg`,
     imageAlt: "Tanggap Progresif - Mobilisasi Relawan Kemanusiaan",
     tags: ["Kesiapsiagaan", "Bantuan Darurat", "Trauma Healing", "Kelas Darurat"],

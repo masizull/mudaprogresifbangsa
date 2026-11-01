@@ -1,137 +1,139 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
-import { FOUNDATION_INFO } from '@/data/foundation-data';
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronDown, Menu, X } from "lucide-react";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const currentScroll = window.scrollY;
-      setScrollProgress((currentScroll / totalScroll) * 100);
-      setScrolled(currentScroll > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const basePath = process.env.NODE_ENV === "production" ? "/mudaprogresifbangsa" : "";
 
   return (
-    <>
-      {/* Top Reading Progress Bar */}
-      <div 
-        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-sky-400 via-royal-500 to-[#FF5500] z-50 transition-all duration-150"
-        style={{ width: `${scrollProgress}%` }}
-      />
+    <header className="sticky top-0 z-40 pt-3 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-md border border-slate-200/80 px-4 sm:px-5 h-16 flex items-center justify-between gap-4">
+        {/* Logo Horizontal Resmi */}
+        <Link href="/" className="flex items-center shrink-0">
+          <Image
+            src={`${basePath}/images/logo_horizontal_mpb.png`}
+            alt="Muda Progresif Bangsa Foundation"
+            width={195}
+            height={40}
+            priority
+            className="h-9 sm:h-10 w-auto object-contain"
+          />
+        </Link>
 
-      <header className={`sticky top-0 z-40 w-full transition-all duration-200 ${
-        scrolled 
-          ? 'bg-[#F4F7FB]/95 backdrop-blur-md border-b border-slate-200 shadow-ambient' 
-          : 'bg-[#F4F7FB] border-b border-transparent'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          
-          {/* Brand Logo & Identity */}
-          <Link href="#hero" className="flex items-center gap-3.5 group focus:outline-none rounded-lg p-1">
-            <div className="relative w-10 h-10 flex-shrink-0 flex items-center justify-center">
-              <img 
-                src={`${process.env.NODE_ENV === 'production' ? '/mudaprogresifbangsa' : ''}/logo/LOGO MPB - WARNA.png`} 
-                alt="Logo Muda Progresif Bangsa" 
-                className="w-full h-full object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  if (e.currentTarget.nextElementSibling) {
-                    (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'flex';
-                  }
-                }}
-              />
-              <div className="hidden w-10 h-10 rounded-lg bg-[#0F2342] items-center justify-center text-white font-bold text-base tracking-tight shadow-sm">
-                <span className="text-[#FF5500]">M</span>PB
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-base sm:text-lg tracking-tight text-[#081426] leading-none group-hover:text-royal-600 transition-colors duration-200">
-                Muda Progresif Bangsa
-              </span>
-              <span className="text-[11px] font-semibold tracking-wider uppercase text-slate-500 mt-1 flex items-center gap-1">
-                <span>Yayasan Resmi</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                <span className="text-emerald-700 font-mono text-[10px]">AHU-2025</span>
-              </span>
-            </div>
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-6 text-[13px] font-semibold text-slate-700 h-full">
+          <Link href="/" className="h-full flex items-center border-b-2 border-[#2454BE] text-[#2454BE]">
+            Beranda
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 text-[13px] font-semibold text-slate-700">
-            <Link href="#tentang" className="hover:text-royal-600 transition-colors duration-200">Tentang</Link>
-            <Link href="#visi-misi" className="hover:text-royal-600 transition-colors duration-200">Visi & Misi</Link>
-            <Link href="#nilai-budaya" className="hover:text-royal-600 transition-colors duration-200">Prinsip & Nilai</Link>
-            <Link href="#ekosistem-pilar" className="hover:text-royal-600 transition-colors duration-200">4 Pilar Program</Link>
-            <Link href="#struktur-legalitas" className="hover:text-royal-600 transition-colors duration-200">Legalitas & Tim</Link>
-            <Link href="#kemitraan" className="hover:text-royal-600 transition-colors duration-200">Kemitraan</Link>
-          </nav>
-
-          {/* Desktop CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
-            <Link 
-              href="#struktur-legalitas"
-              className="text-xs font-bold text-slate-700 hover:text-royal-600 transition-colors duration-200 px-3 py-2 flex items-center gap-1.5"
-            >
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>SK Kemenkumham</span>
-            </Link>
-            <Link 
-              href="#kemitraan"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF5500] hover:bg-[#E04B00] text-white px-5 py-2.5 text-xs font-bold shadow-cta-orange transition-all duration-200 ease-in-out hover:-translate-y-0.5 active:translate-y-0"
-            >
-              <span>Ajukan Sinergi</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-
-          {/* Mobile Hamburger Toggle */}
-          <div className="flex lg:hidden items-center">
-            <button 
-              type="button" 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-700 hover:text-[#081426] hover:bg-slate-200 transition-colors focus:outline-none"
-              aria-label="Toggle Menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {/* Dropdown Tentang Kami */}
+          <div className="relative group h-full flex items-center">
+            <button type="button" className="h-full flex items-center gap-1.5 hover:text-[#2454BE] transition-colors">
+              <span>Tentang Kami</span>
+              <span className="w-4 h-4 rounded-full bg-blue-50 text-[#2454BE] flex items-center justify-center">
+                <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform duration-200" />
+              </span>
             </button>
-          </div>
-
-        </div>
-
-        {/* Mobile Dropdown Navigation */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden border-b border-slate-200 bg-white px-5 pt-3 pb-6 space-y-3 shadow-lg">
-            <Link href="#tentang" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-slate-700 hover:text-[#FF5500]">Tentang Yayasan</Link>
-            <Link href="#visi-misi" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-slate-700 hover:text-[#FF5500]">Visi & Misi</Link>
-            <Link href="#nilai-budaya" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-slate-700 hover:text-[#FF5500]">Prinsip Gerakan & Nilai Inti</Link>
-            <Link href="#ekosistem-pilar" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-slate-700 hover:text-[#FF5500]">Ekosistem 4 Pilar</Link>
-            <Link href="#struktur-legalitas" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-slate-700 hover:text-[#FF5500]">Legalitas & Pengurus</Link>
-            <Link href="#kemitraan" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-slate-700 hover:text-[#FF5500]">Portal Kemitraan</Link>
-            
-            <div className="pt-4 border-t border-slate-100 flex flex-col gap-3">
-              <Link 
-                href="#kemitraan"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-3 text-sm font-bold bg-[#FF5500] text-white rounded-full shadow-cta-orange"
-              >
-                Ajukan Sinergi Kemitraan
-              </Link>
+            <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-150 absolute top-[58px] left-0 w-56 bg-white rounded-xl shadow-xl border border-slate-100 py-1.5 z-50">
+              <Link href="/tentang-kami/profil" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 border-b border-slate-100 transition-colors">Muda Progresif Bangsa</Link>
+              <Link href="/tentang-kami/visi-misi" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 border-b border-slate-100 transition-colors">Visi, Misi & Nilai</Link>
+              <Link href="/tentang-kami/legalitas" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 border-b border-slate-100 transition-colors">Legalitas Resmi</Link>
+              <Link href="/tentang-kami/pengurus" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 border-b border-slate-100 transition-colors">Dewan Pembina & Pengurus</Link>
+              <Link href="/tentang-kami/sekretariat" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 transition-colors">Kantor Sekretariat</Link>
             </div>
           </div>
-        )}
-      </header>
-    </>
+
+          {/* Dropdown Program (Satu per Satu) */}
+          <div className="relative group h-full flex items-center">
+            <button type="button" className="h-full flex items-center gap-1.5 hover:text-[#2454BE] transition-colors">
+              <span>Program</span>
+              <span className="w-4 h-4 rounded-full bg-blue-50 text-[#2454BE] flex items-center justify-center">
+                <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform duration-200" />
+              </span>
+            </button>
+            <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-150 absolute top-[58px] left-0 w-60 bg-white rounded-xl shadow-xl border border-slate-100 py-1.5 z-50">
+              <Link href="/program/akademi-progresif" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 border-b border-slate-100 font-semibold transition-colors">Akademi Progresif</Link>
+              <Link href="/program/vokasi-progresif" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 border-b border-slate-100 font-semibold transition-colors">Vokasi Progresif</Link>
+              <Link href="/program/progresif-care" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 border-b border-slate-100 font-semibold transition-colors">Progresif Care</Link>
+              <Link href="/program/tanggap-progresif" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 font-semibold transition-colors">Tanggap Progresif</Link>
+            </div>
+          </div>
+
+          {/* Dropdown Kolaborasi */}
+          <div className="relative group h-full flex items-center">
+            <button type="button" className="h-full flex items-center gap-1.5 hover:text-[#2454BE] transition-colors">
+              <span>Kolaborasi</span>
+              <span className="w-4 h-4 rounded-full bg-blue-50 text-[#2454BE] flex items-center justify-center">
+                <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform duration-200" />
+              </span>
+            </button>
+            <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-150 absolute top-[58px] left-0 w-56 bg-white rounded-xl shadow-xl border border-slate-100 py-1.5 z-50">
+              <Link href="/kolaborasi?mitra=pemerintah" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 border-b border-slate-100 transition-colors">Pemerintah & Kementerian</Link>
+              <Link href="/kolaborasi?mitra=kampus" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 border-b border-slate-100 transition-colors">Perguruan Tinggi & Riset</Link>
+              <Link href="/kolaborasi?mitra=csr" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 border-b border-slate-100 transition-colors">Sektor Swasta & CSR</Link>
+              <Link href="/kolaborasi?mitra=komunitas" className="block px-4 py-2.5 text-xs text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 transition-colors">Komunitas & Ormas</Link>
+            </div>
+          </div>
+
+          <Link href="/insight" className="h-full flex items-center hover:text-[#2454BE] transition-colors">
+            Insight & Berita
+          </Link>
+        </nav>
+
+        {/* CTA Button & Mobile Toggle */}
+        <div className="flex items-center gap-2">
+          <Link
+            href="/kolaborasi"
+            className="px-4 py-2 rounded-lg text-xs font-bold bg-[#2454BE] hover:bg-[#1D469E] text-white shadow-sm transition-all"
+          >
+            Bermitra
+          </Link>
+          <button
+            type="button"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100"
+            aria-label="Toggle Navigation"
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {mobileOpen && (
+        <div className="lg:hidden max-w-6xl mx-auto mt-2 bg-white rounded-2xl shadow-xl border border-slate-200 p-4 space-y-3 text-xs">
+          <Link href="/" onClick={() => setMobileOpen(false)} className="block py-1.5 font-bold text-[#2454BE]">Beranda</Link>
+          <div className="pt-2 border-t border-slate-100 space-y-1">
+            <span className="font-bold text-[11px] text-slate-400 uppercase tracking-wider">Tentang Kami</span>
+            <Link href="/tentang-kami/profil" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Muda Progresif Bangsa</Link>
+            <Link href="/tentang-kami/visi-misi" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Visi, Misi & Nilai</Link>
+            <Link href="/tentang-kami/legalitas" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Legalitas Resmi</Link>
+            <Link href="/tentang-kami/pengurus" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Dewan Pembina & Pengurus</Link>
+            <Link href="/tentang-kami/sekretariat" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Kantor Sekretariat</Link>
+          </div>
+          <div className="pt-2 border-t border-slate-100 space-y-1">
+            <span className="font-bold text-[11px] text-slate-400 uppercase tracking-wider">Program</span>
+            <Link href="/program/akademi-progresif" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 font-semibold text-slate-700 hover:text-[#2454BE]">Akademi Progresif</Link>
+            <Link href="/program/vokasi-progresif" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 font-semibold text-slate-700 hover:text-[#2454BE]">Vokasi Progresif</Link>
+            <Link href="/program/progresif-care" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 font-semibold text-slate-700 hover:text-[#2454BE]">Progresif Care</Link>
+            <Link href="/program/tanggap-progresif" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 font-semibold text-slate-700 hover:text-[#2454BE]">Tanggap Progresif</Link>
+          </div>
+          <div className="pt-2 border-t border-slate-100 space-y-1">
+            <span className="font-bold text-[11px] text-slate-400 uppercase tracking-wider">Kolaborasi</span>
+            <Link href="/kolaborasi?mitra=pemerintah" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Pemerintah & Kementerian</Link>
+            <Link href="/kolaborasi?mitra=kampus" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Perguruan Tinggi & Riset</Link>
+            <Link href="/kolaborasi?mitra=csr" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Sektor Swasta & CSR</Link>
+            <Link href="/kolaborasi?mitra=komunitas" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Komunitas & Ormas</Link>
+          </div>
+          <div className="pt-2 border-t border-slate-100">
+            <Link href="/insight" onClick={() => setMobileOpen(false)} className="block py-1.5 font-bold text-slate-700 hover:text-[#2454BE]">Insight & Berita</Link>
+          </div>
+        </div>
+      )}
+    </header>
   );
 }
