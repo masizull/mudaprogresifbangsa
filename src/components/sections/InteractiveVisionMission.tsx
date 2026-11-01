@@ -1,197 +1,370 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Compass, Flame, TrendingUp, Rocket, CheckCircle2 } from "lucide-react";
+import {
+  GraduationCap,
+  BarChart3,
+  Users,
+  HeartHandshake,
+  ArrowRight,
+  CheckCircle2,
+  Layers,
+  Network,
+  Sparkles,
+  Compass
+} from "lucide-react";
 
-const MISSIONS = [
+interface MissionItem {
+  id: string;
+  code: string;
+  title: string;
+  category: string;
+  summary: string;
+  deliverables: string[];
+  pillarTitle: string;
+  pillarHref: string;
+  metric: string;
+  icon: React.ElementType;
+}
+
+const STRATEGIC_MISSIONS: MissionItem[] = [
   {
+    id: "misi-1",
     code: "01",
-    tag: "Tangga Intelektual",
-    shortTitle: "Pendidikan Alternatif & Kesetaraan",
-    pillar: "Pilar Penggerak: Akademi & Vokasi Progresif",
-    fullTitle: "Membangun Intelektualitas & Akses Pendidikan Setara",
-    desc: "Menyelenggarakan ekosistem pendidikan nonformal (PKBM), sekolah pemikiran, dan kelas vokasi yang inklusif serta dapat diakses setara oleh seluruh lapisan masyarakat.",
-    indicator: "Target Output: Kelas PKBM, Kurikulum Logika & AI",
-    progress: "88%",
-    icon: TrendingUp
+    title: "Pendidikan Alternatif & Kesetaraan",
+    category: "Literasi & Inklusi",
+    summary:
+      "Menyelenggarakan ekosistem pendidikan nonformal (PKBM) yang inklusif, kelas logika kebangsaan, dan sekolah pemikiran terbuka bagi pemuda dari berbagai latar belakang sosial.",
+    deliverables: [
+      "Penyelenggaraan kelas belajar PKBM Paket A, B, dan C resmi berijazah negara",
+      "Kurikulum logika kritis, filsafat kebangsaan, dan kecakapan digital masa depan",
+      "Beasiswa pendidikan penuh bagi santri, anak putus sekolah, dan keluarga prasejahtera"
+    ],
+    pillarTitle: "Pilar Penggerak: Akademi Progresif",
+    pillarHref: "/program/akademi-progresif",
+    metric: "Akses Pendidikan Setara",
+    icon: GraduationCap
   },
   {
+    id: "misi-2",
     code: "02",
-    tag: "Kompas Pengetahuan",
-    shortTitle: "Riset Terapan & Rekomendasi Kebijakan",
-    pillar: "Pilar Penggerak: Progresif Research & Action Lab",
-    fullTitle: "Memproduksi Pengetahuan & Advokasi Berbasis Bukti",
-    desc: "Menghasilkan riset sosial terapan kuartalan, kajian strategis, dan policy brief berbasis data valid yang membantu masyarakat menyelesaikan persoalan nyata.",
-    indicator: "Target Output: Policy Brief Kuartalan & Jurnal Populer",
-    progress: "92%",
-    icon: Compass
+    title: "Riset Terapan Berbasis Bukti",
+    category: "Advokasi & Kebijakan",
+    summary:
+      "Memproduksi riset kebijakan sosial independen, kajian strategis isu kepemudaan, dan policy brief kuartalan berbasis data presisi untuk mengadvokasi pemangku kebijakan publik.",
+    deliverables: [
+      "Penerbitan Policy Brief kuartalan yang didistribusikan ke kementerian dan lembaga negara",
+      "Action lab terapan untuk menguji solusi permasalahan riil di tingkat akar rumput",
+      "Survei persepsi publik dan diseminasi data terbuka tentang dinamika kepemudaan"
+    ],
+    pillarTitle: "Pilar Penggerak: Progresif Research",
+    pillarHref: "/program/progresif-care",
+    metric: "Riset & Solusi Publik",
+    icon: BarChart3
   },
   {
+    id: "misi-3",
     code: "03",
-    tag: "Obor Kepemimpinan",
-    shortTitle: "Kaderisasi Kepemimpinan Berintegritas",
-    pillar: "Pilar Penggerak: Progresif Forum & Inkubator Kader",
-    fullTitle: "Menyiapkan Kepemimpinan Muda yang Berintegritas",
-    desc: "Mengembangkan kader pemuda yang memiliki etika publik, tanggung jawab sosial, dan keberanian memperjuangkan kemajuan bangsa.",
-    indicator: "Target Output: Forum Diskusi Bulanan & Kaderisasi",
-    progress: "85%",
-    icon: Flame
+    title: "Kaderisasi Kepemimpinan Beretika",
+    category: "Etika Publik & Integritas",
+    summary:
+      "Menempa kader pemuda berintegritas tinggi dengan wawasan kenegaraan kokoh, etika kepemimpinan publik, dan komitmen memperjuangkan keadilan sosial.",
+    deliverables: [
+      "Penyelenggaraan Progresif Leadership Fellowship berkala untuk talenta muda terpilih",
+      "Forum dialektika publik bulanan mengupas isu strategis bangsa secara multidisipliner",
+      "Pendampingan jejaring alumni pemimpin komunitas di tingkat daerah dan nasional"
+    ],
+    pillarTitle: "Pilar Penggerak: Progresif Forum",
+    pillarHref: "/program/akademi-progresif",
+    metric: "Kader Kepemimpinan",
+    icon: Users
   },
   {
+    id: "misi-4",
     code: "04",
-    tag: "Roket Aksi Sosial",
-    shortTitle: "Kemandirian Ekonomi, Kesehatan & Tanggap",
-    pillar: "Pilar Penggerak: Progresif Care & Tanggap Progresif",
-    fullTitle: "Menggerakkan Perubahan Sosial & Pengentasan Kemiskinan",
-    desc: "Mendorong gagasan menjadi pemberdayaan UMKM, layanan kesehatan preventif keluarga, beasiswa pendidikan, dan aksi tanggap bencana.",
-    indicator: "Target Output: Pos Kesehatan, Beasiswa & Relawan Siaga",
-    progress: "95%",
-    icon: Rocket
+    title: "Kemandirian Ekonomi & Aksi Kemanusiaan",
+    category: "Vokasi & Jaring Sosial",
+    summary:
+      "Mendorong kemandirian ekonomi melalui pelatihan kejuruan vokasi, inkubasi wirausaha mandiri, layanan pos kesehatan preventif, dan respon cepat tanggap bencana.",
+    deliverables: [
+      "Pelatihan vokasi kerja terapan berbasis kebutuhan industri dan sertifikasi profesi",
+      "Inkubasi bisnis UMKM muda keluarga dengan akses bimbingan dan fasilitasi modal",
+      "Layanan pos kesehatan keliling keluarga rentan dan tim relawan tanggap bencana"
+    ],
+    pillarTitle: "Pilar Penggerak: Vokasi Progresif & Progresif Care",
+    pillarHref: "/program/vokasi-progresif",
+    metric: "Kemandirian Berkelanjutan",
+    icon: HeartHandshake
   }
 ];
 
 export default function InteractiveVisionMission() {
-  const [activeIdx, setActiveIdx] = useState(0);
-  const current = MISSIONS[activeIdx];
+  const [selectedMission, setSelectedMission] = useState(0);
+  const [viewMode, setViewMode] = useState<"matrix" | "flow">("matrix");
+  const current = STRATEGIC_MISSIONS[selectedMission];
+  const CurrentIcon = current.icon;
 
   return (
-    <motion.section
-      id="visi-misi"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.55 }}
-      className="py-12 sm:py-16 bg-[#081426] text-white relative overflow-hidden"
-    >
-      {/* Background Lighting Accents */}
+    <section id="visi-misi" className="py-12 sm:py-16 bg-[#081426] text-white relative overflow-hidden">
+      {/* Ambient Radial Lights */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        {/* 1. Header Wajib Rata Tengah */}
+        {/* 1. Centered Header (Clean, Direct, Symmetrical, No Orange Text) */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-          <p className="text-[11px] font-mono font-bold uppercase tracking-widest text-amber-400">
-            KOMITMEN STRATEGIS
-          </p>
+          <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-sky-400">
+            VISI & MISI STRATEGIS
+          </span>
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white mt-1.5 tracking-tight leading-snug">
-            Visi & Peta Jalan Interaktif Yayasan
+            Peta Jalan & Transformasi Pergerakan
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
-            Klik setiap titik misi pada command hub strategis di bawah untuk melihat
-            bagaimana visi besar diterjemahkan menjadi terobosan aksi terukur.
+            Menghubungkan gagasan nalar kritis pemuda menjadi solusi nyata
+            melalui ekosistem empat pilar misi yang saling terintegrasi.
           </p>
         </div>
 
-        {/* 2. Interactive Command Hub (12 Kolom) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          {/* Kolom Kiri: 4 Tombol Node Misi Interaktif (5 Kolom) */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-2.5">
-            {MISSIONS.map((m, idx) => {
-              const active = activeIdx === idx;
-              const Icon = m.icon;
-              return (
-                <motion.button
-                  key={m.code}
-                  type="button"
-                  whileHover={{ x: 4 }}
-                  onClick={() => setActiveIdx(idx)}
-                  className={`w-full text-left p-3.5 sm:p-4 rounded-2xl transition-all duration-200 flex items-center gap-3.5 border ${
-                    active
-                      ? "bg-gradient-to-r from-[#2454BE] to-[#1D469E] border-amber-400/70 shadow-lg ring-2 ring-amber-400/20"
-                      : "bg-white/5 hover:bg-white/10 border-white/10 text-slate-300 hover:text-white"
-                  }`}
-                >
-                  <div
-                    className={`w-10 h-10 rounded-xl font-mono font-extrabold text-xs flex items-center justify-center shrink-0 shadow-inner ${
-                      active ? "bg-amber-400 text-slate-950" : "bg-white/10 text-white"
+        {/* 2. Glassmorphic Grand Vision Card (Centerpiece Tanpa Akta Notaris) */}
+        <div className="mb-10 rounded-3xl bg-gradient-to-br from-[#0F2342]/90 via-[#132D59]/75 to-[#0A1B36]/90 p-6 sm:p-8 lg:p-9 border border-blue-400/25 shadow-2xl backdrop-blur-md relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
+          
+          <div className="relative z-10 text-center max-w-3xl mx-auto">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-sky-300 bg-sky-950/60 px-3 py-1 rounded-full border border-sky-400/30 inline-block mb-3">
+              VISI UTAMA GERAKAN
+            </span>
+            <blockquote className="text-base sm:text-lg lg:text-xl font-bold text-white leading-relaxed">
+              “Membangun ekosistem intelektual, pendidikan berkualitas, dan
+              kepemimpinan yang mendorong generasi muda memahami persoalan bangsa,
+              menghasilkan pengetahuan, merumuskan solusi, dan menggerakkan perubahan
+              sosial yang berkelanjutan.”
+            </blockquote>
+
+            <div className="mt-5 pt-4 border-t border-white/10 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-blue-200">
+              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-semibold">
+                01 Intelektualitas Kritis
+              </span>
+              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-semibold">
+                02 Kemandirian Finansial
+              </span>
+              <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 font-semibold">
+                03 Dampak Sosial Presisi
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* 3. Interactive View Mode Switcher (Matriks vs Diagram Alur) */}
+        <div className="flex items-center justify-between flex-wrap gap-3 mb-6">
+          <h3 className="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
+            <Compass className="w-4 h-4 text-sky-400" />
+            <span>Eksplorasi Empat Misi Utama</span>
+          </h3>
+
+          <div className="flex items-center bg-white/5 p-1 rounded-xl border border-white/10 text-xs font-semibold">
+            <button
+              type="button"
+              onClick={() => setViewMode("matrix")}
+              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+                viewMode === "matrix"
+                  ? "bg-[#2454BE] text-white shadow-sm"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>Kartu Matriks</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode("flow")}
+              className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+                viewMode === "flow"
+                  ? "bg-[#2454BE] text-white shadow-sm"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              <Network className="w-3.5 h-3.5" />
+              <span>Diagram Alur</span>
+            </button>
+          </div>
+        </div>
+
+        {/* 4. Display Content Berdasarkan View Mode */}
+        {viewMode === "matrix" ? (
+          <>
+            {/* Symmetrical 4-Column Mission Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-6">
+              {STRATEGIC_MISSIONS.map((m, idx) => {
+                const isSelected = selectedMission === idx;
+                const Icon = m.icon;
+
+                return (
+                  <motion.div
+                    key={m.id}
+                    whileHover={{ y: -4 }}
+                    onClick={() => setSelectedMission(idx)}
+                    className={`cursor-pointer rounded-2xl p-4 sm:p-5 text-left transition-all duration-200 border flex flex-col justify-between ${
+                      isSelected
+                        ? "bg-gradient-to-b from-[#1E3F78] to-[#122850] border-sky-400/80 shadow-lg shadow-blue-500/20 ring-2 ring-sky-400/30"
+                        : "bg-white/5 hover:bg-white/10 border-white/10 text-slate-300 hover:text-white"
                     }`}
                   >
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold">
-                        MISI {m.code} • {m.tag}
-                      </span>
-                    </div>
-                    <h3 className="text-xs sm:text-[13px] font-extrabold text-white truncate mt-0.5">
-                      {m.shortTitle}
-                    </h3>
-                  </div>
-                </motion.button>
-              );
-            })}
-          </div>
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <div
+                          className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-xs ${
+                            isSelected
+                              ? "bg-sky-400 text-slate-950 shadow-md"
+                              : "bg-white/10 text-white"
+                          }`}
+                        >
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <span className="font-mono text-xs font-bold text-sky-300">
+                          Misi {m.code}
+                        </span>
+                      </div>
 
-          {/* Kolom Kanan: Panggung Utama Visi & Dynamic Mission Spotlight (7 Kolom) */}
-          <div className="lg:col-span-7 bg-gradient-to-br from-[#0A1938] via-[#102654] to-[#17377A] rounded-3xl p-6 sm:p-7 border border-white/15 shadow-2xl flex flex-col justify-between gap-5">
-            {/* Bagian Atas: Kutipan Visi Utama Resmi */}
-            <div className="pb-5 border-b border-white/15 text-center">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-sky-300 block">
-                VISI UTAMA • AKTA NOTARIS NO. 14 TAHUN 2025
-              </span>
-              <blockquote className="text-xs sm:text-[14px] font-semibold text-white mt-2.5 leading-relaxed italic max-w-xl mx-auto">
-                “Membangun ekosistem intelektual, pendidikan berkualitas, dan
-                kepemimpinan yang mendorong generasi muda memahami persoalan
-                bangsa, menghasilkan pengetahuan, merumuskan solusi, dan
-                menggerakkan perubahan sosial yang berkelanjutan.”
-              </blockquote>
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-1">
+                        {m.category}
+                      </span>
+                      <h4 className="text-sm font-extrabold text-white leading-snug">
+                        {m.title}
+                      </h4>
+                      <p className="text-xs text-slate-300/85 mt-2 line-clamp-3 leading-relaxed">
+                        {m.summary}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 mt-3 border-t border-white/10 flex items-center justify-between text-xs font-bold">
+                      <span className={isSelected ? "text-sky-300" : "text-slate-400"}>
+                        {isSelected ? "Sedang Aktif" : "Buka Detail"}
+                      </span>
+                      <ArrowRight className={`w-3.5 h-3.5 transition-transform ${isSelected ? "text-sky-300 translate-x-1" : "text-slate-400"}`} />
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
 
-            {/* Bagian Bawah: Panggung Spotlight Misi Aktif dengan Framer Motion */}
+            {/* Dynamic Mission Blueprint Projection (Bawah Grid) */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={current.code}
-                initial={{ opacity: 0, y: 12 }}
+                key={current.id}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.28, ease: "easeInOut" }}
-                className="bg-black/25 rounded-2xl p-5 border border-white/10 space-y-3"
+                transition={{ duration: 0.28 }}
+                className="bg-[#0C1E3C] rounded-2xl p-5 sm:p-6 border border-sky-400/30 shadow-xl"
               >
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-xs font-mono font-bold text-amber-300 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                    MISI {current.code} • {current.tag.toUpperCase()}
-                  </span>
-                  <span className="text-[11px] font-semibold text-sky-300 bg-sky-950/60 px-2.5 py-0.5 rounded-full border border-sky-400/30">
-                    {current.pillar}
-                  </span>
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-300 shrink-0">
+                      <CurrentIcon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-bold text-sky-300">
+                          MISI {current.code}
+                        </span>
+                        <span className="text-[11px] text-slate-400 font-semibold">
+                          • {current.category}
+                        </span>
+                      </div>
+                      <h4 className="text-base font-extrabold text-white">
+                        {current.title}
+                      </h4>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs text-blue-200 bg-blue-950/70 px-3 py-1.5 rounded-xl border border-blue-400/30 font-semibold">
+                      {current.pillarTitle}
+                    </span>
+                    <Link
+                      href={current.pillarHref}
+                      className="px-4 py-1.5 rounded-xl bg-[#2454BE] hover:bg-[#1D469E] text-white font-bold text-xs shadow-md transition-all flex items-center gap-1.5 shrink-0"
+                    >
+                      <span>Kunjungi Pilar</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
                 </div>
 
-                <h3 className="text-sm sm:text-base font-extrabold text-white leading-snug">
-                  {current.fullTitle}
-                </h3>
-                
-                <p className="text-xs text-blue-100/90 leading-relaxed">
-                  {current.desc}
-                </p>
-
-                {/* Progress Bar & Indikator Capaian */}
-                <div className="pt-3 border-t border-white/10">
-                  <div className="flex items-center justify-between text-[11px] text-slate-300 mb-1.5">
-                    <span className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                      {current.indicator}
-                    </span>
-                    <span className="font-mono font-bold text-amber-300">
-                      {current.progress}
-                    </span>
-                  </div>
-                  <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: current.progress }}
-                      transition={{ duration: 0.6, ease: "easeOut" }}
-                      className="h-full bg-gradient-to-r from-sky-400 via-blue-500 to-amber-400"
-                    />
+                {/* Deliverables List */}
+                <div className="pt-4">
+                  <p className="text-xs font-bold text-slate-300 mb-2 uppercase tracking-wider">
+                    Peta Implementasi Nyata:
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    {current.deliverables.map((d, dIdx) => (
+                      <div
+                        key={dIdx}
+                        className="bg-white/5 rounded-xl p-3 border border-white/10 flex items-start gap-2 text-xs text-slate-200 leading-relaxed"
+                      >
+                        <CheckCircle2 className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
+                        <span>{d}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </motion.div>
             </AnimatePresence>
+          </>
+        ) : (
+          /* Interactive Flowchart View (Diagram Alur Transformasi) */
+          <div className="bg-[#0C1E3C] rounded-2xl p-6 sm:p-8 border border-white/10 shadow-xl">
+            <div className="text-center max-w-xl mx-auto mb-8">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-sky-400 bg-sky-950/60 px-3 py-1 rounded-full border border-sky-400/30 inline-block mb-2">
+                EKOSISTEM BERKESINAMBUNGAN
+              </span>
+              <h4 className="text-base sm:text-lg font-extrabold text-white">
+                Siklus Transformasi Gerakan Muda Progresif
+              </h4>
+              <p className="text-xs text-slate-300 mt-1">
+                Empat misi bekerja sebagai satu ekosistem terpadu dari penguatan nalar hingga aksi terukur.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+              {STRATEGIC_MISSIONS.map((m, idx) => {
+                const Icon = m.icon;
+                return (
+                  <div
+                    key={m.id}
+                    className="bg-white/5 rounded-2xl p-4 border border-white/10 flex flex-col justify-between text-center relative"
+                  >
+                    <div>
+                      <div className="w-10 h-10 mx-auto rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-sky-300 mb-3">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span className="font-mono text-xs font-bold text-sky-300">
+                        Langkah {m.code}
+                      </span>
+                      <h5 className="text-xs sm:text-sm font-extrabold text-white mt-1">
+                        {m.title}
+                      </h5>
+                      <p className="text-[11px] text-slate-300 mt-2 line-clamp-3">
+                        {m.summary}
+                      </p>
+                    </div>
+
+                    <Link
+                      href={m.pillarHref}
+                      className="mt-4 pt-2 border-t border-white/10 text-[11px] font-bold text-sky-300 hover:text-white flex items-center justify-center gap-1 transition-colors"
+                    >
+                      <span>Lihat Program</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
       </div>
-    </motion.section>
+    </section>
   );
 }
