@@ -25,7 +25,7 @@ export default function HeroProgramStack() {
   const nextSlide = () => setActive((c) => (c + 1) % total);
 
   return (
-    <section className="relative -mt-20 pt-26 sm:pt-28 lg:pt-30 pb-10 sm:pb-12 lg:pb-14 overflow-hidden bg-[#0A1838] text-white">
+    <section className="relative -mt-20 pt-28 sm:pt-32 lg:pt-32 pb-14 sm:pb-16 lg:pb-20 overflow-hidden bg-[#0A1838] text-white">
       {/* 1. Independent Clean Background (TIDAK menyambung dengan gambar slides pilar) */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#091738] via-[#102A63] to-[#173B8A]" />
       
@@ -88,7 +88,7 @@ export default function HeroProgramStack() {
           <div
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
-            className="relative w-full max-w-[540px] h-[345px] sm:h-[360px] flex items-center justify-center select-none"
+            className="relative w-full max-w-[540px] h-[365px] sm:h-[375px] flex items-center justify-center select-none"
             style={{ perspective: "1000px" }}
           >
             {PILLARS_DATA.map((pillar, i) => {
@@ -203,7 +203,7 @@ export default function HeroProgramStack() {
           </div>
 
           {/* Tombol Navigasi Bulat & Indikator Titik (Dinaikkan sedikit agar pas & dekat tanpa bertabrakan) */}
-          <div className="mt-3 sm:mt-3.5 flex items-center gap-3.5 relative z-40">
+          <div className="mt-4 sm:mt-5 flex items-center gap-3.5 relative z-40">
             <button
               type="button"
               onClick={prevSlide}
