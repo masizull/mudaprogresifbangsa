@@ -8,6 +8,7 @@ import ImpactStats from '@/components/sections/ImpactStats';
 import GovernanceLegal from '@/components/sections/GovernanceLegal';
 import CollaborationPortal from '@/components/sections/CollaborationPortal';
 import PartnersMarquee from '@/components/sections/PartnersMarquee';
+import SectionTransition from '@/components/layout/SectionTransition';
 
 export default function HomePage() {
   return (
@@ -16,28 +17,44 @@ export default function HomePage() {
       <HeroProgramStack />
 
       {/* 2. Section Tentang Kami: Panggung Analogi 3 Tahap Berjenjang */}
-      <InteractiveAboutJourney />
+      <SectionTransition>
+        <InteractiveAboutJourney />
+      </SectionTransition>
 
-      {/* 3. Section Visi & Misi: Interactive 12-Column Command Hub */}
-      <InteractiveVisionMission />
+      {/* 3. Section Visi & Misi: Interactive Hub */}
+      <SectionTransition>
+        <InteractiveVisionMission />
+      </SectionTransition>
 
       {/* 4. 3 Prinsip Gerakan & 4 Nilai Inti */}
-      <CultureValues />
+      <SectionTransition>
+        <CultureValues />
+      </SectionTransition>
 
       {/* 5. Ekosistem 4 Pilar Pemberdayaan */}
-      <PillarEcosystem />
+      <SectionTransition>
+        <PillarEcosystem />
+      </SectionTransition>
 
       {/* 6. Akuntabilitas Dampak Nyata */}
-      <ImpactStats />
+      <SectionTransition>
+        <ImpactStats />
+      </SectionTransition>
 
       {/* 7. Struktur Organisasi SK Menkumham RI & Legalitas */}
-      <GovernanceLegal />
+      <SectionTransition>
+        <GovernanceLegal />
+      </SectionTransition>
 
       {/* 8. Portal Kemitraan & Sinergi Multi-Pihak */}
-      <CollaborationPortal />
+      <SectionTransition>
+        <CollaborationPortal />
+      </SectionTransition>
 
       {/* 9. Logo Marquee Ekosistem Kolaborasi */}
-      <PartnersMarquee />
+      <SectionTransition>
+        <PartnersMarquee />
+      </SectionTransition>
     </>
   );
 }
