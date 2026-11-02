@@ -199,8 +199,13 @@ export default function CultureValues() {
               <span className="text-xs font-bold uppercase tracking-wider text-[#2454BE]">
                 TRITUNGGAL GERAKAN
               </span>
-              <h3 className="text-base sm:text-lg font-extrabold text-slate-900 mt-0.5">
-                Siklus Transformasi: Pengetahuan $\to$ Gagasan $\to$ Aksi
+              <h3 className="text-base sm:text-lg font-extrabold text-slate-900 mt-0.5 flex flex-wrap items-center gap-1.5">
+                <span>Siklus Transformasi:</span>
+                <span className="text-[#2454BE]">Pengetahuan</span>
+                <span className="text-slate-400">→</span>
+                <span className="text-[#0B72E7]">Gagasan</span>
+                <span className="text-slate-400">→</span>
+                <span className="text-[#FF5500]">Aksi</span>
               </h3>
             </div>
             <span className="text-[11px] font-semibold text-slate-400 bg-slate-100 px-3 py-1 rounded-full w-fit">
