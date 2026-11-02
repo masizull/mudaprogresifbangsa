@@ -26,6 +26,11 @@ interface MilestoneData {
   pillarHref: string;
   icon: React.ElementType;
   image: string;
+  nodeColor: string;
+  nodeActiveRing: string;
+  ctaBg: string;
+  accentColor: string;
+  checkColor: string;
 }
 
 const MILESTONES: MilestoneData[] = [
@@ -44,7 +49,12 @@ const MILESTONES: MilestoneData[] = [
     pillarName: "Jelajahi Akademi Progresif",
     pillarHref: "/program/akademi-progresif",
     icon: BookOpen,
-    image: "/images/milestone-fase1.jpg"
+    image: "/images/milestone-fase1.jpg",
+    nodeColor: "bg-[#2454BE]",
+    nodeActiveRing: "ring-blue-500/30 shadow-blue-500/40",
+    ctaBg: "bg-[#2454BE] hover:bg-[#1D469E] shadow-blue-500/30",
+    accentColor: "text-[#2454BE]",
+    checkColor: "text-[#2454BE]"
   },
   {
     id: 1,
@@ -61,7 +71,12 @@ const MILESTONES: MilestoneData[] = [
     pillarName: "Jelajahi Vokasi Progresif",
     pillarHref: "/program/vokasi-progresif",
     icon: Briefcase,
-    image: "/images/milestone-fase2.jpg"
+    image: "/images/milestone-fase2.jpg",
+    nodeColor: "bg-[#0B72E7]",
+    nodeActiveRing: "ring-sky-500/30 shadow-sky-500/40",
+    ctaBg: "bg-[#0B72E7] hover:bg-[#095ec0] shadow-sky-500/30",
+    accentColor: "text-[#0B72E7]",
+    checkColor: "text-[#0B72E7]"
   },
   {
     id: 2,
@@ -78,7 +93,12 @@ const MILESTONES: MilestoneData[] = [
     pillarName: "Jelajahi Care & Tanggap",
     pillarHref: "/program/progresif-care",
     icon: BarChart3,
-    image: "/images/milestone-fase3.jpg"
+    image: "/images/milestone-fase3.jpg",
+    nodeColor: "bg-[#FF5500]",
+    nodeActiveRing: "ring-orange-500/30 shadow-orange-500/40",
+    ctaBg: "bg-gradient-to-r from-[#FF5500] to-[#E04B00] hover:from-[#E04B00] hover:to-[#C74000] shadow-orange-500/35",
+    accentColor: "text-[#FF5500]",
+    checkColor: "text-[#FF5500]"
   }
 ];
 
@@ -97,13 +117,14 @@ export default function InteractiveAboutJourney() {
 
   return (
     <section id="tentang-kami" className="py-12 sm:py-16 max-w-6xl mx-auto px-4 sm:px-6">
-      {/* 1. Header Section Rata Tengah (Bersih & Elegan Tanpa Kapsul Shape) */}
+      {/* 1. Header Section: Harmoni Biru, Putih & Aksen Oren */}
       <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
         <span className="text-xs font-bold uppercase tracking-widest text-[#2454BE]">
           TENTANG YAYASAN
         </span>
         <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 mt-2 tracking-tight leading-snug">
-          Membangun Karakter Bangsa Lewat Gerakan Intelektual & Aksi Nyata
+          Membangun Karakter Bangsa Lewat Gerakan Intelektual &amp;{" "}
+          <span className="text-[#FF5500]">Aksi Nyata</span>
         </h2>
         <p className="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">
           Yayasan Muda Progresif Bangsa didirikan pada tahun 2025 sebagai ikhtiar
@@ -113,21 +134,21 @@ export default function InteractiveAboutJourney() {
         </p>
       </div>
 
-      {/* 2. Symmetrical Interactive Milestone Progress Bar */}
+      {/* 2. Symmetrical Interactive Milestone Progress Bar (Gradien Biru ke Oren) */}
       <div className="max-w-3xl mx-auto mb-10 px-2 select-none">
         <div className="relative flex items-center justify-between">
           {/* Garis Dasar Track Simetris */}
-          <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-1 bg-slate-200 rounded-full z-0" />
+          <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-1.5 bg-slate-200 rounded-full z-0" />
           
-          {/* Garis Progres Aktif */}
+          {/* Garis Progres Aktif: Royal Blue ke Action Orange */}
           <motion.div
-            className="absolute top-1/2 left-0 -translate-y-1/2 h-1 bg-gradient-to-r from-[#2454BE] via-blue-600 to-[#1D4ED8] rounded-full z-0 transition-all duration-500 ease-out"
+            className="absolute top-1/2 left-0 -translate-y-1/2 h-1.5 bg-gradient-to-r from-[#2454BE] via-[#0B72E7] to-[#FF5500] rounded-full z-0 transition-all duration-500 ease-out"
             animate={{
               width: activeStep === 0 ? "0%" : activeStep === 1 ? "50%" : "100%"
             }}
           />
 
-          {/* Milestone Step Nodes */}
+          {/* Milestone Step Nodes dengan Identitas Warna */}
           {MILESTONES.map((m, idx) => {
             const isActive = activeStep === idx;
             const isCompleted = activeStep >= idx;
@@ -140,9 +161,9 @@ export default function InteractiveAboutJourney() {
                   onClick={() => setActiveStep(idx)}
                   className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center font-bold text-xs sm:text-sm transition-all duration-300 shadow-md ${
                     isActive
-                      ? "bg-[#2454BE] text-white ring-4 ring-blue-500/25 scale-110 shadow-blue-500/30"
+                      ? `${m.nodeColor} text-white ring-4 ${m.nodeActiveRing} scale-110`
                       : isCompleted
-                      ? "bg-blue-100 text-[#2454BE] hover:bg-blue-200 hover:scale-105"
+                      ? "bg-blue-50 text-[#2454BE] hover:bg-blue-100 hover:scale-105 border border-blue-200"
                       : "bg-white text-slate-400 border border-slate-200 hover:border-slate-300 hover:text-slate-600 hover:scale-105"
                   }`}
                   aria-label={`Pilih Fase ${m.number}`}
@@ -153,7 +174,7 @@ export default function InteractiveAboutJourney() {
                   type="button"
                   onClick={() => setActiveStep(idx)}
                   className={`text-xs font-bold mt-2 tracking-wide transition-colors ${
-                    isActive ? "text-[#2454BE]" : "text-slate-500 hover:text-slate-700"
+                    isActive ? m.accentColor : "text-slate-500 hover:text-slate-700"
                   }`}
                 >
                   Fase {m.number}
@@ -164,12 +185,15 @@ export default function InteractiveAboutJourney() {
         </div>
       </div>
 
-      {/* 3. Showcase Stage: Clean 3D Visual & Uncluttered Content (Bebas Shape Pill) */}
+      {/* 3. Showcase Stage: Clean White Card dengan Sentuhan Identitas */}
       <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-xl relative overflow-hidden">
+        {/* Subtle Brand Accent Line di Puncak Card */}
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#2454BE] via-[#0B72E7] to-[#FF5500]" />
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Kolom Kiri: 3D Artwork Murni (Besar, Jelas, Tanpa Shape Badge yang Menutupi) */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center">
-            <div className="relative w-full max-w-[340px] sm:max-w-[360px] aspect-square rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-950">
+            <div className="relative w-full max-w-[340px] sm:max-w-[360px] aspect-square rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-100 bg-slate-950">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current.id}
@@ -196,7 +220,7 @@ export default function InteractiveAboutJourney() {
               <button
                 type="button"
                 onClick={prevStep}
-                className="px-3.5 py-1.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all"
+                className="px-3.5 py-1.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
                 <span>Sebelumnya</span>
@@ -207,7 +231,7 @@ export default function InteractiveAboutJourney() {
               <button
                 type="button"
                 onClick={nextStep}
-                className="px-3.5 py-1.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all"
+                className="px-3.5 py-1.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"
               >
                 <span>Selanjutnya</span>
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -215,7 +239,7 @@ export default function InteractiveAboutJourney() {
             </div>
           </div>
 
-          {/* Kolom Kanan: Teks & Informasi Terstruktur (Tanpa Shape Pill) */}
+          {/* Kolom Kanan: Teks & Informasi Terstruktur */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
             <AnimatePresence mode="wait">
               <motion.div
@@ -230,7 +254,7 @@ export default function InteractiveAboutJourney() {
                   <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-snug">
                     {current.title}
                   </h3>
-                  <p className="text-xs sm:text-sm font-semibold text-[#2454BE] mt-1.5 leading-relaxed">
+                  <p className={`text-xs sm:text-sm font-semibold mt-1.5 leading-relaxed ${current.accentColor}`}>
                     {current.subtitle}
                   </p>
                 </div>
@@ -239,26 +263,26 @@ export default function InteractiveAboutJourney() {
                   {current.desc}
                 </p>
 
-                {/* Target Aksi Terukur (List Bersih Tanpa Shape Aneh) */}
+                {/* Target Aksi Terukur (List Bersih dengan Checkmark Berwarna) */}
                 <div className="pt-3 border-t border-slate-100 space-y-2">
                   <p className="text-xs font-bold text-slate-900 uppercase tracking-wider">
-                    Fokus & Target Aksi:
+                    Fokus &amp; Target Aksi:
                   </p>
                   <ul className="space-y-2">
                     {current.outputs.map((out, oIdx) => (
                       <li key={oIdx} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-700">
-                        <CheckCircle2 className="w-4 h-4 text-[#2454BE] shrink-0 mt-0.5" />
+                        <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${current.checkColor}`} />
                         <span className="leading-relaxed">{out}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Tombol Aksi */}
+                {/* Tombol Aksi Sesuai Tema Fase */}
                 <div className="pt-2">
                   <Link
                     href={current.pillarHref}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#2454BE] hover:bg-[#1D469E] text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all"
+                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all ${current.ctaBg}`}
                   >
                     <span>{current.pillarName}</span>
                     <ArrowRight className="w-4 h-4" />
