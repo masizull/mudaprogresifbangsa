@@ -36,10 +36,8 @@ export default function HomePage() {
         <PillarEcosystem />
       </SectionTransition>
 
-      {/* 6. Akuntabilitas Dampak Nyata */}
-      <SectionTransition>
-        <ImpactStats />
-      </SectionTransition>
+      {/* 6. Akuntabilitas Dampak Nyata (Trionn-style Pinned Horizontal Scroll) */}
+      <ImpactStats />
 
       {/* 7. Struktur Organisasi SK Menkumham RI & Legalitas */}
       <SectionTransition>
