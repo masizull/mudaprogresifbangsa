@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -206,12 +206,20 @@ export default function ImpactStats() {
     offset: ["start start", "end end"]
   });
 
-  // Smooth horizontal translation derived dynamically from scrollYProgress
-  const x = useTransform(scrollYProgress, (pos) => -pos * scrollDistance);
+  // Silky-smooth spring physics interpolation (eliminates stepped mouse-wheel jerkiness)
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 60,
+    damping: 20,
+    mass: 0.5,
+    restDelta: 0.0001
+  });
 
-  // Track active card index based on scroll position for pagination indicators
+  // Smooth horizontal translation derived from smoothProgress
+  const x = useTransform(smoothProgress, (pos) => -pos * scrollDistance);
+
+  // Track active card index based on smooth scroll position
   useEffect(() => {
-    const unsubscribe = scrollYProgress.on("change", (latest) => {
+    const unsubscribe = smoothProgress.on("change", (latest) => {
       const idx = Math.min(
         IMPACT_PROJECTS.length,
         Math.floor(latest * (IMPACT_PROJECTS.length + 1))
@@ -219,13 +227,25 @@ export default function ImpactStats() {
       setActiveCardIndex(idx);
     });
     return () => unsubscribe();
-  }, [scrollYProgress]);
+  }, [smoothProgress]);
+
+  // Smooth glide navigation by clicking next/prev buttons
+  const scrollOneCard = (direction: "prev" | "next") => {
+    if (!targetRef.current) return;
+    const totalHeight = targetRef.current.offsetHeight - window.innerHeight;
+    const step = totalHeight / (IMPACT_PROJECTS.length + 1);
+    const delta = direction === "next" ? step : -step;
+    window.scrollBy({
+      top: delta,
+      behavior: "smooth"
+    });
+  };
 
   return (
     <section
       ref={targetRef}
       id="dampak"
-      className="relative h-[340vh] bg-[#F7F8FA] text-slate-900 border-t border-slate-200 select-none"
+      className="relative h-[420vh] bg-[#F7F8FA] text-slate-900 border-t border-slate-200 select-none"
     >
       {/* Pinned Viewport Container (Sticky to top of screen) */}
       <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden py-4 sm:py-6">
@@ -239,22 +259,44 @@ export default function ImpactStats() {
             </span>
           </div>
 
-          {/* Progress Tracker Pill */}
-          <div className="hidden sm:flex items-center gap-3 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-200 shadow-sm">
-            <span className="text-[11px] font-mono font-bold text-slate-500">
-              Jejak Dampak
-            </span>
-            <div className="w-24 h-1.5 rounded-full bg-slate-200 overflow-hidden">
-              <motion.div
-                className="h-full bg-gradient-to-r from-[#2454BE] via-[#0B72E7] to-[#FF5500]"
-                style={{
-                  width: useTransform(scrollYProgress, [0, 1], ["8%", "100%"])
-                }}
-              />
+          {/* Progress Tracker Pill & Smooth Controls */}
+          <div className="flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-3 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-200 shadow-sm">
+              <span className="text-[11px] font-mono font-bold text-slate-500">
+                Jejak Dampak
+              </span>
+              <div className="w-24 h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                <motion.div
+                  className="h-full bg-gradient-to-r from-[#2454BE] via-[#0B72E7] to-[#FF5500]"
+                  style={{
+                    width: useTransform(smoothProgress, [0, 1], ["8%", "100%"])
+                  }}
+                />
+              </div>
+              <span className="text-[11px] font-mono font-extrabold text-[#2454BE]">
+                0{Math.min(IMPACT_PROJECTS.length, activeCardIndex + 1)} / 0{IMPACT_PROJECTS.length}
+              </span>
             </div>
-            <span className="text-[11px] font-mono font-extrabold text-[#2454BE]">
-              0{Math.min(IMPACT_PROJECTS.length, activeCardIndex + 1)} / 0{IMPACT_PROJECTS.length}
-            </span>
+
+            {/* Quick Glide Navigation Buttons */}
+            <div className="flex items-center gap-1 bg-white/90 backdrop-blur-md p-1 rounded-full border border-slate-200 shadow-sm">
+              <button
+                type="button"
+                onClick={() => scrollOneCard("prev")}
+                aria-label="Geser ke kiri"
+                className="w-7 h-7 rounded-full flex items-center justify-center text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition-colors"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollOneCard("next")}
+                aria-label="Geser ke kanan"
+                className="w-7 h-7 rounded-full flex items-center justify-center text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition-colors"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
 
