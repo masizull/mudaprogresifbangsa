@@ -231,12 +231,12 @@ export default function CultureValues() {
   const totalCards = PHILOSOPHY_CARDS.length;
   const basePath = process.env.NODE_ENV === "production" ? "/mudaprogresifbangsa" : "";
 
-  // Auto-drift ribbon gently when not paused by modal or hover
+  // Auto-drift ribbon gently when not paused by modal or hover (every 3 seconds)
   useEffect(() => {
     if (!isAutoPlay || selectedCard || viewMode !== "ribbon") return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % totalCards);
-    }, 4500);
+    }, 3000);
     return () => clearInterval(interval);
   }, [isAutoPlay, selectedCard, viewMode, totalCards]);
 
@@ -459,19 +459,28 @@ export default function CultureValues() {
               })}
             </div>
 
-            {/* Floating Navigation Controls */}
-            <div className="flex items-center justify-between mt-4 px-2 sm:px-6">
-              <button
-                type="button"
-                onClick={handlePrev}
-                aria-label="Kartu Sebelumnya"
-                className="w-11 h-11 rounded-full bg-white/95 text-slate-800 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center border border-slate-200"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
+            {/* Left & Right Floating Navigation Controls */}
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Kartu Sebelumnya"
+              className="absolute left-1 sm:left-3 md:left-6 lg:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/95 hover:bg-white text-slate-800 shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center border border-slate-200/90 backdrop-blur-md group"
+            >
+              <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
+            </button>
 
-              {/* Progress Indicator Dots & Counter */}
-              <div className="flex items-center gap-3 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-slate-200 shadow-sm">
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Kartu Selanjutnya"
+              className="absolute right-1 sm:right-3 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/95 hover:bg-white text-slate-800 shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center border border-slate-200/90 backdrop-blur-md group"
+            >
+              <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
+            </button>
+
+            {/* Centered Pagination Indicator Dots & Counter at Bottom */}
+            <div className="flex justify-center mt-6">
+              <div className="flex items-center gap-3 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-slate-200 shadow-md">
                 <span className="font-mono text-xs font-extrabold text-[#2454BE]">
                   {String(activeIndex + 1).padStart(2, "0")}
                 </span>
@@ -494,15 +503,6 @@ export default function CultureValues() {
                   {String(totalCards).padStart(2, "0")}
                 </span>
               </div>
-
-              <button
-                type="button"
-                onClick={handleNext}
-                aria-label="Kartu Selanjutnya"
-                className="w-11 h-11 rounded-full bg-white/95 text-slate-800 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center border border-slate-200"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
             </div>
           </div>
         )}
