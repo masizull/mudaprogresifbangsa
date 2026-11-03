@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, type MotionValue } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -372,160 +372,26 @@ export default function ImpactStats() {
 
             {/* ---------------------------------------------------- */}
             {/* PANELS 2 - 6: FIVE SHOWCASE IMPACT CARDS (Trionn-style)*/}
+            {/* Emerging from bottom-right corner as you scroll      */}
             {/* ---------------------------------------------------- */}
             {IMPACT_PROJECTS.map((item, index) => (
-              <div
+              <AnimatedImpactCard
                 key={item.id}
-                className="w-[360px] sm:w-[480px] md:w-[560px] lg:w-[620px] shrink-0 bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-xl flex flex-col justify-between h-[480px] sm:h-[520px] group transition-all hover:shadow-2xl hover:border-slate-300"
-              >
-                {/* 1. Large Cinematic Architectural Image Frame */}
-                <div className="relative w-full h-[220px] sm:h-[250px] rounded-2xl overflow-hidden shadow-inner border border-slate-100 bg-slate-900 group-hover:scale-[1.01] transition-transform duration-500">
-                  <Image
-                    src={`${basePath}${item.image}`}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 400px, 640px"
-                  />
-                  {/* Dark subtle gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#081426]/90 via-[#081426]/30 to-transparent" />
-
-                  {/* Top Floating Badge */}
-                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                    <span className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 text-slate-900 backdrop-blur-md shadow-sm">
-                      {item.phaseBadge}
-                    </span>
-                    <span className="w-7 h-7 rounded-full bg-black/40 backdrop-blur-md text-white font-mono text-xs font-bold flex items-center justify-center border border-white/20">
-                      0{index + 1}
-                    </span>
-                  </div>
-
-                  {/* Bottom Text Overlay inside Image (like Trionn "Hi, I'm Alex") */}
-                  <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <blockquote className="text-xs sm:text-sm font-semibold italic text-slate-200 leading-snug drop-shadow-md">
-                      &ldquo;{item.quote}&rdquo;
-                    </blockquote>
-                  </div>
-                </div>
-
-                {/* 2. Content Section: Title, Subtitle, Metric Pills */}
-                <div className="my-auto pt-3">
-                  <div className="flex items-center justify-between mb-1">
-                    <span
-                      className="font-mono text-[11px] font-bold uppercase tracking-wider"
-                      style={{ color: item.accentColor }}
-                    >
-                      {item.category}
-                    </span>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 mt-1 leading-relaxed line-clamp-2">
-                    {item.desc}
-                  </p>
-
-                  {/* Impact Metric Pills Row */}
-                  <div className="grid grid-cols-3 gap-2 mt-3 pt-3 border-t border-slate-100">
-                    {item.metrics.map((m, mIdx) => (
-                      <div
-                        key={mIdx}
-                        className="bg-slate-50 border border-slate-100 rounded-xl p-2 text-center"
-                      >
-                        <span
-                          className="font-mono text-sm sm:text-base font-black block"
-                          style={{ color: item.accentColor }}
-                        >
-                          {m.value}
-                        </span>
-                        <span className="text-[10px] font-bold text-slate-500 uppercase block truncate">
-                          {m.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 3. Bottom Action Link */}
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <Link
-                    href={item.link}
-                    className="font-mono text-xs font-extrabold flex items-center gap-1.5 transition-colors group-hover:translate-x-1"
-                    style={{ color: item.accentColor }}
-                  >
-                    <span>{item.actionText}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-
-                  <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform"
-                    style={{ backgroundColor: item.accentColor }}
-                  >
-                    <ArrowUpRight className="w-4 h-4" />
-                  </div>
-                </div>
-              </div>
+                item={item}
+                index={index}
+                smoothProgress={smoothProgress}
+                scrollDistance={scrollDistance}
+                basePath={basePath}
+              />
             ))}
 
             {/* ---------------------------------------------------- */}
             {/* PANEL 7: FINAL CALL TO ACTION & REPORT DOWNLOAD     */}
             {/* ---------------------------------------------------- */}
-            <div className="w-[320px] sm:w-[380px] md:w-[420px] shrink-0 bg-gradient-to-br from-[#081426] via-[#0F2342] to-[#1E3F7A] text-white rounded-3xl p-7 sm:p-8 border border-white/10 shadow-2xl flex flex-col justify-between h-[480px] sm:h-[520px]">
-              <div>
-                <span className="text-xs font-mono font-bold tracking-widest uppercase text-amber-400 block mb-2">
-                  // AKUNTABILITAS PUBLIK
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
-                  Mari Bergerak <br />
-                  <span className="text-sky-300">Bersama MPB</span>
-                </h3>
-                <p className="text-xs text-slate-300 mt-3 leading-relaxed">
-                  Laporan pertanggungjawaban program dan audit legalitas diperbarui secara berkala sebagai komitmen transparansi kepada seluruh mitra dan donatur.
-                </p>
-
-                <div className="mt-6 space-y-2.5">
-                  <div className="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                    <div>
-                      <span className="text-xs font-bold block text-white">
-                        Legalitas Terdaftar Resmi
-                      </span>
-                      <span className="text-[10px] text-slate-300 block">
-                        SK Kemenkumham RI &amp; NPWP Yayasan
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                    <div>
-                      <span className="text-xs font-bold block text-white">
-                        Penyaluran 100% Terverifikasi
-                      </span>
-                      <span className="text-[10px] text-slate-300 block">
-                        Bebas Biaya Bagi Warga Binaan
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-white/10 space-y-2">
-                <Link
-                  href="/kolaborasi"
-                  className="w-full py-3 px-4 rounded-xl bg-[#FF5500] hover:bg-[#e04b00] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg transition-all"
-                >
-                  <span>Ajukan Sinergi Kolaborasi</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/tentang-kami/legalitas"
-                  className="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all border border-white/10"
-                >
-                  <span>Unduh Dokumen Legalitas</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
+            <AnimatedOutroPanel
+              smoothProgress={smoothProgress}
+              scrollDistance={scrollDistance}
+            />
           </motion.div>
         </div>
 
@@ -553,5 +419,339 @@ export default function ImpactStats() {
 
       </div>
     </section>
+  );
+}
+
+/**
+ * AnimatedImpactCard: Card that dynamically emerges from the bottom-right corner
+ * as the user scrolls, rising smoothly to focal elevation as it approaches center.
+ * Repeats seamlessly whether scrolling forwards or backwards.
+ */
+function AnimatedImpactCard({
+  item,
+  index,
+  smoothProgress,
+  scrollDistance,
+  basePath,
+}: {
+  item: ImpactShowcase;
+  index: number;
+  smoothProgress: MotionValue<number>;
+  scrollDistance: number;
+  basePath: string;
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [offsetLeft, setOffsetLeft] = useState<number | null>(null);
+
+  useEffect(() => {
+    const measure = () => {
+      if (cardRef.current) {
+        setOffsetLeft(cardRef.current.offsetLeft);
+      }
+    };
+    measure();
+    const t = setTimeout(measure, 150);
+    window.addEventListener("resize", measure);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+
+  // Dynamic Y translation: starts shifted down at +150px (bottom-right) when entering,
+  // then rises gracefully to 0px as it glides toward the left-center focal area.
+  const cardY = useTransform(smoothProgress, (p) => {
+    if (offsetLeft === null) return 0;
+    const currentTrackX = -p * scrollDistance;
+    const cardScreenX = offsetLeft + currentTrackX;
+    const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
+
+    // Offscreen to the right
+    if (cardScreenX >= screenWidth) {
+      return 150;
+    }
+    // Arrived at focal reading position (left/center 28% of screen)
+    if (cardScreenX <= screenWidth * 0.28) {
+      return 0;
+    }
+    // Smooth Hermite cubic interpolation from bottom-right (150px) to top (0px)
+    const t = (cardScreenX - screenWidth * 0.28) / (screenWidth * 0.72);
+    const eased = t * t * (3 - 2 * t);
+    return eased * 150;
+  });
+
+  // Dynamic subtle 3D tilt: slanted up from bottom-right, leveling off to 0deg at center
+  const cardRotate = useTransform(smoothProgress, (p) => {
+    if (offsetLeft === null) return 0;
+    const currentTrackX = -p * scrollDistance;
+    const cardScreenX = offsetLeft + currentTrackX;
+    const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
+
+    if (cardScreenX >= screenWidth) return 2.8;
+    if (cardScreenX <= screenWidth * 0.28) return 0;
+    const t = (cardScreenX - screenWidth * 0.28) / (screenWidth * 0.72);
+    return t * 2.8;
+  });
+
+  // Scale: 0.92 when in bottom-right corner, expanding to full 1.0 at center
+  const cardScale = useTransform(smoothProgress, (p) => {
+    if (offsetLeft === null) return 1;
+    const currentTrackX = -p * scrollDistance;
+    const cardScreenX = offsetLeft + currentTrackX;
+    const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
+
+    if (cardScreenX >= screenWidth) return 0.92;
+    if (cardScreenX <= screenWidth * 0.28) return 1.0;
+    const t = (cardScreenX - screenWidth * 0.28) / (screenWidth * 0.72);
+    return 1.0 - t * 0.08;
+  });
+
+  // Opacity: fades in cleanly as it enters viewport
+  const cardOpacity = useTransform(smoothProgress, (p) => {
+    if (offsetLeft === null) return 1;
+    const currentTrackX = -p * scrollDistance;
+    const cardScreenX = offsetLeft + currentTrackX;
+    const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
+
+    if (cardScreenX >= screenWidth + 100) return 0.35;
+    if (cardScreenX <= screenWidth * 0.35) return 1.0;
+    const t = (cardScreenX - screenWidth * 0.35) / (screenWidth * 0.65);
+    return 1.0 - t * 0.45;
+  });
+
+  return (
+    <motion.div
+      ref={cardRef}
+      style={{
+        y: cardY,
+        rotate: cardRotate,
+        scale: cardScale,
+        opacity: cardOpacity,
+        transformOrigin: "bottom right",
+        willChange: "transform, opacity",
+      }}
+      className="w-[360px] sm:w-[480px] md:w-[560px] lg:w-[620px] shrink-0 bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-xl flex flex-col justify-between h-[480px] sm:h-[520px] group transition-shadow hover:shadow-2xl hover:border-slate-300"
+    >
+      {/* 1. Large Cinematic Architectural Image Frame */}
+      <div className="relative w-full h-[220px] sm:h-[250px] rounded-2xl overflow-hidden shadow-inner border border-slate-100 bg-slate-900 group-hover:scale-[1.01] transition-transform duration-500">
+        <Image
+          src={`${basePath}${item.image}`}
+          alt={item.title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 400px, 640px"
+        />
+        {/* Dark subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#081426]/90 via-[#081426]/30 to-transparent" />
+
+        {/* Top Floating Badge */}
+        <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+          <span className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 text-slate-900 backdrop-blur-md shadow-sm">
+            {item.phaseBadge}
+          </span>
+          <span className="w-7 h-7 rounded-full bg-black/40 backdrop-blur-md text-white font-mono text-xs font-bold flex items-center justify-center border border-white/20">
+            0{index + 1}
+          </span>
+        </div>
+
+        {/* Bottom Text Overlay inside Image (like Trionn "Hi, I'm Alex") */}
+        <div className="absolute bottom-3 left-3 right-3 text-white">
+          <blockquote className="text-xs sm:text-sm font-semibold italic text-slate-200 leading-snug drop-shadow-md">
+            &ldquo;{item.quote}&rdquo;
+          </blockquote>
+        </div>
+      </div>
+
+      {/* 2. Content Section: Title, Subtitle, Metric Pills */}
+      <div className="my-auto pt-3">
+        <div className="flex items-center justify-between mb-1">
+          <span
+            className="font-mono text-[11px] font-bold uppercase tracking-wider"
+            style={{ color: item.accentColor }}
+          >
+            {item.category}
+          </span>
+        </div>
+        <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug">
+          {item.title}
+        </h3>
+        <p className="text-xs text-slate-600 mt-1 leading-relaxed line-clamp-2">
+          {item.desc}
+        </p>
+
+        {/* Impact Metric Pills Row */}
+        <div className="grid grid-cols-3 gap-2 mt-3 pt-3 border-t border-slate-100">
+          {item.metrics.map((m, mIdx) => (
+            <div
+              key={mIdx}
+              className="bg-slate-50 border border-slate-100 rounded-xl p-2 text-center"
+            >
+              <span
+                className="font-mono text-sm sm:text-base font-black block"
+                style={{ color: item.accentColor }}
+              >
+                {m.value}
+              </span>
+              <span className="text-[10px] font-bold text-slate-500 uppercase block truncate">
+                {m.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 3. Bottom Action Link */}
+      <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+        <Link
+          href={item.link}
+          className="font-mono text-xs font-extrabold flex items-center gap-1.5 transition-colors group-hover:translate-x-1"
+          style={{ color: item.accentColor }}
+        >
+          <span>{item.actionText}</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
+
+        <div
+          className="w-8 h-8 rounded-full flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform"
+          style={{ backgroundColor: item.accentColor }}
+        >
+          <ArrowUpRight className="w-4 h-4" />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+/**
+ * AnimatedOutroPanel: Final CTA panel that also emerges from bottom-right
+ */
+function AnimatedOutroPanel({
+  smoothProgress,
+  scrollDistance,
+}: {
+  smoothProgress: MotionValue<number>;
+  scrollDistance: number;
+}) {
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [offsetLeft, setOffsetLeft] = useState<number | null>(null);
+
+  useEffect(() => {
+    const measure = () => {
+      if (panelRef.current) {
+        setOffsetLeft(panelRef.current.offsetLeft);
+      }
+    };
+    measure();
+    const t = setTimeout(measure, 150);
+    window.addEventListener("resize", measure);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+
+  const panelY = useTransform(smoothProgress, (p) => {
+    if (offsetLeft === null) return 0;
+    const currentTrackX = -p * scrollDistance;
+    const screenX = offsetLeft + currentTrackX;
+    const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
+
+    if (screenX >= screenWidth) return 150;
+    if (screenX <= screenWidth * 0.4) return 0;
+    const t = (screenX - screenWidth * 0.4) / (screenWidth * 0.6);
+    return t * t * (3 - 2 * t) * 150;
+  });
+
+  const panelRotate = useTransform(smoothProgress, (p) => {
+    if (offsetLeft === null) return 0;
+    const currentTrackX = -p * scrollDistance;
+    const screenX = offsetLeft + currentTrackX;
+    const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
+
+    if (screenX >= screenWidth) return 2.5;
+    if (screenX <= screenWidth * 0.4) return 0;
+    const t = (screenX - screenWidth * 0.4) / (screenWidth * 0.6);
+    return t * 2.5;
+  });
+
+  const panelScale = useTransform(smoothProgress, (p) => {
+    if (offsetLeft === null) return 1;
+    const currentTrackX = -p * scrollDistance;
+    const screenX = offsetLeft + currentTrackX;
+    const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
+
+    if (screenX >= screenWidth) return 0.92;
+    if (screenX <= screenWidth * 0.4) return 1.0;
+    const t = (screenX - screenWidth * 0.4) / (screenWidth * 0.6);
+    return 1.0 - t * 0.08;
+  });
+
+  return (
+    <motion.div
+      ref={panelRef}
+      style={{
+        y: panelY,
+        rotate: panelRotate,
+        scale: panelScale,
+        transformOrigin: "bottom right",
+        willChange: "transform, opacity",
+      }}
+      className="w-[320px] sm:w-[380px] md:w-[420px] shrink-0 bg-gradient-to-br from-[#081426] via-[#0F2342] to-[#1E3F7A] text-white rounded-3xl p-7 sm:p-8 border border-white/10 shadow-2xl flex flex-col justify-between h-[480px] sm:h-[520px]"
+    >
+      <div>
+        <span className="text-xs font-mono font-bold tracking-widest uppercase text-amber-400 block mb-2">
+          // AKUNTABILITAS PUBLIK
+        </span>
+        <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
+          Mari Bergerak <br />
+          <span className="text-sky-300">Bersama MPB</span>
+        </h3>
+        <p className="text-xs text-slate-300 mt-3 leading-relaxed">
+          Laporan pertanggungjawaban program dan audit legalitas diperbarui secara berkala sebagai komitmen transparansi kepada seluruh mitra dan donatur.
+        </p>
+
+        <div className="mt-6 space-y-2.5">
+          <div className="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+            <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+            <div>
+              <span className="text-xs font-bold block text-white">
+                Legalitas Terdaftar Resmi
+              </span>
+              <span className="text-[10px] text-slate-300 block">
+                SK Kemenkumham RI &amp; NPWP Yayasan
+              </span>
+            </div>
+          </div>
+          <div className="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+            <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+            <div>
+              <span className="text-xs font-bold block text-white">
+                Penyaluran 100% Terverifikasi
+              </span>
+              <span className="text-[10px] text-slate-300 block">
+                Bebas Biaya Bagi Warga Binaan
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="pt-4 border-t border-white/10 space-y-2">
+        <Link
+          href="/kolaborasi"
+          className="w-full py-3 px-4 rounded-xl bg-[#FF5500] hover:bg-[#e04b00] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg transition-all"
+        >
+          <span>Ajukan Sinergi Kolaborasi</span>
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+        <Link
+          href="/tentang-kami/legalitas"
+          className="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all border border-white/10"
+        >
+          <span>Unduh Dokumen Legalitas</span>
+          <ExternalLink className="w-3.5 h-3.5" />
+        </Link>
+      </div>
+    </motion.div>
   );
 }
