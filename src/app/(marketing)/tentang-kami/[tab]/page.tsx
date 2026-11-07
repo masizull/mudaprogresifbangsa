@@ -143,11 +143,23 @@ export default function TentangKamiTabPage({ params }: { params: { tab: string }
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-sky-600 shrink-0" />
-                <span>{FOUNDATION_INFO.email}</span>
+                <a
+                  href={`mailto:${FOUNDATION_INFO.email}`}
+                  className="hover:text-[#2454BE] transition-colors font-medium underline underline-offset-2"
+                >
+                  {FOUNDATION_INFO.email}
+                </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span>+62 812-8888-2025 (Hotline WhatsApp)</span>
+                <a
+                  href="https://wa.me/6281288882025"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#2454BE] transition-colors font-medium underline underline-offset-2"
+                >
+                  +62 812-8888-2025 (Hotline WhatsApp)
+                </a>
               </div>
             </div>
           </div>
