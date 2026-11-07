@@ -161,7 +161,7 @@ const PHILOSOPHY_CARDS: PhilosophyCard[] = [
     badgeBg: "bg-slate-100",
     badgeText: "text-slate-800",
     code: "CODE: ETH-01",
-    linkSection: "#legalitas"
+    linkSection: "/tentang-kami/legalitas"
   },
   {
     id: "progressive",

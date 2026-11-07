@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Check, Copy, MapPin, Mail, Phone, ShieldCheck } from "lucide-react";
 import { FOUNDATION_INFO, VISION_MISSION_DATA, VALUES_DATA } from "@/data/foundation-data";
+import { LegalDocuments, LeadershipStructure } from "@/components/sections/GovernanceLegal";
 
 export function generateStaticParams() {
   return [
@@ -118,66 +119,14 @@ export default function TentangKamiTabPage({ params }: { params: { tab: string }
         )}
 
         {tab === "legalitas" && (
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
-            <div>
-              <span className="text-[11px] font-mono font-bold text-[#2454BE] uppercase">Legalitas Hukum</span>
-              <h1 className="text-xl sm:text-2xl font-extrabold text-[#081426]">
-                Dokumen & Kepatuhan Hukum Resmi
-              </h1>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                <div className="text-[10px] font-mono font-bold text-slate-400 uppercase">Akta Notaris</div>
-                <div className="text-xs sm:text-sm font-bold text-[#081426] mt-1">{FOUNDATION_INFO.legal.deedNumber}</div>
-                <div className="text-xs text-slate-500 mt-1">{FOUNDATION_INFO.legal.notary}</div>
-                <div className="text-[11px] text-slate-400 mt-0.5">{FOUNDATION_INFO.legal.deedDate}</div>
-              </div>
-
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                <div className="text-[10px] font-mono font-bold text-slate-400 uppercase">SK Kemenkumham RI</div>
-                <div className="text-xs sm:text-sm font-bold text-[#2454BE] font-mono mt-1">{FOUNDATION_INFO.legal.kemenkumhamSk}</div>
-                <div className="text-xs text-slate-500 mt-1">Daftar Yayasan: {FOUNDATION_INFO.legal.foundationRegistry}</div>
-                <div className="text-[11px] text-slate-400 mt-0.5">{FOUNDATION_INFO.legal.kemenkumhamDate}</div>
-              </div>
-
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                <div className="text-[10px] font-mono font-bold text-slate-400 uppercase">NPWP 16 Digit</div>
-                <div className="text-xs sm:text-sm font-bold text-[#081426] font-mono mt-1">{FOUNDATION_INFO.legal.npwp}</div>
-                <div className="text-xs text-slate-500 mt-1">{FOUNDATION_INFO.legal.kpp}</div>
-                <div className="text-[11px] text-emerald-600 font-semibold mt-0.5">Wajib Pajak Terdaftar</div>
-              </div>
-            </div>
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+            <LegalDocuments showHeader={true} />
           </div>
         )}
 
         {tab === "pengurus" && (
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-5 rounded-xl bg-[#0F2342] text-white">
-                <div className="text-[10px] font-mono font-bold text-sky-400 uppercase">Dewan Pembina</div>
-                <div className="text-base font-bold mt-1">{FOUNDATION_INFO.governance.pembina.name}</div>
-                <div className="text-xs text-amber-400">{FOUNDATION_INFO.governance.pembina.role}</div>
-              </div>
-
-              <div className="p-5 rounded-xl bg-[#0F2342] text-white">
-                <div className="text-[10px] font-mono font-bold text-amber-400 uppercase">Dewan Pengawas</div>
-                <div className="text-base font-bold mt-1">{FOUNDATION_INFO.governance.pengawas.name}</div>
-                <div className="text-xs text-slate-300">{FOUNDATION_INFO.governance.pengawas.role}</div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-sm">
-              <h3 className="text-sm font-bold text-[#081426] mb-3">Badan Pengurus Harian (BPH)</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-                {FOUNDATION_INFO.governance.eksekutif.map((e) => (
-                  <div key={e.name} className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-center">
-                    <div className="text-xs font-bold text-[#081426]">{e.name}</div>
-                    <div className="text-[11px] text-slate-500 mt-1">{e.role}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+            <LeadershipStructure showHeader={true} />
           </div>
         )}
 

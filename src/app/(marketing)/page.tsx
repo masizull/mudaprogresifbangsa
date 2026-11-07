@@ -5,7 +5,6 @@ import InteractiveVisionMission from '@/components/sections/InteractiveVisionMis
 import CultureValues from '@/components/sections/CultureValues';
 import PillarEcosystem from '@/components/sections/PillarEcosystem';
 import ImpactStats from '@/components/sections/ImpactStats';
-import GovernanceLegal from '@/components/sections/GovernanceLegal';
 import CollaborationPortal from '@/components/sections/CollaborationPortal';
 import PartnersMarquee from '@/components/sections/PartnersMarquee';
 import SectionTransition from '@/components/layout/SectionTransition';
@@ -39,12 +38,7 @@ export default function HomePage() {
       {/* 6. Akuntabilitas Dampak Nyata (Trionn-style Pinned Horizontal Scroll) */}
       <ImpactStats />
 
-      {/* 7. Struktur Organisasi SK Menkumham RI & Legalitas */}
-      <SectionTransition>
-        <GovernanceLegal />
-      </SectionTransition>
-
-      {/* 8. Portal Kemitraan & Sinergi Multi-Pihak */}
+      {/* 7. Portal Kemitraan & Sinergi Multi-Pihak */}
       <SectionTransition>
         <CollaborationPortal />
       </SectionTransition>
