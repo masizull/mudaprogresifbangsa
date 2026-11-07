@@ -134,17 +134,19 @@ export default function InteractiveAboutJourney() {
 
         {/* 2. Interactive Milestone Stepper (Ringkas & Proporsional) */}
         <div className="max-w-xl mx-auto mb-6 px-2 select-none">
-          <div className="relative flex items-center justify-between">
-            {/* Garis Dasar Track */}
-            <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 h-1 bg-slate-200 rounded-full z-0" />
+          <div className="relative flex items-start justify-between">
+            {/* Garis Dasar Track (Tepat di Pusat Tombol, Tidak Menembus ke Luar) */}
+            <div className="absolute top-[18px] sm:top-[20px] left-[18px] sm:left-[20px] right-[18px] sm:right-[20px] -translate-y-1/2 h-1 bg-slate-200 rounded-full z-0" />
             
-            {/* Garis Progres Aktif */}
-            <motion.div
-              className="absolute top-1/2 left-0 -translate-y-1/2 h-1 bg-gradient-to-r from-[#2454BE] via-[#0B72E7] to-[#FF5500] rounded-full z-0 transition-all duration-500 ease-out"
-              animate={{
-                width: activeStep === 0 ? "0%" : activeStep === 1 ? "50%" : "100%"
-              }}
-            />
+            {/* Garis Progres Aktif (Tepat Menghubungkan Pusat Titik Fase) */}
+            <div className="absolute top-[18px] sm:top-[20px] left-[18px] sm:left-[20px] right-[18px] sm:right-[20px] -translate-y-1/2 h-1 overflow-hidden z-0 pointer-events-none">
+              <motion.div
+                className="h-full bg-gradient-to-r from-[#2454BE] via-[#0B72E7] to-[#FF5500] rounded-full transition-all duration-500 ease-out"
+                animate={{
+                  width: activeStep === 0 ? "0%" : activeStep === 1 ? "50%" : "100%"
+                }}
+              />
+            </div>
 
             {/* Step Nodes */}
             {MILESTONES.map((m, idx) => {
