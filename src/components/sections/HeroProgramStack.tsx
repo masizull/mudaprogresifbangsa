@@ -25,7 +25,7 @@ export default function HeroProgramStack() {
   const nextSlide = () => setActive((c) => (c + 1) % total);
 
   return (
-    <section className="relative -mt-20 pt-28 sm:pt-32 lg:pt-32 pb-14 sm:pb-16 lg:pb-20 overflow-hidden bg-[#0A1838] text-white">
+    <section className="relative mt-0 pt-24 sm:pt-28 lg:pt-32 pb-14 sm:pb-16 lg:pb-20 overflow-hidden bg-[#0A1838] text-white">
       {/* 1. Independent Clean Background (TIDAK menyambung dengan gambar slides pilar) */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#091738] via-[#102A63] to-[#173B8A]" />
       

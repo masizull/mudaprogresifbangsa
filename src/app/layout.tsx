@@ -50,7 +50,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className={`scroll-smooth ${plusJakartaSans.variable} ${jetbrainsMono.variable}`}>
-      <body className="bg-[#F4F7FB] text-[#081426] antialiased selection:bg-[#FF5500] selection:text-white font-sans min-h-screen flex flex-col">
+      <body className="bg-[#0A1838] text-[#081426] antialiased selection:bg-[#FF5500] selection:text-white font-sans min-h-screen flex flex-col">
         {children}
       </body>
     </html>
