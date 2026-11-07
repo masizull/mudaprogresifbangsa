@@ -24,6 +24,14 @@ const PARTNERS: PartnerItem[] = [
     imgClass: "max-h-12 max-w-[46px] w-auto h-auto object-contain"
   },
   {
+    id: "ct-arsa-ziswaf",
+    name: "CT ARSA ZISWAF",
+    tagline: "Lembaga Zakat & Wakaf",
+    logo: `${basePath}/images/partners/ct-arsa-ziswaf.png`,
+    alt: "Logo CT ARSA ZISWAF",
+    imgClass: "max-h-8 max-w-[54px] w-auto h-auto object-contain"
+  },
+  {
     id: "wgp",
     name: "World Gate Project",
     tagline: "Mitra Kreatif & Media",
@@ -98,7 +106,7 @@ const PARTNERS: PartnerItem[] = [
 ];
 
 export default function PartnersMarquee() {
-  // Repeat 3x for 30 total tiles, seamlessly infinite
+  // Repeat 3x for 33 total tiles, seamlessly infinite
   const marqueeItems = [...PARTNERS, ...PARTNERS, ...PARTNERS];
 
   return (
