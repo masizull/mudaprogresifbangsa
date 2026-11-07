@@ -14,7 +14,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#081426] text-slate-400 border-t border-white/10 pt-10 pb-8 mt-auto">
+    <footer className="bg-[#081426] text-slate-400 border-t border-white/10 pt-10 pb-[max(2rem,calc(1.5rem+env(safe-area-inset-bottom,0px)))] mt-auto">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-8 border-b border-white/10">

@@ -42,7 +42,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 pt-2 sm:pt-2.5 px-3 sm:px-6 transition-all duration-300">
+      <header className="fixed top-0 left-0 right-0 z-50 pt-[max(0.5rem,env(safe-area-inset-top,0px))] sm:pt-2.5 px-3 sm:px-6 transition-all duration-300">
         <div
           className={`max-w-6xl mx-auto h-13 sm:h-14 px-3.5 sm:px-5 flex items-center justify-between gap-3 sm:gap-4 transition-all duration-300 ${
             isTransparent
@@ -206,34 +206,34 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* Mobile Dropdown Menu (PWA Optimized with safe scroll and touch targets) */}
         {mobileOpen && (
-          <div className="lg:hidden max-w-6xl mx-auto mt-2 bg-white rounded-2xl shadow-xl border border-slate-200 p-4 space-y-3 text-xs">
-            <Link href="/" onClick={() => setMobileOpen(false)} className="block py-1.5 font-bold text-[#2454BE]">Beranda</Link>
+          <div className="lg:hidden max-w-6xl mx-auto mt-2 bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-200/90 p-4 space-y-3 text-xs max-h-[75vh] overflow-y-auto">
+            <Link href="/" onClick={() => setMobileOpen(false)} className="block py-2 px-2 rounded-lg font-bold text-[#2454BE] hover:bg-blue-50/80 active:bg-blue-100 transition-colors">Beranda</Link>
             <div className="pt-2 border-t border-slate-100 space-y-1">
-              <span className="font-bold text-[11px] text-slate-400 uppercase tracking-wider">Tentang Kami</span>
-              <Link href="/tentang-kami/profil" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Muda Progresif Bangsa</Link>
-              <Link href="/tentang-kami/visi-misi" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Visi, Misi & Nilai</Link>
-              <Link href="/tentang-kami/legalitas" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Legalitas Resmi</Link>
-              <Link href="/tentang-kami/pengurus" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Dewan Pembina & Pengurus</Link>
-              <Link href="/tentang-kami/sekretariat" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Kantor Sekretariat</Link>
+              <span className="font-bold text-[11px] text-slate-400 uppercase tracking-wider block px-2 pb-1">Tentang Kami</span>
+              <Link href="/tentang-kami/profil" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Muda Progresif Bangsa</Link>
+              <Link href="/tentang-kami/visi-misi" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Visi, Misi &amp; Nilai</Link>
+              <Link href="/tentang-kami/legalitas" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Legalitas Resmi</Link>
+              <Link href="/tentang-kami/pengurus" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Dewan Pembina &amp; Pengurus</Link>
+              <Link href="/tentang-kami/sekretariat" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Kantor Sekretariat</Link>
             </div>
             <div className="pt-2 border-t border-slate-100 space-y-1">
-              <span className="font-bold text-[11px] text-slate-400 uppercase tracking-wider">Program</span>
-              <Link href="/program/akademi-progresif" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 font-semibold text-slate-700 hover:text-[#2454BE]">Akademi Progresif</Link>
-              <Link href="/program/vokasi-progresif" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 font-semibold text-slate-700 hover:text-[#2454BE]">Vokasi Progresif</Link>
-              <Link href="/program/progresif-care" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 font-semibold text-slate-700 hover:text-[#2454BE]">Progresif Care</Link>
-              <Link href="/program/tanggap-progresif" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 font-semibold text-slate-700 hover:text-[#2454BE]">Tanggap Progresif</Link>
+              <span className="font-bold text-[11px] text-slate-400 uppercase tracking-wider block px-2 pb-1">Program</span>
+              <Link href="/program/akademi-progresif" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg font-semibold text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Akademi Progresif</Link>
+              <Link href="/program/vokasi-progresif" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg font-semibold text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Vokasi Progresif</Link>
+              <Link href="/program/progresif-care" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg font-semibold text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Progresif Care</Link>
+              <Link href="/program/tanggap-progresif" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg font-semibold text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Tanggap Progresif</Link>
             </div>
             <div className="pt-2 border-t border-slate-100 space-y-1">
-              <span className="font-bold text-[11px] text-slate-400 uppercase tracking-wider">Kolaborasi</span>
-              <Link href="/kolaborasi?mitra=pemerintah" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Pemerintah & Kementerian</Link>
-              <Link href="/kolaborasi?mitra=kampus" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Perguruan Tinggi & Riset</Link>
-              <Link href="/kolaborasi?mitra=csr" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Sektor Swasta & CSR</Link>
-              <Link href="/kolaborasi?mitra=komunitas" onClick={() => setMobileOpen(false)} className="block py-1 pl-2 text-slate-700 hover:text-[#2454BE]">Komunitas & Ormas</Link>
+              <span className="font-bold text-[11px] text-slate-400 uppercase tracking-wider block px-2 pb-1">Kolaborasi</span>
+              <Link href="/kolaborasi?mitra=pemerintah" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Pemerintah &amp; Kementerian</Link>
+              <Link href="/kolaborasi?mitra=kampus" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Perguruan Tinggi &amp; Riset</Link>
+              <Link href="/kolaborasi?mitra=csr" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Sektor Swasta &amp; CSR</Link>
+              <Link href="/kolaborasi?mitra=komunitas" onClick={() => setMobileOpen(false)} className="block py-1.5 px-2 rounded-lg text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Komunitas &amp; Ormas</Link>
             </div>
             <div className="pt-2 border-t border-slate-100">
-              <Link href="/insight" onClick={() => setMobileOpen(false)} className="block py-1.5 font-bold text-slate-700 hover:text-[#2454BE]">Insight & Berita</Link>
+              <Link href="/insight" onClick={() => setMobileOpen(false)} className="block py-2 px-2 rounded-lg font-bold text-slate-700 hover:text-[#2454BE] hover:bg-slate-50 active:bg-slate-100 transition-colors">Insight &amp; Berita</Link>
             </div>
           </div>
         )}

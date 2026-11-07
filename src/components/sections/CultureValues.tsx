@@ -345,11 +345,11 @@ export default function CultureValues() {
           </div>
 
           {/* Interactive Switcher: 3D Ribbon vs Grid Showcase (Matching User Screenshots) */}
-          <div className="flex items-center gap-2 p-1.5 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-300 shadow-md">
+          <div className="flex items-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 bg-white/90 backdrop-blur-md rounded-2xl border border-slate-300 shadow-md">
             <button
               type="button"
               onClick={() => setViewMode("ribbon")}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold transition-all ${
                 viewMode === "ribbon"
                   ? "bg-[#081426] text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
@@ -361,7 +361,7 @@ export default function CultureValues() {
             <button
               type="button"
               onClick={() => setViewMode("grid")}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold transition-all ${
                 viewMode === "grid"
                   ? "bg-[#2454BE] text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
@@ -459,12 +459,12 @@ export default function CultureValues() {
               })}
             </div>
 
-            {/* Left & Right Floating Navigation Controls */}
+            {/* Left & Right Floating Navigation Controls (Hidden on narrow mobile to avoid overlap, active on tablet & desktop) */}
             <button
               type="button"
               onClick={handlePrev}
               aria-label="Kartu Sebelumnya"
-              className="absolute left-1 sm:left-3 md:left-6 lg:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/95 hover:bg-white text-slate-800 shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center border border-slate-200/90 backdrop-blur-md group"
+              className="hidden sm:flex absolute left-3 md:left-6 lg:left-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/95 hover:bg-white text-slate-800 shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all items-center justify-center border border-slate-200/90 backdrop-blur-md group"
             >
               <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
             </button>
@@ -473,14 +473,24 @@ export default function CultureValues() {
               type="button"
               onClick={handleNext}
               aria-label="Kartu Selanjutnya"
-              className="absolute right-1 sm:right-3 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/95 hover:bg-white text-slate-800 shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center border border-slate-200/90 backdrop-blur-md group"
+              className="hidden sm:flex absolute right-3 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/95 hover:bg-white text-slate-800 shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all items-center justify-center border border-slate-200/90 backdrop-blur-md group"
             >
               <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
             </button>
 
-            {/* Centered Pagination Indicator Dots & Counter at Bottom */}
+            {/* Centered Pagination Indicator Dots & Mobile Arrow Controls at Bottom */}
             <div className="flex justify-center mt-6">
-              <div className="flex items-center gap-3 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-slate-200 shadow-md">
+              <div className="flex items-center gap-2 sm:gap-3 bg-white/95 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-slate-200 shadow-md">
+                {/* Mobile Quick Prev */}
+                <button
+                  type="button"
+                  onClick={handlePrev}
+                  aria-label="Kartu Sebelumnya"
+                  className="sm:hidden w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 flex items-center justify-center transition-all"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+
                 <span className="font-mono text-xs font-extrabold text-[#2454BE]">
                   {String(activeIndex + 1).padStart(2, "0")}
                 </span>
@@ -502,6 +512,16 @@ export default function CultureValues() {
                 <span className="font-mono text-xs font-bold text-slate-400">
                   {String(totalCards).padStart(2, "0")}
                 </span>
+
+                {/* Mobile Quick Next */}
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  aria-label="Kartu Selanjutnya"
+                  className="sm:hidden w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 flex items-center justify-center transition-all"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
           </div>

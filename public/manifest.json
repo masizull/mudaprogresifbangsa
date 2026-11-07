@@ -1,0 +1,36 @@
+{
+  "name": "Yayasan Muda Progresif Bangsa",
+  "short_name": "MPB Foundation",
+  "description": "Lembaga nirlaba independen penggerak pendidikan kesetaraan (PKBM), riset kebijakan, vokasi terapan, dan transformasi kepemudaan Indonesia.",
+  "start_url": "/mudaprogresifbangsa/",
+  "scope": "/mudaprogresifbangsa/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0A1838",
+  "theme_color": "#0A1838",
+  "categories": [
+    "education",
+    "community",
+    "social"
+  ],
+  "icons": [
+    {
+      "src": "/mudaprogresifbangsa/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/mudaprogresifbangsa/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/mudaprogresifbangsa/icons/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

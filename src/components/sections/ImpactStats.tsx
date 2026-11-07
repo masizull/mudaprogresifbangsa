@@ -212,8 +212,8 @@ export default function ImpactStats() {
       id="dampak"
       className="relative h-[420vh] bg-[#F7F8FA] text-slate-900 border-t border-slate-200 select-none"
     >
-      {/* Pinned Viewport Container (Sticky to top of screen, calibrated padding) */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden pt-14 pb-4 sm:pt-16 sm:pb-6">
+      {/* Pinned Viewport Container (Sticky to top of screen, calibrated padding with notch safe clearance) */}
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden pt-[max(4.25rem,calc(3.75rem+env(safe-area-inset-top,0px)))] pb-4 sm:pt-16 sm:pb-6">
         
         {/* Top Header: Simple Clean Brand Label */}
         <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 shrink-0 mb-2.5 sm:mb-3">

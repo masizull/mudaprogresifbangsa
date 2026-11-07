@@ -6,6 +6,7 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 84px;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
@@ -13,6 +14,8 @@
     color: #031B3A;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
   }
   
   ::selection {
@@ -27,4 +30,13 @@
 
 .border-subtle {
   border-color: rgba(226, 232, 240, 0.85);
+}
+
+/* Safe Area Inset Utility Classes for Modern Mobile & Notched Screens */
+.pt-safe {
+  padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+}
+
+.pb-safe {
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
 }

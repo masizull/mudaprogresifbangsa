@@ -10,8 +10,17 @@ import { PILLARS_DATA } from "@/data/foundation-data";
 export default function HeroProgramStack() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const total = PILLARS_DATA.length;
   const basePath = process.env.NODE_ENV === "production" ? "/mudaprogresifbangsa" : "";
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     if (paused) return;
@@ -88,6 +97,15 @@ export default function HeroProgramStack() {
           <div
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
+            onTouchStart={(e) => setTouchStartX(e.touches[0].clientX)}
+            onTouchEnd={(e) => {
+              if (touchStartX !== null) {
+                const diff = e.changedTouches[0].clientX - touchStartX;
+                if (diff > 40) prevSlide();
+                else if (diff < -40) nextSlide();
+                setTouchStartX(null);
+              }
+            }}
             className="relative w-full max-w-[540px] h-[365px] sm:h-[375px] flex items-center justify-center select-none"
             style={{ perspective: "1000px" }}
           >
@@ -101,7 +119,8 @@ export default function HeroProgramStack() {
               const isLeft = diff === -1;
               const isRight = diff === 1;
 
-              // Animate transform & opacity untuk efek bergeser fisik
+              // Animate transform & opacity untuk efek bergeser fisik proporsional
+              const offsetDistance = isMobile ? 115 : 175;
               let xPos = 0;
               let scaleVal = 1;
               let opacityVal = 1;
@@ -115,15 +134,15 @@ export default function HeroProgramStack() {
                 zIndexVal = 30;
                 rotY = 0;
               } else if (isLeft) {
-                xPos = -175;
-                scaleVal = 0.88;
-                opacityVal = 0.65;
+                xPos = -offsetDistance;
+                scaleVal = isMobile ? 0.86 : 0.88;
+                opacityVal = isMobile ? 0.5 : 0.65;
                 zIndexVal = 20;
                 rotY = 6;
               } else if (isRight) {
-                xPos = 175;
-                scaleVal = 0.88;
-                opacityVal = 0.65;
+                xPos = offsetDistance;
+                scaleVal = isMobile ? 0.86 : 0.88;
+                opacityVal = isMobile ? 0.5 : 0.65;
                 zIndexVal = 20;
                 rotY = -6;
               } else {
@@ -152,7 +171,7 @@ export default function HeroProgramStack() {
                   onClick={() => {
                     if (!isCenter) setActive(i);
                   }}
-                  className={`absolute w-[310px] sm:w-[340px] lg:w-[350px] bg-white text-slate-900 rounded-2xl p-3 sm:p-3.5 shadow-2xl ${
+                  className={`absolute w-[285px] xs:w-[310px] sm:w-[340px] lg:w-[350px] bg-white text-slate-900 rounded-2xl p-3 sm:p-3.5 shadow-2xl ${
                     !isCenter ? "cursor-pointer hover:opacity-85" : ""
                   }`}
                 >

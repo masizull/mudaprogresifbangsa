@@ -19,7 +19,7 @@ export default function FloatingActions() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+    <div className="fixed bottom-[max(1.25rem,calc(1rem+env(safe-area-inset-bottom,0px)))] right-4 sm:right-6 z-40 flex flex-col gap-3">
       {/* WhatsApp Quick Trigger with verified hotline phone number */}
       <a
         href="https://wa.me/6281288882025?text=Halo%20Yayasan%20Muda%20Progresif%20Bangsa,%20saya%20ingin%20bertanya%20seputar%20program"

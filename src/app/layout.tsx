@@ -1,6 +1,6 @@
+import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import { FOUNDATION_INFO } from '@/data/foundation-data';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -16,7 +16,15 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-export const metadata = {
+export const viewport: Viewport = {
+  themeColor: '#0A1838',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+};
+
+export const metadata: Metadata = {
   title: 'Yayasan Muda Progresif Bangsa | Dari Pengetahuan Menjadi Gagasan Berdampak Pada Aksi',
   description: 'Lembaga nirlaba independen penggerak pendidikan non-formal (PKBM), riset kebijakan berbasis bukti, vokasi kemandirian, dan jaring sosial kepemudaan Indonesia.',
   keywords: [
@@ -30,6 +38,12 @@ export const metadata = {
     'Riset Kepemudaan'
   ],
   authors: [{ name: 'Yayasan Muda Progresif Bangsa' }],
+  manifest: '/mudaprogresifbangsa/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'MPB Foundation',
+  },
   openGraph: {
     title: 'Yayasan Muda Progresif Bangsa',
     description: 'Dari Pengetahuan, Menjadi Gagasan, Berdampak Pada Aksi.',
@@ -39,7 +53,13 @@ export const metadata = {
     type: 'website',
   },
   icons: {
-    icon: '/mudaprogresifbangsa/logo/LOGO MPB - WARNA.png',
+    icon: [
+      { url: '/mudaprogresifbangsa/icons/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/mudaprogresifbangsa/icons/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/mudaprogresifbangsa/icons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
 };
 
