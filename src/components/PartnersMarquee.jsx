@@ -1,39 +1,96 @@
-import React from 'react';
+"use client";
+
+import React from "react";
+
+const basePath = process.env.NODE_ENV === "production" ? "/mudaprogresifbangsa" : "";
+
+const PARTNERS = [
+  {
+    id: "unj",
+    name: "Universitas Negeri Jakarta",
+    tagline: "Perguruan Tinggi Negeri",
+    logo: `${basePath}/images/partners/unj.png`,
+    alt: "Logo Universitas Negeri Jakarta (UNJ)",
+    imgClass: "max-h-12 max-w-[46px] w-auto h-auto object-contain"
+  },
+  {
+    id: "segi",
+    name: "Segi (segi.id)",
+    tagline: "Platform Kolaborasi Sosial",
+    logo: `${basePath}/images/partners/segi.png`,
+    alt: "Logo Segi / Sedia Berbagi",
+    imgClass: "max-h-11 max-w-[44px] w-auto h-auto object-contain"
+  },
+  {
+    id: "lazismu",
+    name: "LAZISMU",
+    tagline: "Lembaga Amil Zakat Nasional",
+    logo: `${basePath}/images/partners/lazismu.png`,
+    alt: "Logo LAZISMU",
+    imgClass: "max-h-9 max-w-[110px] w-auto h-auto object-contain"
+  },
+  {
+    id: "laz-mrbj",
+    name: "LAZ-MRBJ",
+    tagline: "Zakat Peduli Umat",
+    logo: `${basePath}/images/partners/laz-mrbj.png`,
+    alt: "Logo LAZ-MRBJ Zakat Peduli Umat",
+    imgClass: "max-h-10 max-w-[110px] w-auto h-auto object-contain"
+  },
+  {
+    id: "mui",
+    name: "Majelis Ulama Indonesia",
+    tagline: "Lembaga Keagamaan Nasional",
+    logo: `${basePath}/images/partners/mui.png`,
+    alt: "Logo Majelis Ulama Indonesia (MUI)",
+    imgClass: "max-h-12 max-w-[46px] w-auto h-auto object-contain"
+  }
+];
 
 export default function PartnersMarquee() {
-  const partners = [
-    { name: 'Balai Pemuda Mandiri', code: 'BP', color: 'bg-slate-800' },
-    { name: 'Jejaring Komunitas Bekasi', code: 'JK', color: 'bg-brand-blue' },
-    { name: 'Forum Literasi Inklusif', code: 'FL', color: 'bg-brand-orange' },
-    { name: 'Inkubasi Koperasi Pemuda', code: 'IK', color: 'bg-slate-900' },
-    { name: 'Aliansi Aksi Iklim Lestari', code: 'LH', color: 'bg-emerald-700' },
-    { name: 'Asosiasi Pendidik Progresif', code: 'AP', color: 'bg-slate-800' }
-  ];
+  const marqueeItems = [...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS];
 
   return (
-    <section id="mitra" className="py-20 bg-white border-b border-subtle overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
-        <p className="text-xs font-mono font-bold uppercase tracking-widest text-slate-400">
-          Didukung & Berkolaborasi Bersama Ekosistem Multipihak
+    <section id="mitra" className="py-10 sm:py-14 bg-[#F8FAFC] border-y border-slate-200/80 overflow-hidden select-none">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8 text-center">
+        <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#2454BE] block mb-1">
+          MITRA KERJASAMA &amp; KOLABORASI STRATEGIS
+        </span>
+        <h3 className="text-xl sm:text-2xl font-extrabold text-[#081426] tracking-tight">
+          Bersinergi Bersama Ekosistem Lembaga Terpercaya
+        </h3>
+        <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-xl mx-auto">
+          Membangun kolaborasi berdampak dengan perguruan tinggi, lembaga filantropi, ormas, dan platform sosial.
         </p>
       </div>
 
       <div className="relative w-full overflow-hidden">
-        <div className="pointer-events-none absolute top-0 left-0 h-full w-20 sm:w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-        <div className="pointer-events-none absolute top-0 right-0 h-full w-20 sm:w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+        <div className="pointer-events-none absolute top-0 left-0 h-full w-20 sm:w-32 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/80 to-transparent z-10" />
+        <div className="pointer-events-none absolute top-0 right-0 h-full w-20 sm:w-32 bg-gradient-to-l from-[#F8FAFC] via-[#F8FAFC]/80 to-transparent z-10" />
 
-        <div className="marquee-track flex items-center gap-12 sm:gap-16 w-max animate-marquee py-2">
-          {[...partners, ...partners].map((p, idx) => (
-            <div 
-              key={idx}
-              className="flex items-center gap-2.5 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-200 cursor-pointer"
+        <div className="marquee-track flex items-center gap-4 sm:gap-6 w-max animate-marquee py-2 px-4">
+          {marqueeItems.map((p, idx) => (
+            <div
+              key={`${p.id}-${idx}`}
+              className="h-20 sm:h-22 w-56 sm:w-64 px-4 py-3 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-[#2454BE]/40 flex items-center gap-3.5 transition-all duration-200 shrink-0 group cursor-default"
             >
-              <div className={`w-8 h-8 rounded ${p.color} text-white flex items-center justify-center font-bold text-xs`}>
-                {p.code}
+              <div className="w-14 sm:w-16 h-12 flex items-center justify-center shrink-0">
+                <img
+                  src={p.logo}
+                  alt={p.alt}
+                  className={`${p.imgClass} transition-transform duration-200 group-hover:scale-105`}
+                  loading="lazy"
+                />
               </div>
-              <span className="font-bold tracking-tight text-slate-700 text-sm whitespace-nowrap">
-                {p.name}
-              </span>
+
+              <div className="min-w-0 flex-1 text-left">
+                <h4 className="text-xs sm:text-[13px] font-bold text-slate-800 truncate leading-snug group-hover:text-[#2454BE] transition-colors">
+                  {p.name}
+                </h4>
+                <p className="text-[10px] font-mono text-slate-400 truncate mt-0.5">
+                  {p.tagline}
+                </p>
+              </div>
             </div>
           ))}
         </div>
