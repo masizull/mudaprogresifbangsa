@@ -25,11 +25,11 @@ const PARTNERS: PartnerItem[] = [
     imgClass: "max-h-12 max-w-[46px] w-auto h-auto object-contain"
   },
   {
-    id: "segi",
-    name: "Segi (segi.id)",
-    tagline: "Platform Kolaborasi Sosial",
-    logo: `${basePath}/images/partners/segi.png`,
-    alt: "Logo Segi / Sedia Berbagi",
+    id: "wgp",
+    name: "World Gate Project",
+    tagline: "Mitra Kreatif & Media",
+    logo: `${basePath}/images/partners/world-gate-project.png`,
+    alt: "Logo World Gate Project (WGP)",
     imgClass: "max-h-11 max-w-[44px] w-auto h-auto object-contain"
   },
   {
