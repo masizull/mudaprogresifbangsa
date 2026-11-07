@@ -179,7 +179,7 @@ export default function ImpactStats() {
       if (trackRef.current) {
         const totalTrackWidth = trackRef.current.scrollWidth;
         const viewportWidth = window.innerWidth;
-        const extraPadding = viewportWidth > 768 ? 80 : 40;
+        const extraPadding = viewportWidth > 768 ? 60 : 32;
         setScrollDistance(Math.max(0, totalTrackWidth - viewportWidth + extraPadding));
       }
     };
@@ -195,7 +195,7 @@ export default function ImpactStats() {
     offset: ["start start", "end end"]
   });
 
-  // Silky-smooth spring physics interpolation (eliminates stepped mouse-wheel jerkiness)
+  // Silky-smooth spring physics interpolation
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 60,
     damping: 20,
@@ -212,11 +212,11 @@ export default function ImpactStats() {
       id="dampak"
       className="relative h-[420vh] bg-[#F7F8FA] text-slate-900 border-t border-slate-200 select-none"
     >
-      {/* Pinned Viewport Container (Sticky to top of screen) */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden py-4 sm:py-6">
+      {/* Pinned Viewport Container (Sticky to top of screen, calibrated padding) */}
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden pt-14 pb-4 sm:pt-16 sm:pb-6">
         
-        {/* Top Header: Simple Clean Brand Label (Gambar 1 tracker pill removed) */}
-        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 shrink-0 mb-3 sm:mb-4">
+        {/* Top Header: Simple Clean Brand Label */}
+        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 shrink-0 mb-2.5 sm:mb-3">
           <div className="flex items-center gap-2.5">
             <span className="w-2.5 h-2.5 rounded-full bg-[#FF5500] animate-pulse" />
             <span className="font-mono text-xs font-extrabold uppercase tracking-widest text-[#2454BE]">
@@ -232,47 +232,47 @@ export default function ImpactStats() {
           <motion.div
             ref={trackRef}
             style={{ x }}
-            className="flex items-center gap-6 sm:gap-8 px-4 sm:px-8 md:px-12 will-change-transform"
+            className="flex items-center gap-5 sm:gap-7 px-4 sm:px-8 md:px-12 will-change-transform"
           >
             {/* ---------------------------------------------------- */}
-            {/* PANEL 1: EDITORIAL INTRO (Trionn "Selected work" style) */}
+            {/* PANEL 1: EDITORIAL INTRO (Compact Calibrated Size)   */}
             {/* ---------------------------------------------------- */}
-            <div className="w-[340px] sm:w-[420px] md:w-[480px] lg:w-[500px] shrink-0 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl flex flex-col justify-between h-[460px] sm:h-[490px]">
+            <div className="w-[290px] sm:w-[380px] md:w-[430px] lg:w-[450px] h-[380px] sm:h-[415px] shrink-0 bg-white rounded-3xl p-5 sm:p-6 border border-slate-200 shadow-xl flex flex-col justify-between">
               <div>
-                <span className="text-xs font-mono font-bold tracking-widest uppercase text-[#FF5500] block mb-2">
+                <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-[#FF5500] block mb-1">
                   // REKAM JEJAK TERVERIFIKASI
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.08] uppercase">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-[1.1] uppercase">
                   Jejak Nyata <br />
                   <span className="text-[#2454BE]">&amp; Akuntabilitas</span>
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-600 mt-3 sm:mt-4 leading-relaxed">
+                <p className="text-xs sm:text-[13px] text-slate-600 mt-2.5 leading-relaxed line-clamp-3">
                   Bukan sekadar narasi; setiap rupiah dan program diuji secara empiris, diaudit terbuka, dan berorientasi pada kemandirian sosial-ekonomi pemuda antargenerasi.
                 </p>
 
                 {/* 3 Live Cumulative Metrics Counters */}
-                <div className="grid grid-cols-3 gap-3 mt-5 pt-5 border-t border-slate-100">
+                <div className="grid grid-cols-3 gap-2 mt-4 pt-3.5 border-t border-slate-100">
                   <div>
-                    <span className="font-mono text-xl sm:text-2xl font-black text-slate-900 block">
+                    <span className="font-mono text-lg sm:text-xl font-black text-slate-900 block">
                       {counts.youth.toLocaleString("id-ID")}+
                     </span>
-                    <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase leading-tight block mt-0.5">
+                    <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase leading-tight block mt-0.5">
                       Pemuda Terbina
                     </span>
                   </div>
                   <div>
-                    <span className="font-mono text-xl sm:text-2xl font-black text-[#2454BE] block">
+                    <span className="font-mono text-lg sm:text-xl font-black text-[#2454BE] block">
                       {counts.projects}+
                     </span>
-                    <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase leading-tight block mt-0.5">
+                    <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase leading-tight block mt-0.5">
                       Inisiatif Mandiri
                     </span>
                   </div>
                   <div>
-                    <span className="font-mono text-xl sm:text-2xl font-black text-[#FF5500] block">
+                    <span className="font-mono text-lg sm:text-xl font-black text-[#FF5500] block">
                       {counts.cities}
                     </span>
-                    <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase leading-tight block mt-0.5">
+                    <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase leading-tight block mt-0.5">
                       Kota &amp; Kab
                     </span>
                   </div>
@@ -280,10 +280,10 @@ export default function ImpactStats() {
               </div>
 
               {/* Bottom Info Link */}
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-xs font-mono font-bold text-slate-400 flex items-center gap-1.5">
-                  <span>Geser / scroll ke samping</span>
-                  <ArrowRight className="w-4 h-4 text-[#FF5500]" />
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-[11px] font-mono font-bold text-slate-400 flex items-center gap-1.5">
+                  <span>Scroll ke samping</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#FF5500]" />
                 </span>
                 <Link
                   href="/tentang-kami/legalitas"
@@ -297,7 +297,7 @@ export default function ImpactStats() {
 
             {/* ---------------------------------------------------- */}
             {/* PANELS 2 - 6: FIVE SHOWCASE IMPACT CARDS             */}
-            {/* Full Image + Black Gradient Overlay (Gambar 2 & 3)   */}
+            {/* Calibrated Card Dimensions (No Cutoff!)              */}
             {/* ---------------------------------------------------- */}
             {IMPACT_PROJECTS.map((item, index) => (
               <AnimatedImpactCard
@@ -311,7 +311,7 @@ export default function ImpactStats() {
             ))}
 
             {/* ---------------------------------------------------- */}
-            {/* PANEL 7: FINAL CALL TO ACTION & REPORT DOWNLOAD     */}
+            {/* PANEL 7: FINAL CALL TO ACTION (Compact Size)         */}
             {/* ---------------------------------------------------- */}
             <AnimatedOutroPanel
               smoothProgress={smoothProgress}
@@ -326,9 +326,8 @@ export default function ImpactStats() {
 }
 
 /**
- * AnimatedImpactCard: Full Image Card with Black Gradient Overlay.
- * All floating badges above the image removed (per user request).
- * Smoothly emerges from bottom-right corner as you scroll.
+ * AnimatedImpactCard: Calibrated compact dimensions (h-[380px] sm:h-[415px])
+ * Full image with black gradient overlay, never cut off!
  */
 function AnimatedImpactCard({
   item,
@@ -361,62 +360,56 @@ function AnimatedImpactCard({
     };
   }, []);
 
-  // Dynamic Y translation: starts shifted down at +150px (bottom-right) when entering,
-  // then rises gracefully to 0px as it glides toward the left-center focal area.
+  // Gentle emergence Y translation: 55px offset when offscreen right,
+  // gliding gracefully to 0px at reading center (never pushes card off bottom)
   const cardY = useTransform(smoothProgress, (p) => {
     if (offsetLeft === null) return 0;
     const currentTrackX = -p * scrollDistance;
     const cardScreenX = offsetLeft + currentTrackX;
     const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
 
-    // Offscreen to the right
     if (cardScreenX >= screenWidth) {
-      return 150;
+      return 55;
     }
-    // Arrived at focal reading position (left/center 28% of screen)
     if (cardScreenX <= screenWidth * 0.28) {
       return 0;
     }
-    // Smooth Hermite cubic interpolation from bottom-right (150px) to top (0px)
     const t = (cardScreenX - screenWidth * 0.28) / (screenWidth * 0.72);
     const eased = t * t * (3 - 2 * t);
-    return eased * 150;
+    return eased * 55;
   });
 
-  // Dynamic subtle 3D tilt: slanted up from bottom-right, leveling off to 0deg at center
   const cardRotate = useTransform(smoothProgress, (p) => {
     if (offsetLeft === null) return 0;
     const currentTrackX = -p * scrollDistance;
     const cardScreenX = offsetLeft + currentTrackX;
     const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
 
-    if (cardScreenX >= screenWidth) return 2.8;
+    if (cardScreenX >= screenWidth) return 2.2;
     if (cardScreenX <= screenWidth * 0.28) return 0;
     const t = (cardScreenX - screenWidth * 0.28) / (screenWidth * 0.72);
-    return t * 2.8;
+    return t * 2.2;
   });
 
-  // Scale: 0.92 when in bottom-right corner, expanding to full 1.0 at center
   const cardScale = useTransform(smoothProgress, (p) => {
     if (offsetLeft === null) return 1;
     const currentTrackX = -p * scrollDistance;
     const cardScreenX = offsetLeft + currentTrackX;
     const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
 
-    if (cardScreenX >= screenWidth) return 0.92;
+    if (cardScreenX >= screenWidth) return 0.94;
     if (cardScreenX <= screenWidth * 0.28) return 1.0;
     const t = (cardScreenX - screenWidth * 0.28) / (screenWidth * 0.72);
-    return 1.0 - t * 0.08;
+    return 1.0 - t * 0.06;
   });
 
-  // Opacity: fades in cleanly as it enters viewport
   const cardOpacity = useTransform(smoothProgress, (p) => {
     if (offsetLeft === null) return 1;
     const currentTrackX = -p * scrollDistance;
     const cardScreenX = offsetLeft + currentTrackX;
     const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
 
-    if (cardScreenX >= screenWidth + 100) return 0.35;
+    if (cardScreenX >= screenWidth + 80) return 0.4;
     if (cardScreenX <= screenWidth * 0.35) return 1.0;
     const t = (cardScreenX - screenWidth * 0.35) / (screenWidth * 0.65);
     return 1.0 - t * 0.45;
@@ -433,54 +426,54 @@ function AnimatedImpactCard({
         transformOrigin: "bottom right",
         willChange: "transform, opacity",
       }}
-      className="relative w-[340px] sm:w-[460px] md:w-[540px] lg:w-[580px] h-[460px] sm:h-[490px] shrink-0 rounded-3xl overflow-hidden shadow-2xl border border-white/20 select-none group transition-shadow hover:shadow-[0_20px_50px_rgba(8,20,38,0.4)]"
+      className="relative w-[300px] sm:w-[380px] md:w-[460px] lg:w-[490px] h-[380px] sm:h-[415px] shrink-0 rounded-3xl overflow-hidden shadow-2xl border border-white/20 select-none group transition-shadow hover:shadow-[0_20px_50px_rgba(8,20,38,0.4)]"
     >
-      {/* 1. FULL BACKGROUND IMAGE (No cutoff!) */}
+      {/* 1. FULL BACKGROUND IMAGE */}
       <Image
         src={`${basePath}${item.image}`}
         alt={item.title}
         fill
         className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-        sizes="(max-width: 768px) 400px, 600px"
+        sizes="(max-width: 768px) 380px, 500px"
       />
 
-      {/* 2. OVERLAY GRADASI HITAM (Smooth deep black gradient for contrast) */}
+      {/* 2. OVERLAY GRADASI HITAM */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#050B16] via-[#081426]/85 to-black/25 pointer-events-none" />
 
-      {/* 3. CONTENT OVERLAY (Semua info di atas gambar sudah dihapus!) */}
-      <div className="relative z-10 h-full flex flex-col justify-end p-6 sm:p-7 text-white">
+      {/* 3. CONTENT OVERLAY (Calibrated compact paddings & text) */}
+      <div className="relative z-10 h-full flex flex-col justify-end p-5 sm:p-6 text-white">
         {/* Category tag */}
         <span
-          className="font-mono text-[11px] font-black uppercase tracking-widest drop-shadow-sm mb-1.5"
+          className="font-mono text-[10px] sm:text-[11px] font-black uppercase tracking-widest drop-shadow-sm mb-1"
           style={{ color: item.accentColor }}
         >
           {item.category}
         </span>
 
         {/* Title */}
-        <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-snug drop-shadow-md">
+        <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white tracking-tight leading-snug drop-shadow-md">
           {item.title}
         </h3>
 
         {/* Description */}
-        <p className="text-xs sm:text-[13px] text-slate-200 mt-2 leading-relaxed line-clamp-2 drop-shadow-sm font-medium">
+        <p className="text-xs text-slate-200 mt-1.5 leading-relaxed line-clamp-2 drop-shadow-sm font-medium">
           {item.desc}
         </p>
 
         {/* 3 Metrics Pills in dark translucent glass */}
-        <div className="grid grid-cols-3 gap-2 mt-4 pt-3 border-t border-white/15">
+        <div className="grid grid-cols-3 gap-2 mt-3 pt-2.5 border-t border-white/15">
           {item.metrics.map((m, mIdx) => (
             <div
               key={mIdx}
-              className="bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-2 sm:p-2.5 text-center"
+              className="bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-1.5 sm:p-2 text-center"
             >
               <span
-                className="font-mono text-sm sm:text-base font-black block text-white drop-shadow-sm"
+                className="font-mono text-xs sm:text-sm md:text-base font-black block text-white drop-shadow-sm"
                 style={{ color: item.accentColor }}
               >
                 {m.value}
               </span>
-              <span className="text-[9px] sm:text-[10px] font-bold text-slate-300 uppercase block truncate mt-0.5">
+              <span className="text-[8px] sm:text-[9px] font-bold text-slate-300 uppercase block truncate mt-0.5">
                 {m.label}
               </span>
             </div>
@@ -488,10 +481,10 @@ function AnimatedImpactCard({
         </div>
 
         {/* Action Link & Arrow Button */}
-        <div className="pt-3.5 mt-3 border-t border-white/15 flex items-center justify-between">
+        <div className="pt-2.5 mt-2.5 border-t border-white/15 flex items-center justify-between">
           <Link
             href={item.link}
-            className="font-mono text-xs font-bold text-white hover:text-amber-300 flex items-center gap-1.5 transition-colors group-hover:translate-x-1"
+            className="font-mono text-[11px] sm:text-xs font-bold text-white hover:text-amber-300 flex items-center gap-1.5 transition-colors group-hover:translate-x-1"
           >
             <span>{item.actionText}</span>
             <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
@@ -499,9 +492,9 @@ function AnimatedImpactCard({
 
           <Link
             href={item.link}
-            className="w-8 h-8 rounded-full bg-white/20 hover:bg-white text-white hover:text-slate-900 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all shadow-md group-hover:scale-110"
+            className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 hover:bg-white text-white hover:text-slate-900 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all shadow-md group-hover:scale-110"
           >
-            <ArrowUpRight className="w-4 h-4" />
+            <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </div>
@@ -510,7 +503,8 @@ function AnimatedImpactCard({
 }
 
 /**
- * AnimatedOutroPanel: Final CTA panel that also emerges from bottom-right
+ * AnimatedOutroPanel: Calibrated compact dimensions (h-[380px] sm:h-[415px])
+ * Never cut off!
  */
 function AnimatedOutroPanel({
   smoothProgress,
@@ -543,10 +537,10 @@ function AnimatedOutroPanel({
     const screenX = offsetLeft + currentTrackX;
     const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
 
-    if (screenX >= screenWidth) return 150;
+    if (screenX >= screenWidth) return 55;
     if (screenX <= screenWidth * 0.4) return 0;
     const t = (screenX - screenWidth * 0.4) / (screenWidth * 0.6);
-    return t * t * (3 - 2 * t) * 150;
+    return t * t * (3 - 2 * t) * 55;
   });
 
   const panelRotate = useTransform(smoothProgress, (p) => {
@@ -555,10 +549,10 @@ function AnimatedOutroPanel({
     const screenX = offsetLeft + currentTrackX;
     const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
 
-    if (screenX >= screenWidth) return 2.5;
+    if (screenX >= screenWidth) return 2.2;
     if (screenX <= screenWidth * 0.4) return 0;
     const t = (screenX - screenWidth * 0.4) / (screenWidth * 0.6);
-    return t * 2.5;
+    return t * 2.2;
   });
 
   const panelScale = useTransform(smoothProgress, (p) => {
@@ -567,10 +561,10 @@ function AnimatedOutroPanel({
     const screenX = offsetLeft + currentTrackX;
     const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1200;
 
-    if (screenX >= screenWidth) return 0.92;
+    if (screenX >= screenWidth) return 0.94;
     if (screenX <= screenWidth * 0.4) return 1.0;
     const t = (screenX - screenWidth * 0.4) / (screenWidth * 0.6);
-    return 1.0 - t * 0.08;
+    return 1.0 - t * 0.06;
   });
 
   return (
@@ -583,57 +577,57 @@ function AnimatedOutroPanel({
         transformOrigin: "bottom right",
         willChange: "transform, opacity",
       }}
-      className="w-[320px] sm:w-[380px] md:w-[420px] shrink-0 bg-gradient-to-br from-[#081426] via-[#0F2342] to-[#1E3F7A] text-white rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl flex flex-col justify-between h-[460px] sm:h-[490px]"
+      className="w-[290px] sm:w-[330px] md:w-[360px] h-[380px] sm:h-[415px] shrink-0 bg-gradient-to-br from-[#081426] via-[#0F2342] to-[#1E3F7A] text-white rounded-3xl p-5 sm:p-6 border border-white/10 shadow-2xl flex flex-col justify-between"
     >
       <div>
-        <span className="text-xs font-mono font-bold tracking-widest uppercase text-amber-400 block mb-2">
+        <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-widest uppercase text-amber-400 block mb-1">
           // AKUNTABILITAS PUBLIK
         </span>
-        <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
+        <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-tight">
           Mari Bergerak <br />
           <span className="text-sky-300">Bersama MPB</span>
         </h3>
-        <p className="text-xs text-slate-300 mt-3 leading-relaxed">
-          Laporan pertanggungjawaban program dan audit legalitas diperbarui secara berkala sebagai komitmen transparansi kepada seluruh mitra dan donatur.
+        <p className="text-xs text-slate-300 mt-2 leading-relaxed line-clamp-2">
+          Laporan pertanggungjawaban program dan audit legalitas diperbarui berkala untuk transparansi publik.
         </p>
 
-        <div className="mt-6 space-y-2.5">
-          <div className="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
-            <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-            <div>
-              <span className="text-xs font-bold block text-white">
-                Legalitas Terdaftar Resmi
+        <div className="mt-3.5 space-y-2">
+          <div className="p-2 sm:p-2.5 rounded-xl bg-white/5 border border-white/10 flex items-center gap-2.5">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+            <div className="truncate">
+              <span className="text-xs font-bold block text-white truncate">
+                Legalitas SK Resmi
               </span>
-              <span className="text-[10px] text-slate-300 block">
-                SK Kemenkumham RI &amp; NPWP Yayasan
+              <span className="text-[10px] text-slate-300 block truncate">
+                SK Kemenkumham RI &amp; NPWP
               </span>
             </div>
           </div>
-          <div className="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
-            <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-            <div>
-              <span className="text-xs font-bold block text-white">
+          <div className="p-2 sm:p-2.5 rounded-xl bg-white/5 border border-white/10 flex items-center gap-2.5">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+            <div className="truncate">
+              <span className="text-xs font-bold block text-white truncate">
                 Penyaluran 100% Terverifikasi
               </span>
-              <span className="text-[10px] text-slate-300 block">
-                Bebas Biaya Bagi Warga Binaan
+              <span className="text-[10px] text-slate-300 block truncate">
+                Cuma-cuma Bagi Warga Binaan
               </span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="pt-4 border-t border-white/10 space-y-2">
+      <div className="pt-3 border-t border-white/10 space-y-2">
         <Link
           href="/kolaborasi"
-          className="w-full py-3 px-4 rounded-xl bg-[#FF5500] hover:bg-[#e04b00] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg transition-all"
+          className="w-full py-2.5 px-3 rounded-xl bg-[#FF5500] hover:bg-[#e04b00] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg transition-all"
         >
           <span>Ajukan Sinergi Kolaborasi</span>
-          <ArrowRight className="w-4 h-4" />
+          <ArrowRight className="w-3.5 h-3.5" />
         </Link>
         <Link
           href="/tentang-kami/legalitas"
-          className="w-full py-2.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center justify-center gap-2 transition-all border border-white/10"
+          className="w-full py-2 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-[11px] sm:text-xs font-bold flex items-center justify-center gap-2 transition-all border border-white/10"
         >
           <span>Unduh Dokumen Legalitas</span>
           <ExternalLink className="w-3.5 h-3.5" />
