@@ -2,14 +2,15 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
   GraduationCap,
   BarChart3,
   Users,
   HeartHandshake,
   ArrowRight,
-  Quote
+  Quote,
+  Sparkles
 } from "lucide-react";
 
 interface MissionItem {
@@ -32,8 +33,8 @@ const MISSIONS: MissionItem[] = [
     href: "/program/akademi-progresif",
     icon: GraduationCap,
     accent: "#38BDF8",
-    borderHover: "hover:border-sky-400/50",
-    glowHover: "hover:shadow-[0_0_24px_rgba(56,189,248,0.2)]",
+    borderHover: "hover:border-sky-400/60",
+    glowHover: "hover:shadow-[0_10px_30px_-5px_rgba(56,189,248,0.3)]",
     iconBg: "bg-sky-500/15 text-sky-400"
   },
   {
@@ -43,8 +44,8 @@ const MISSIONS: MissionItem[] = [
     href: "/program/akademi-progresif",
     icon: BarChart3,
     accent: "#60A5FA",
-    borderHover: "hover:border-blue-400/50",
-    glowHover: "hover:shadow-[0_0_24px_rgba(96,165,250,0.2)]",
+    borderHover: "hover:border-blue-400/60",
+    glowHover: "hover:shadow-[0_10px_30px_-5px_rgba(96,165,250,0.3)]",
     iconBg: "bg-blue-500/15 text-blue-400"
   },
   {
@@ -54,8 +55,8 @@ const MISSIONS: MissionItem[] = [
     href: "/program/akademi-progresif",
     icon: Users,
     accent: "#FF5500",
-    borderHover: "hover:border-orange-500/50",
-    glowHover: "hover:shadow-[0_0_24px_rgba(255,85,0,0.2)]",
+    borderHover: "hover:border-orange-500/60",
+    glowHover: "hover:shadow-[0_10px_30px_-5px_rgba(255,85,0,0.3)]",
     iconBg: "bg-orange-500/15 text-[#FF5500]"
   },
   {
@@ -65,23 +66,98 @@ const MISSIONS: MissionItem[] = [
     href: "/program/vokasi-progresif",
     icon: HeartHandshake,
     accent: "#34D399",
-    borderHover: "hover:border-emerald-400/50",
-    glowHover: "hover:shadow-[0_0_24px_rgba(52,211,153,0.2)]",
+    borderHover: "hover:border-emerald-400/60",
+    glowHover: "hover:shadow-[0_10px_30px_-5px_rgba(52,211,153,0.3)]",
     iconBg: "bg-emerald-500/15 text-emerald-400"
   }
 ];
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const headerVariants: Variants = {
+  hidden: { opacity: 0, y: -24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const visiCardVariants: Variants = {
+  hidden: { opacity: 0, y: 36, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
+const misiCardVariants: Variants = {
+  hidden: { opacity: 0, y: 28, scale: 0.94 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.55,
+      ease: "easeOut",
+    },
+  },
+};
+
 export default function InteractiveVisionMission() {
   return (
     <section id="visi-misi" className="py-10 sm:py-14 bg-[#081426] text-white relative overflow-hidden">
-      {/* Ambient Radial Lights */}
-      <div className="absolute top-0 right-1/4 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-orange-600/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Ambient Radial Lights yang melayang & berdenyut halus */}
+      <motion.div
+        animate={{
+          scale: [1, 1.25, 1],
+          opacity: [0.12, 0.24, 0.12],
+          x: [0, 25, 0],
+          y: [0, -18, 0],
+        }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          scale: [1.15, 0.95, 1.15],
+          opacity: [0.10, 0.22, 0.10],
+          x: [0, -25, 0],
+          y: [0, 20, 0],
+        }}
+        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-0 left-1/4 w-96 h-96 bg-orange-600/15 rounded-full blur-3xl pointer-events-none"
+      />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 space-y-6">
-        
-        {/* Section Header Ringkas */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-2 border-b border-white/10">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+        className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 space-y-6"
+      >
+        {/* Section Header Ringkas dengan Animasi Melayang Turun */}
+        <motion.div
+          variants={headerVariants}
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-2 border-b border-white/10"
+        >
           <div>
             <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-sky-400 block mb-1">
               VISI &amp; MISI STRATEGIS
@@ -93,23 +169,35 @@ export default function InteractiveVisionMission() {
           <p className="text-xs text-slate-300 max-w-md leading-relaxed sm:text-right">
             Menghubungkan nalar kritis generasi muda menjadi aksi sosial nyata yang terukur.
           </p>
-        </div>
+        </motion.div>
 
         {/* 2-Column Balanced Bento: Visi Utama (Kiri) + 4 Misi (Kanan 2x2) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-          
-          {/* KOLOM KIRI: Visi Utama (lg:col-span-5) */}
-          <div className="lg:col-span-5 rounded-2xl bg-gradient-to-br from-[#0F2342] via-[#122A50] to-[#0A1830] p-6 border border-blue-400/20 shadow-lg flex flex-col justify-between relative overflow-hidden">
+          {/* KOLOM KIRI: Visi Utama dengan Efek Melayang Halus & Hover Elevation */}
+          <motion.div
+            variants={visiCardVariants}
+            whileHover={{
+              y: -8,
+              scale: 1.015,
+              transition: { duration: 0.25, ease: "easeOut" },
+            }}
+            className="lg:col-span-5 rounded-2xl bg-gradient-to-br from-[#0F2342] via-[#122A50] to-[#0A1830] p-6 border border-blue-400/25 shadow-xl hover:shadow-[0_20px_40px_-15px_rgba(36,84,190,0.35)] flex flex-col justify-between relative overflow-hidden group cursor-default transition-shadow"
+          >
             {/* Top Identity Stripe: Biru, Putih & Oren */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2454BE] via-white to-[#FF5500]" />
 
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#2454BE] to-[#FF5500] text-white flex items-center justify-center shadow-sm">
+                <motion.div
+                  animate={{ y: [0, -3, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#2454BE] to-[#FF5500] text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform"
+                >
                   <Quote className="w-3.5 h-3.5" />
-                </div>
-                <span className="text-xs font-mono font-bold tracking-wider text-sky-300 uppercase">
-                  Visi Utama
+                </motion.div>
+                <span className="text-xs font-mono font-bold tracking-wider text-sky-300 uppercase flex items-center gap-1.5">
+                  <span>Visi Utama</span>
+                  <Sparkles className="w-3 h-3 text-amber-400" />
                 </span>
               </div>
 
@@ -120,58 +208,78 @@ export default function InteractiveVisionMission() {
 
             {/* 3 Indikator Nilai */}
             <div className="pt-4 mt-4 border-t border-white/10 flex flex-wrap gap-1.5 text-[11px]">
-              <span className="px-2.5 py-1 rounded-md bg-[#2454BE]/20 text-sky-300 font-semibold border border-sky-400/20">
+              <span className="px-2.5 py-1 rounded-md bg-[#2454BE]/20 text-sky-300 font-semibold border border-sky-400/20 group-hover:border-sky-400/40 transition-colors">
                 Intelektual
               </span>
-              <span className="px-2.5 py-1 rounded-md bg-white/10 text-slate-200 font-semibold border border-white/15">
+              <span className="px-2.5 py-1 rounded-md bg-white/10 text-slate-200 font-semibold border border-white/15 group-hover:border-white/30 transition-colors">
                 Kemandirian
               </span>
-              <span className="px-2.5 py-1 rounded-md bg-[#FF5500]/20 text-orange-300 font-semibold border border-orange-400/20">
+              <span className="px-2.5 py-1 rounded-md bg-[#FF5500]/20 text-orange-300 font-semibold border border-orange-400/20 group-hover:border-orange-400/40 transition-colors">
                 Dampak Nyata
               </span>
             </div>
-          </div>
+          </motion.div>
 
-          {/* KOLOM KANAN: 4 Misi Strategis Langsung Terbaca 2x2 (lg:col-span-7) */}
+          {/* KOLOM KANAN: 4 Misi Strategis dengan Staggered Float In & Hover Lift */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
             {MISSIONS.map((m) => {
               const Icon = m.icon;
               return (
-                <Link
+                <motion.div
                   key={m.number}
-                  href={m.href}
-                  className={`group rounded-2xl bg-[#0D1C36] p-4 border border-white/10 ${m.borderHover} ${m.glowHover} transition-all duration-200 flex flex-col justify-between relative overflow-hidden`}
+                  variants={misiCardVariants}
+                  whileHover={{
+                    y: -6,
+                    scale: 1.025,
+                    transition: { duration: 0.25, ease: "easeOut" },
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className="h-full"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-2.5">
-                      <div className={`w-8 h-8 rounded-lg ${m.iconBg} flex items-center justify-center transition-transform group-hover:scale-110`}>
-                        <Icon className="w-4 h-4" />
+                  <Link
+                    href={m.href}
+                    className={`group h-full rounded-2xl bg-[#0D1C36]/90 hover:bg-[#112344] backdrop-blur-sm p-4 border border-white/10 ${m.borderHover} ${m.glowHover} transition-all duration-300 flex flex-col justify-between relative overflow-hidden shadow-md hover:shadow-xl`}
+                  >
+                    {/* Hover Ambient Glow di Sudut Card */}
+                    <div
+                      className="absolute -right-8 -bottom-8 w-24 h-24 rounded-full blur-2xl opacity-0 group-hover:opacity-25 transition-opacity duration-300 pointer-events-none"
+                      style={{ backgroundColor: m.accent }}
+                    />
+
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-2.5">
+                        <div
+                          className={`w-8 h-8 rounded-lg ${m.iconBg} flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 shadow-xs`}
+                        >
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <span className="font-mono text-xs font-extrabold text-slate-500 group-hover:text-white transition-colors">
+                          Misi {m.number}
+                        </span>
                       </div>
-                      <span className="font-mono text-xs font-extrabold text-slate-500 group-hover:text-white transition-colors">
-                        Misi {m.number}
-                      </span>
+
+                      <h3 className="text-sm font-bold text-white group-hover:text-sky-300 transition-colors leading-snug">
+                        {m.title}
+                      </h3>
+                      <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                        {m.desc}
+                      </p>
                     </div>
 
-                    <h3 className="text-sm font-bold text-white group-hover:text-sky-300 transition-colors leading-snug">
-                      {m.title}
-                    </h3>
-                    <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                      {m.desc}
-                    </p>
-                  </div>
-
-                  <div className="mt-3 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-semibold text-slate-400 group-hover:text-white transition-colors">
-                    <span>Lihat Program</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" style={{ color: m.accent }} />
-                  </div>
-                </Link>
+                    <div className="mt-3 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] font-semibold text-slate-400 group-hover:text-white transition-colors relative z-10">
+                      <span>Lihat Program</span>
+                      <ArrowRight
+                        className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1.5"
+                        style={{ color: m.accent }}
+                      />
+                    </div>
+                  </Link>
+                </motion.div>
               );
             })}
           </div>
-
         </div>
-
-      </div>
+      </motion.div>
     </section>
   );
 }
