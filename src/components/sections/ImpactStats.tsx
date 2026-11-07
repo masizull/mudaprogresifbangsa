@@ -280,16 +280,12 @@ export default function ImpactStats() {
               </div>
 
               {/* Bottom Info Link */}
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-[11px] font-mono font-bold text-slate-400 flex items-center gap-1.5">
-                  <span>Scroll ke samping</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#FF5500]" />
-                </span>
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-end">
                 <Link
                   href="/tentang-kami/legalitas"
                   className="text-xs font-bold text-[#2454BE] hover:underline flex items-center gap-1"
                 >
-                  <span>Legalitas SK</span>
+                  <span>Legalitas SK Menkumham</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
