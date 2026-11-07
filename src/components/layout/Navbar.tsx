@@ -13,7 +13,12 @@ export default function Navbar() {
   const basePath = process.env.NODE_ENV === "production" ? "/mudaprogresifbangsa" : "";
 
   // Check if current route is homepage
-  const isHome = pathname === "/" || pathname === "";
+  const isHome =
+    !pathname ||
+    pathname === "/" ||
+    pathname === "" ||
+    pathname === basePath ||
+    pathname === `${basePath}/`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,10 +28,15 @@ export default function Navbar() {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
-  // Transparent when at top of page
-  const isTransparent = !scrolled;
+  // Close mobile navigation drawer on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  // Transparent ONLY on homepage when at the very top of page
+  const isTransparent = isHome && !scrolled;
   // If on homepage and at top, use white text and white logo over the dark hero gradient
   const isDarkNav = isHome && isTransparent;
 
@@ -78,7 +88,11 @@ export default function Navbar() {
               <button
                 type="button"
                 className={`h-full flex items-center gap-1 transition-colors ${
-                  isDarkNav ? "hover:text-white" : "hover:text-[#2454BE]"
+                  isDarkNav
+                    ? "hover:text-white"
+                    : pathname?.includes("/tentang-kami")
+                    ? "text-[#2454BE] font-bold"
+                    : "hover:text-[#2454BE]"
                 }`}
               >
                 <span>Tentang Kami</span>
@@ -104,7 +118,11 @@ export default function Navbar() {
               <button
                 type="button"
                 className={`h-full flex items-center gap-1 transition-colors ${
-                  isDarkNav ? "hover:text-white" : "hover:text-[#2454BE]"
+                  isDarkNav
+                    ? "hover:text-white"
+                    : pathname?.includes("/program")
+                    ? "text-[#2454BE] font-bold"
+                    : "hover:text-[#2454BE]"
                 }`}
               >
                 <span>Program</span>
@@ -129,7 +147,11 @@ export default function Navbar() {
               <button
                 type="button"
                 className={`h-full flex items-center gap-1 transition-colors ${
-                  isDarkNav ? "hover:text-white" : "hover:text-[#2454BE]"
+                  isDarkNav
+                    ? "hover:text-white"
+                    : pathname?.includes("/kolaborasi")
+                    ? "text-[#2454BE] font-bold"
+                    : "hover:text-[#2454BE]"
                 }`}
               >
                 <span>Kolaborasi</span>
@@ -152,7 +174,11 @@ export default function Navbar() {
             <Link
               href="/insight"
               className={`h-full flex items-center transition-colors ${
-                isDarkNav ? "hover:text-white" : "hover:text-[#2454BE]"
+                isDarkNav
+                  ? "hover:text-white"
+                  : pathname?.includes("/insight")
+                  ? "text-[#2454BE] font-bold"
+                  : "hover:text-[#2454BE]"
               }`}
             >
               Insight & Berita
@@ -212,8 +238,8 @@ export default function Navbar() {
           </div>
         )}
       </header>
-      {/* Sleek spacer for non-home pages so subpage content starts cleanly below the fixed header */}
-      {!isHome && <div className="h-16 sm:h-18 shrink-0" aria-hidden="true" />}
+      {/* Sleek spacer for non-home pages so subpage content starts cleanly below the fixed header with matching light background */}
+      {!isHome && <div className="h-16 sm:h-18 shrink-0 bg-[#F4F7FB]" aria-hidden="true" />}
     </>
   );
 }

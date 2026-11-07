@@ -37,11 +37,11 @@ export default function PageTransitionWrapper({
       <AnimatePresence mode="wait">
         <motion.div
           key={pathname}
-          initial={{ opacity: 0, y: 16, filter: "blur(3px)" }}
+          initial={{ opacity: 0, y: 14, filter: "blur(2px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          exit={{ opacity: 0, y: -12, filter: "blur(2px)" }}
-          transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
-          className="flex-1 flex flex-col"
+          exit={{ opacity: 0, y: -10, filter: "blur(2px)" }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="flex-1 flex flex-col bg-[#F4F7FB]"
         >
           {children}
         </motion.div>

@@ -14,7 +14,7 @@ export default function MarketingLayout({
     <ModalProvider>
       <Navbar />
       <PageTransitionWrapper>
-        <main className="flex-1">
+        <main className="flex-1 bg-[#F4F7FB]">
           {children}
         </main>
       </PageTransitionWrapper>
