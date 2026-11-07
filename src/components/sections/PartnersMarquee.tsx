@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 
 interface PartnerItem {
   id: string;
@@ -38,7 +37,7 @@ const PARTNERS: PartnerItem[] = [
     tagline: "Lembaga Amil Zakat Nasional",
     logo: `${basePath}/images/partners/lazismu.png`,
     alt: "Logo LAZISMU",
-    imgClass: "max-h-9 max-w-[110px] w-auto h-auto object-contain"
+    imgClass: "max-h-9 max-w-[52px] w-auto h-auto object-contain"
   },
   {
     id: "laz-mrbj",
@@ -46,7 +45,7 @@ const PARTNERS: PartnerItem[] = [
     tagline: "Zakat Peduli Umat",
     logo: `${basePath}/images/partners/laz-mrbj.png`,
     alt: "Logo LAZ-MRBJ Zakat Peduli Umat",
-    imgClass: "max-h-10 max-w-[110px] w-auto h-auto object-contain"
+    imgClass: "max-h-9 max-w-[52px] w-auto h-auto object-contain"
   },
   {
     id: "mui",
@@ -55,12 +54,52 @@ const PARTNERS: PartnerItem[] = [
     logo: `${basePath}/images/partners/mui.png`,
     alt: "Logo Majelis Ulama Indonesia (MUI)",
     imgClass: "max-h-12 max-w-[46px] w-auto h-auto object-contain"
+  },
+  {
+    id: "bpkh",
+    name: "BPKH RI",
+    tagline: "Badan Pengelola Keuangan Haji",
+    logo: `${basePath}/images/partners/bpkh.png`,
+    alt: "Logo Badan Pengelola Keuangan Haji (BPKH)",
+    imgClass: "max-h-8 max-w-[56px] w-auto h-auto object-contain"
+  },
+  {
+    id: "bank-mega-syariah",
+    name: "Bank Mega Syariah",
+    tagline: "Perbankan Syariah Nasional",
+    logo: `${basePath}/images/partners/bank-mega-syariah.png`,
+    alt: "Logo Bank Mega Syariah",
+    imgClass: "max-h-11 max-w-[48px] w-auto h-auto object-contain"
+  },
+  {
+    id: "berbuatbaik",
+    name: "berbuatbaik.id",
+    tagline: "Platform Filantropi Digital",
+    logo: `${basePath}/images/partners/berbuatbaik.png`,
+    alt: "Logo berbuatbaik.id",
+    imgClass: "max-h-11 max-w-[46px] w-auto h-auto object-contain"
+  },
+  {
+    id: "ipnu",
+    name: "IPNU",
+    tagline: "Ikatan Pelajar Nahdlatul Ulama",
+    logo: `${basePath}/images/partners/ipnu.png`,
+    alt: "Logo Ikatan Pelajar Nahdlatul Ulama (IPNU)",
+    imgClass: "max-h-12 max-w-[46px] w-auto h-auto object-contain"
+  },
+  {
+    id: "ippnu",
+    name: "IPPNU",
+    tagline: "Ikatan Pelajar Putri NU",
+    logo: `${basePath}/images/partners/ippnu.png`,
+    alt: "Logo Ikatan Pelajar Putri Nahdlatul Ulama (IPPNU)",
+    imgClass: "max-h-12 max-w-[46px] w-auto h-auto object-contain"
   }
 ];
 
 export default function PartnersMarquee() {
-  // Repeat 4x for a rich continuous looping track
-  const marqueeItems = [...PARTNERS, ...PARTNERS, ...PARTNERS, ...PARTNERS];
+  // Repeat 3x for 30 total tiles, seamlessly infinite
+  const marqueeItems = [...PARTNERS, ...PARTNERS, ...PARTNERS];
 
   return (
     <section id="mitra" className="py-10 sm:py-14 bg-[#F8FAFC] border-y border-slate-200/80 overflow-hidden select-none">
@@ -72,7 +111,7 @@ export default function PartnersMarquee() {
           Bersinergi Bersama Ekosistem Lembaga Terpercaya
         </h3>
         <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-xl mx-auto">
-          Membangun kolaborasi berdampak dengan perguruan tinggi, lembaga filantropi, ormas, dan platform sosial.
+          Membangun kolaborasi berdampak dengan perguruan tinggi, lembaga filantropi, perbankan syariah, dan organisasi kepemudaan.
         </p>
       </div>
 
@@ -86,7 +125,7 @@ export default function PartnersMarquee() {
           {marqueeItems.map((p, idx) => (
             <div
               key={`${p.id}-${idx}`}
-              className="h-20 sm:h-22 w-56 sm:w-64 px-4 py-3 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-[#2454BE]/40 flex items-center gap-3.5 transition-all duration-200 shrink-0 group cursor-default"
+              className="h-20 sm:h-22 w-60 sm:w-68 px-4 py-3 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-[#2454BE]/40 flex items-center gap-3.5 transition-all duration-200 shrink-0 group cursor-default"
             >
               {/* Dedicated Logo Container with Equalized Optical Size */}
               <div className="w-14 sm:w-16 h-12 flex items-center justify-center shrink-0">
@@ -98,7 +137,7 @@ export default function PartnersMarquee() {
                 />
               </div>
 
-              {/* Text Info */}
+              {/* Partner Name & Tagline */}
               <div className="min-w-0 flex-1 text-left">
                 <h4 className="text-xs sm:text-[13px] font-bold text-slate-800 truncate leading-snug group-hover:text-[#2454BE] transition-colors">
                   {p.name}
