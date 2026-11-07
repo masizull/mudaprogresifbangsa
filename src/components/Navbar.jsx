@@ -34,29 +34,12 @@ export default function Navbar({ onOpenRegister, onOpenPartner }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Brand Logo & Identity */}
-          <a href="#hero" className="flex items-center gap-3.5 group focus:outline-none rounded-lg p-1">
-            <div className="relative w-10 h-10 flex-shrink-0 flex items-center justify-center">
-              <img 
-                src="./logo/LOGO MPB - WARNA.png" 
-                alt="Logo Muda Progresif Bangsa" 
-                className="w-full h-full object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling.style.display = 'flex';
-                }}
-              />
-              <div className="hidden w-10 h-10 rounded-lg bg-brand-navy items-center justify-center text-white font-bold text-base tracking-tight shadow-sm">
-                <span className="text-brand-orange">M</span>PB
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-base sm:text-lg tracking-tight text-brand-navy leading-none group-hover:text-brand-blue transition-colors duration-200">
-                Muda Progresif Bangsa
-              </span>
-              <span className="text-[11px] font-semibold tracking-wider uppercase text-slate-500 mt-1">
-                Yayasan Kepemudaan
-              </span>
-            </div>
+          <a href="#hero" className="flex items-center shrink-0 group focus:outline-none rounded-lg p-1">
+            <img 
+              src="./images/logo_horizontal_mpb.png" 
+              alt="Logo Muda Progresif Bangsa" 
+              className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+            />
           </a>
 
           {/* Desktop Navigation Links */}
