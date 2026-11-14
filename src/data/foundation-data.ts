@@ -327,37 +327,292 @@ export const VISION_MISSION_DATA = {
   ]
 };
 
-export const COLLABORATION_DATA = [
+export interface CollaborationTrack {
+  id: string;
+  category: string;
+  shortLabel: string;
+  title: string;
+  tagline: string;
+  desc: string;
+  badges: string[];
+  schemes: {
+    name: string;
+    description: string;
+    targetPillar: string;
+  }[];
+  mutualBenefits: string[];
+  accent: "amber" | "sky" | "blue" | "orange";
+  partnerTypes: string;
+}
+
+export interface WorkflowStep {
+  step: string;
+  phase: string;
+  title: string;
+  duration: string;
+  description: string;
+  actions: string[];
+  deliverable: string;
+  slaTag: string;
+}
+
+export const COLLABORATION_DATA: CollaborationTrack[] = [
   {
-    id: "pemerintah",
-    category: "Pemerintah & Regulator",
-    title: "Kemitraan Instansi Pemerintah & Lembaga Negara",
-    desc: "Sinergi perumusan program pemberdayaan pemuda, penyelarasan PKBM dengan regulasi pendidikan nasional, dan implementasi program publik di tingkat daerah.",
-    badges: ["Dinas Pendidikan", "Kemenpora", "Dinas Sosial", "Bappeda"],
-    accent: "sky"
+    id: "swasta",
+    category: "Sektor Swasta & CSR",
+    shortLabel: "Swasta & Korporasi",
+    title: "Investasi Dampak Sosial, CSR & Penyerapan Kerja",
+    tagline: "Kemitraan Strategis Berkelanjutan dengan Insentif Pengurang Pajak (Super Tax Deduction)",
+    desc: "Membuka ruang kolaborasi bagi perusahaan multinasional, BUMN, dan korporasi swasta untuk mengarahkan alokasi CSR pada program pendidikan vokasi siap kerja, beasiswa berdikari, dan infrastruktur pelatihan digital yang akuntabel.",
+    badges: ["Program CSR", "Bursa Kerja Vokasi", "Sponsor Beasiswa", "Alat Pelatihan", "Super Tax Deduction"],
+    accent: "amber",
+    partnerTypes: "Perusahaan Swasta, BUMN, Family Office & Venture Filantropi",
+    schemes: [
+      {
+        name: "Co-Funding Kelas Vokasi Industri",
+        description: "Pendanaan kelas keahlian terapan (coding, desain, teknisi) dengan kurikulum industri dan sertifikasi resmi BNSP.",
+        targetPillar: "Vokasi Progresif"
+      },
+      {
+        name: "Beasiswa Asuh Paket Kesetaraan",
+        description: "Adopsi pembiayaan 100% bebas biaya bagi anak putus sekolah hingga tuntas meraih ijazah resmi negara Paket A/B/C.",
+        targetPillar: "Akademi Progresif"
+      },
+      {
+        name: "Hibah Sarana Lab Komputer & Alat Kerja",
+        description: "Pengadaan perangkat laptop, workstation, atau peralatan bengkel kerja demi kemandirian wirausaha binaan.",
+        targetPillar: "Vokasi & Care"
+      },
+      {
+        name: "Penyaluran Tenaga Kerja Muda Terlatih",
+        description: "Perekrutan langsung lulusan berprestasi program vokasi MPB untuk magang industri atau staf operasional perusahaan.",
+        targetPillar: "Vokasi Progresif"
+      }
+    ],
+    mutualBenefits: [
+      "Hak pemanfaatan fasilitas insentif pajak Super Tax Deduction hingga 200% (PP No. 45/2019).",
+      "Laporan keberlanjutan siap audit sesuai standar GRI 413 (Local Communities) & SDGs.",
+      "Dokumentasi lengkap, Berita Acara Serah Terima (BAST), dan eksposur publikasi reputasi CSR.",
+      "Keterlibatan karyawan melalui program employee volunteering yang terorganisir rapi."
+    ]
   },
   {
     id: "kampus",
     category: "Perguruan Tinggi & Riset",
-    title: "Kolaborasi Kampus Merdeka & Pusat Penelitian",
-    desc: "Penyelenggaraan riset kebijakan kepemudaan bersama, program magang berdampak, KKN tematik, serta publikasi jurnal kajian sosio-ekonomi.",
-    badges: ["Magang Bersertifikat", "Riset Bersama", "KKN Tematik", "Dosen Tamu"],
-    accent: "blue"
+    shortLabel: "Kampus & Akademia",
+    title: "Kolaborasi Kampus Merdeka, Riset & Pengabdian Masyarakat",
+    tagline: "Hilirisasi Riset Empiris & Penguatan Tri Dharma Perguruan Tinggi Berdampak",
+    desc: "Menggandeng universitas terkemuka, fakultas, dan lembaga riset independen untuk menghidupkan ekosistem MBKM yang bermakna: menempatkan mahasiswa sebagai agen perubahan riil di PKBM, memproduksi kajian kebijakan publik, dan menguji intervensi sosial berbasis data presisi.",
+    badges: ["Magang Bersertifikat", "Riset Bersama", "KKN Tematik", "Dosen Tamu", "Indikator Kinerja Utama (IKU)"],
+    accent: "blue",
+    partnerTypes: "Universitas Negeri/Swasta, Politeknik, Lembaga Riset & Think Tank",
+    schemes: [
+      {
+        name: "Magang Berdampak & Asistensi Mengajar PKBM",
+        description: "Penempatan mahasiswa untuk mengajar logika, filsafat, dan bahasa bagi peserta didik non-formal dengan konversi SKS.",
+        targetPillar: "Akademi Progresif"
+      },
+      {
+        name: "Penyusunan Riset Kebijakan (Joint Policy Brief)",
+        description: "Kajian bersama mengenai pengentasan kemiskinan, tren ketenagakerjaan pemuda, dan efektivitas pendidikan alternatif.",
+        targetPillar: "Akademi & Riset"
+      },
+      {
+        name: "KKN Tematik Transformasi Komunitas",
+        description: "Pengiriman kontingen mahasiswa lintas disiplin untuk memetakan potensi ekonomi desa dan pos kesehatan keluarga.",
+        targetPillar: "Care & Tanggap"
+      },
+      {
+        name: "Program Dosen Pakar & Kuliah Tamu",
+        description: "Keterlibatan akademisi dalam pengujian kurikulum serta pembekalan wawasan kebangsaan pemuda daerah binaan.",
+        targetPillar: "Akademi Progresif"
+      }
+    ],
+    mutualBenefits: [
+      "Kontribusi langsung terhadap pencapaian Indikator Kinerja Utama Perguruan Tinggi (IKU 2 & IKU 7).",
+      "Akses basis data primer lapangan dan komunitas dampingan untuk kebutuhan publikasi ilmiah.",
+      "Laboratorium sosial hidup bagi mahasiswa untuk mengasah empati dan kepemimpinan negarawan.",
+      "Sertifikat kemitraan Tri Dharma dan pelaporan formal kemahasiswaan."
+    ]
   },
   {
-    id: "swasta",
-    category: "Sektor Swasta & CSR",
-    title: "Investasi Dampak Sosial, CSR & Penyerapan Kerja",
-    desc: "Penyaluran dana CSR korporasi untuk beasiswa pendidikan, penyediaan mentor industri kelas vokasi, dan penyaluran tenaga kerja muda kompeten.",
-    badges: ["Program CSR", "Bursa Kerja Vokasi", "Sponsor Beasiswa", "Alat Pelatihan"],
-    accent: "amber"
+    id: "pemerintah",
+    category: "Pemerintah & Regulator",
+    shortLabel: "Pemerintah & Dinas",
+    title: "Kemitraan Instansi Pemerintah & Lembaga Negara",
+    tagline: "Sinergi Kebijakan Publik untuk Pengentasan Anak Putus Sekolah dan Penguatan IPM",
+    desc: "Menjalin kemitraan kolaboratif dengan Kementerian Pendidikan Dasar & Menengah, Kemenpora, Kementerian Sosial, Dinas Pendidikan Daerah, dan Bappeda guna mempercepat penurunan angka anak tidak sekolah (ATS) serta memperkuat jaring pengaman sosial pemuda rentan.",
+    badges: ["Dinas Pendidikan", "Kemenpora", "Dinas Sosial", "Bappeda", "Dapodik Terintegrasi"],
+    accent: "sky",
+    partnerTypes: "Kementerian RI, Pemerintah Daerah (Pemda), Dinas Pendidikan, Dispora & Dinsos",
+    schemes: [
+      {
+        name: "Penuntasan Anak Putus Sekolah (ATS Terpadu)",
+        description: "Penyisiran dan rekrutmen anak usia sekolah rentan di wilayah padat untuk dimasukkan ke data Dapodik PKBM resmi.",
+        targetPillar: "Akademi Progresif"
+      },
+      {
+        name: "Sentra Inkubasi Wirausaha Pemuda Daerah",
+        description: "Kolaborasi pembinaan pemuda usia produktif dengan pelatihan keterampilan praktis dan akses permodalan mikro.",
+        targetPillar: "Vokasi Progresif"
+      },
+      {
+        name: "Pilot Project Pendidikan Berbasis Logika & AI",
+        description: "Pengembangan model kurikulum inovatif yang memadukan pendidikan karakter Pancasila dengan kecakapan digital masa depan.",
+        targetPillar: "Akademi Progresif"
+      },
+      {
+        name: "Unit Kesiapsiagaan Bencana Daerah",
+        description: "Pemberdayaan jejaring pemuda tanggap darurat sebagai garda depan penanganan krisis sosial dan evakuasi lokal.",
+        targetPillar: "Tanggap Progresif"
+      }
+    ],
+    mutualBenefits: [
+      "Membantu pencapaian target Indeks Pembangunan Manusia (IPM) dan Angka Partisipasi Kasar (APK) daerah.",
+      "Model intervensi non-APBD yang meringankan beban anggaran sosial daerah melalui gotong royong nirlaba.",
+      "Legalitas formal yayasan berizin operasional Kemenkumham dengan tata kelola transparan.",
+      "Sinkronisasi data terverifikasi yang meminimalisir tumpang tindih program bansos pemerintah."
+    ]
   },
   {
     id: "komunitas",
     category: "Komunitas & Gerakan Sipil",
-    title: "Koalisi Akar Rumput & Organisasi Kepemudaan",
-    desc: "Gerakan bersama organisasi mahasiswa, relawan lingkungan, komunitas pengajar muda, dan pegiat kesehatan masyarakat demi jangkauan aksi lebih luas.",
-    badges: ["Aksi Relawan", "Forum Pemuda", "Posko Darurat", "Pemberdayaan Desa"],
-    accent: "orange"
+    shortLabel: "Komunitas & Filantropi",
+    title: "Koalisi Gerakan Sipil, Filantropi & Organisasi Kepemudaan",
+    tagline: "Gotong Royong Multi-Pihak Melipatgandakan Jangkauan Kemanusiaan",
+    desc: "Membangun simpul solidaritas dengan lembaga amil zakat/wakaf, organisasi kepemudaan, komunitas lingkungan, pegiat literasi, dan relawan kemanusiaan. Bersama-sama memastikan setiap inisiatif memiliki daya tahan akar rumput yang kokoh tanpa sekat birokrasi berbelit.",
+    badges: ["Aksi Relawan", "Forum Pemuda", "Posko Darurat", "Pemberdayaan Desa", "ZISWAF Programatis"],
+    accent: "orange",
+    partnerTypes: "Lembaga ZISWAF, BEM/Organisasi Kepemudaan, Komunitas Sosial, NGO & Relawan",
+    schemes: [
+      {
+        name: "Penyaluran ZISWAF Programatis & Tepat Sasaran",
+        description: "Pengelolaan dana infak, sedekah, dan wakaf produktif untuk biaya operasional PKBM gratis dan sarana vokasi mustahik.",
+        targetPillar: "Akademi & Vokasi"
+      },
+      {
+        name: "Posko Kesehatan Keliling & Skrining Komunitas",
+        description: "Kolaborasi tenaga medis muda relawan untuk pemeriksaan berkala, pembagian vitamin, dan sanitasi lingkungan.",
+        targetPillar: "Progresif Care"
+      },
+      {
+        name: "Aksi Cepat Tanggap Darurat Bencana",
+        description: "Mobilisasi relawan gabungan dan logistik darurat dalam 1x24 jam ke titik wilayah terdampak bencana alam.",
+        targetPillar: "Tanggap Progresif"
+      },
+      {
+        name: "Kampanye Literasi Kritis & Forum Diskusi Pemuda",
+        description: "Festival buku, workshop pemikiran kebangsaan, dan ruang temu inklusif anak muda se-Jabodetabek.",
+        targetPillar: "Akademi Progresif"
+      }
+    ],
+    mutualBenefits: [
+      "Jejaring relawan lapangan yang militan, terlatih, dan siap diterjunkan dalam waktu singkat.",
+      "Penyaluran titipan donasi secara amanah dengan dokumentasi foto, video, dan laporan tertulis akurat.",
+      "Sinergi sumber daya yang mencegah duplikasi posko dan pemborosan logistik di wilayah krisis.",
+      "Penguatan daya tawar pemuda dalam menyuarakan isu-isu sosial strategis di ruang publik."
+    ]
   }
 ];
+
+export const PARTNERSHIP_WORKFLOW_STEPS: WorkflowStep[] = [
+  {
+    step: "01",
+    phase: "Fase Inisiasi",
+    title: "Konsultasi & Penjajakan Awal",
+    duration: "1–2 Hari Kerja",
+    slaTag: "Respon Cepat 1x24 Jam",
+    description: "Mitra memilih jalur sinergi (Swasta/CSR, Kampus, Pemerintah, Komunitas) dan menyampaikan gambaran rencana kolaborasi melalui formulir daring atau penjadwalan audiensi langsung.",
+    actions: [
+      "Pengisian formulir minat kemitraan atau kontak hotline WhatsApp sekretariat.",
+      "Tim kemitraan MPB mengirimkan profil resmi yayasan dan proposal program terkait.",
+      "Penetapan jadwal pertemuan audiensi pendahuluan (daring via Zoom atau tatap muka di sekretariat)."
+    ],
+    deliverable: "Dokumen Penjajakan Minat (Expression of Interest) & Agenda Audiensi Resmi"
+  },
+  {
+    step: "02",
+    phase: "Fase Perancangan",
+    title: "Asesmen Kebutuhan & Penyusunan KAK",
+    duration: "3–5 Hari Kerja",
+    slaTag: "Co-Design Bersama",
+    description: "Kedua belah pihak menyelaraskan objektif strategis dengan kebutuhan riil di lapangan. Bersama-sama merumuskan sasaran penerima manfaat, lokasi, jadwal, serta rincian pembiayaan.",
+    actions: [
+      "Pemaparan data calon penerima manfaat (profil siswa PKBM, peserta vokasi, atau titik posko).",
+      "Penyusunan draf Kerangka Acuan Kerja (KAK / Terms of Reference) dan target indikator SMART.",
+      "Penyusunan Rencana Anggaran Biaya (RAB) yang transparan, rinci, dan terverifikasi."
+    ],
+    deliverable: "Draf Final Kerangka Acuan Kerja (KAK) & Rencana Anggaran Biaya (RAB) Terverifikasi"
+  },
+  {
+    step: "03",
+    phase: "Fase Legalitas",
+    title: "Penandatanganan MoU & PKS",
+    duration: "3–7 Hari Kerja",
+    slaTag: "Landasan Hukum Kuat",
+    description: "Memformalkan komitmen melalui Nota Kesepahaman (MoU) sebagai payung kesepakatan strategis dan Perjanjian Kerja Sama (PKS) operasional yang mengikat hak, kewajiban, dan termin pelaksanaan.",
+    actions: [
+      "Review hukum oleh tim legal masing-masing instansi guna memastikan kepatuhan regulasi.",
+      "Penandatanganan MoU oleh pimpinan instansi dan Ketua Yayasan MPB.",
+      "Penandatanganan PKS operasional yang memuat jadwal termin penyaluran dana ke rekening resmi yayasan."
+    ],
+    deliverable: "Dokumen MoU Resmi & Kontrak PKS Operasional Ber-eMeterai Sah"
+  },
+  {
+    step: "04",
+    phase: "Fase Implementasi",
+    title: "Eksekusi Program & Co-Delivery",
+    duration: "Sesuai Jadwal Program",
+    slaTag: "Kolaborasi Lapangan",
+    description: "Penyaluran dana/sarana sesuai termin dan pelaksanaan program di lapangan oleh Tim MPB dengan pemantauan berkala bersama PIC mitra, termasuk opsi program employee volunteering.",
+    actions: [
+      "Pencairan termin bantuan langsung ke rekening giro resmi kelembagaan yayasan.",
+      "Kick-off pelaksanaan kegiatan lapangan (kelas belajar, pelatihan vokasi, atau posko kesehatan).",
+      "Keterlibatan langsung mitra (site visit, kuliah tamu, pengajar industri, atau relawan karyawan)."
+    ],
+    deliverable: "Logbook Aktivitas, Laporan Progres Mingguan, & Dokumentasi Resolusi Tinggi"
+  },
+  {
+    step: "05",
+    phase: "Fase Akuntabilitas",
+    title: "Monitoring, Audit & Serah Terima (BAST)",
+    duration: "10–14 Hari Pasca Program",
+    slaTag: "Akuntabel & Tuntas",
+    description: "Pengukuran capaian dampak riil terhadap KPI yang ditetapkan, penyerahan Laporan Pertanggungjawaban (LPJ) keuangan terperinci, penerbitan BAST resmi, dan evaluasi perpanjangan.",
+    actions: [
+      "Pengukuran metrik dampak (angka kelulusan, sertifikasi kerja, penerima bantuan nutrisi).",
+      "Penyerahan LPJ keuangan lengkap disertai seluruh lampiran kuitansi dan bukti transfer sah.",
+      "Penandatanganan Berita Acara Serah Terima (BAST) dan penyerahan Sertifikat Mitra Dampak Sosial.",
+      "Penyediaan dokumen pendukung pemanfaatan insentif pajak Super Tax Deduction (bila relevan)."
+    ],
+    deliverable: "Laporan Pertanggungjawaban (LPJ), BAST Resmi, Social Impact Report & Sertifikat Mitra"
+  }
+];
+
+export const PARTNERSHIP_VALUE_PROPS = [
+  {
+    title: "Insentif Pajak Super (Super Tax Deduction)",
+    desc: "Mitra korporasi berhak mendapatkan pengurangan penghasilan bruto hingga 200% atas pembiayaan program vokasi terapan (PP No. 45/2019).",
+    badge: "Fiskal Nasional",
+    icon: "ReceiptPercent"
+  },
+  {
+    title: "Legalitas Terdaftar & Rekening Resmi",
+    desc: "Memiliki SK Kemenkumham RI resmi, NPWP yayasan terverifikasi, dan rekening giro atas nama lembaga tanpa rekening perorangan.",
+    badge: "Kepatuhan Hukum",
+    icon: "ShieldCheck"
+  },
+  {
+    title: "Akuntabilitas & Audit Berkelanjutan",
+    desc: "Seluruh alokasi dana dan program tercatat dalam sistem akuntansi nirlaba yang transparan, dapat diaudit secara independen kapan saja.",
+    badge: "Transparansi 100%",
+    icon: "FileCheck2"
+  },
+  {
+    title: "Dukungan Laporan Standar ESG & SDGs",
+    desc: "Menyediakan metrik dampak sosial terstandarisasi untuk memperkaya Sustainability Report perusahaan sesuai kerangka GRI 413.",
+    badge: "Standar Global",
+    icon: "BarChart3"
+  }
+];
+

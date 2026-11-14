@@ -169,13 +169,13 @@ export default function SynergyModal({ isOpen, onClose, defaultCategory = "Sekto
                 <select
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm bg-white focus:outline-none focus:ring-2 focus:ring-royal-500"
+                  className="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                  <option value="Pemerintah & Regulator">Pemerintah & Instansi Negara</option>
-                  <option value="Perguruan Tinggi & Riset">Perguruan Tinggi & Lembaga Riset</option>
-                  <option value="Sektor Swasta / CSR">Sektor Swasta, CSR & Korporasi</option>
-                  <option value="Komunitas & Gerakan Sipil">Komunitas, LSM & Organisasi Pemuda</option>
-                  <option value="Donasi & Beasiswa">Filantropi & Donasi Beasiswa</option>
+                  <option value="Sektor Swasta & CSR">Sektor Swasta &amp; CSR (Super Tax Deduction / Beasiswa)</option>
+                  <option value="Perguruan Tinggi & Riset">Perguruan Tinggi &amp; Riset (MBKM / Magang / IKU)</option>
+                  <option value="Pemerintah & Regulator">Pemerintah &amp; Regulator (Dinas / ATS / Program Daerah)</option>
+                  <option value="Komunitas & Gerakan Sipil">Komunitas &amp; Gerakan Sipil (Relawan / ZISWAF)</option>
+                  <option value="Konsultasi Langsung">Konsultasi / Audiensi Program Khusus</option>
                 </select>
               </div>
 
