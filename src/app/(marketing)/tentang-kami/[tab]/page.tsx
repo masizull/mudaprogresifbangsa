@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowLeft, Check, Copy, MapPin, Mail, Phone, ShieldCheck } from "lucide-react";
 import { FOUNDATION_INFO, VISION_MISSION_DATA, VALUES_DATA } from "@/data/foundation-data";
 import { LegalDocuments, LeadershipStructure } from "@/components/sections/GovernanceLegal";
+import InteractiveFoundationProfile from "@/components/sections/InteractiveFoundationProfile";
 
 export function generateStaticParams() {
   return [
@@ -76,24 +77,7 @@ export default function TentangKamiTabPage({ params }: { params: { tab: string }
         </div>
 
         {/* Dynamic Content based on Tab */}
-        {tab === "profil" && (
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
-            <span className="text-[11px] font-mono font-bold text-[#2454BE] uppercase">Profil Lembaga</span>
-            <h1 className="text-xl sm:text-2xl font-extrabold text-[#081426]">
-              {FOUNDATION_INFO.legalName}
-            </h1>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Yayasan Muda Progresif Bangsa (Muda Progresif Bangsa Foundation) didirikan pada tahun 2025 sebagai ikhtiar kolektif generasi muda Indonesia untuk mengkatalisasi pendidikan berkualitas, riset kebijakan berbasis bukti (evidence-based), dan aksi kemanusiaan berkelanjutan.
-            </p>
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 italic">
-              “{FOUNDATION_INFO.tagline}”
-            </div>
-            <div className="pt-2 text-xs text-slate-600 space-y-1">
-              <div><strong>Tahun Pendirian:</strong> {FOUNDATION_INFO.established}</div>
-              <div><strong>Alamat Sekretariat:</strong> {FOUNDATION_INFO.address}</div>
-            </div>
-          </div>
-        )}
+        {tab === "profil" && <InteractiveFoundationProfile />}
 
         {tab === "visi-misi" && (
           <div className="space-y-6">
