@@ -26,10 +26,14 @@ import {
   COLLABORATION_DATA,
   PARTNERSHIP_WORKFLOW_STEPS,
   PARTNERSHIP_VALUE_PROPS,
+  COLLABORATION_TRACKS,
+  WORKFLOW_STEPS,
   CollaborationTrack,
   WorkflowStep
 } from "@/data/foundation-data";
 import SynergyModal from "@/components/modals/SynergyModal";
+
+export { COLLABORATION_TRACKS, WORKFLOW_STEPS };
 
 const SECTOR_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   swasta: Building2,

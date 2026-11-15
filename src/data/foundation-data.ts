@@ -616,3 +616,205 @@ export const PARTNERSHIP_VALUE_PROPS = [
   }
 ];
 
+export interface TrackScheme {
+  id: string;
+  title: string;
+  pillar: string;
+  summary: string;
+  outputMetric: string;
+  duration: string;
+}
+
+export interface CompactTrack {
+  id: string;
+  name: string;
+  tagline: string;
+  schemes: TrackScheme[];
+  deliverables: string[];
+  sharedValues: string[];
+}
+
+export const COLLABORATION_TRACKS: CompactTrack[] = [
+  {
+    id: "swasta-csr",
+    name: "Swasta & CSR",
+    tagline: "ESG, Vokasi & Inkubasi UMKM",
+    schemes: [
+      {
+        id: "vokasi-industri",
+        title: "Co-Funding Kelas Vokasi Industri",
+        pillar: "Vokasi Progresif",
+        summary: "Penyelenggaraan kelas keahlian kerja terapan (digital, teknis, industri kreatif) dengan sertifikasi resmi BNSP bagi pemuda usia kerja.",
+        outputMetric: "120 Pemuda Tersertifikasi BNSP",
+        duration: "6 Bulan / Cohort"
+      },
+      {
+        id: "beasiswa-asuh",
+        title: "Beasiswa Asuh Paket Kesetaraan",
+        pillar: "Akademi Progresif",
+        summary: "Pembiayaan beasiswa penuh 100% bebas biaya bagi anak putus sekolah hingga tuntas meraih ijazah resmi negara Paket A, B, atau C.",
+        outputMetric: "50 Siswa Lulus Berijazah",
+        duration: "1–3 Tahun"
+      },
+      {
+        id: "hibah-lab",
+        title: "Hibah Perangkat Lab & Inkubasi UMKM",
+        pillar: "Vokasi & Care",
+        summary: "Pemberian sarana workstation, laptop, dan modal kerja mikro untuk kelompok wirausaha mandiri lulusan binaan yayasan.",
+        outputMetric: "15 Unit Usaha Terinkubasi",
+        duration: "1 Tahun Pembinaan"
+      }
+    ],
+    deliverables: [
+      "Kerangka Acuan Kerja (KAK) & RAB Terverifikasi",
+      "MoU & PKS Operasional Ber-eMeterai Sah",
+      "Berita Acara Serah Terima (BAST) & LPJ Auditabel",
+      "Dokumen Pendukung Insentif Pajak Super Tax Deduction"
+    ],
+    sharedValues: [
+      "Pengurangan penghasilan bruto s.d. 200% atas biaya vokasi (PP No. 45/2019)",
+      "Laporan dampak sosial siap integrasi Sustainability Report (GRI 413 & SDGs)",
+      "Dokumentasi resolusi tinggi dan eksposur publikasi CSR terpercaya",
+      "Program employee volunteering terstruktur bagi karyawan perusahaan"
+    ]
+  },
+  {
+    id: "kampus-akademia",
+    name: "Kampus & Akademia",
+    tagline: "MBKM, Riset & Pengabdian",
+    schemes: [
+      {
+        id: "magang-mbkm",
+        title: "Magang Berdampak & Asistensi Mengajar PKBM",
+        pillar: "Akademi Progresif",
+        summary: "Penempatan mahasiswa magang bersertifikat untuk mengajar logika, matematika, bahasa, dan nalar kritis dengan konversi SKS.",
+        outputMetric: "30 Mahasiswa Berdampak (Konversi 20 SKS)",
+        duration: "1 Semester (6 Bulan)"
+      },
+      {
+        id: "joint-policy-brief",
+        title: "Riset Kebijakan Bersama (Joint Policy Brief)",
+        pillar: "Akademi & Riset",
+        summary: "Kolaborasi dosen dan peneliti dalam kajian empiris mengenai pengentasan kemiskinan dan efektivitas pendidikan alternatif kepemudaan.",
+        outputMetric: "2 Publikasi Policy Brief / Jurnal Terindeks",
+        duration: "4–6 Bulan"
+      },
+      {
+        id: "kkn-tematik",
+        title: "KKN Tematik Transformasi Komunitas",
+        pillar: "Care & Tanggap",
+        summary: "Penerjunan kontingen mahasiswa lintas fakultas untuk pemetaan ekonomi mikro dan layanan kesehatan keluarga prasejahtera.",
+        outputMetric: "4 Wilayah Binaan Terdampingi",
+        duration: "2 Bulan"
+      }
+    ],
+    deliverables: [
+      "Surat Perjanjian Kerja Sama (PKS) Tri Dharma PT",
+      "Logbook Kegiatan & Penilaian Konversi SKS Resmi",
+      "Laporan Akhir Pengabdian Kepada Masyarakat",
+      "Kumpulan Manuskrip Riset Kebijakan Kepemudaan"
+    ],
+    sharedValues: [
+      "Mendukung pencapaian Indikator Kinerja Utama Perguruan Tinggi (IKU 2 & IKU 7)",
+      "Laboratorium sosial hidup bagi mahasiswa mengasah kepemimpinan empati",
+      "Akses data primer lapangan terverifikasi untuk riset akademis",
+      "Sertifikat kemitraan Tri Dharma tingkat rektorat/fakultas"
+    ]
+  },
+  {
+    id: "pemerintah-dinas",
+    name: "Pemerintah & Dinas",
+    tagline: "Swakelola Tipe III & Daerah",
+    schemes: [
+      {
+        id: "ats-terpadu",
+        title: "Penuntasan Anak Tidak Sekolah (ATS Terpadu)",
+        pillar: "Akademi Progresif",
+        summary: "Penyisiran dan rekrutmen anak putus sekolah di wilayah urban marginal untuk dimasukkan ke data Dapodik PKBM resmi.",
+        outputMetric: "150 Anak Kembali Bersekolah",
+        duration: "Tahun Ajaran Aktif"
+      },
+      {
+        id: "swakelola-vokasi",
+        title: "Swakelola Tipe III Pelatihan Ketenagakerjaan",
+        pillar: "Vokasi Progresif",
+        summary: "Kemitraan pengadaan pelatihan kerja non-APBD bersama Disnaker dan Kemenpora bagi pemuda pengangguran terbuka.",
+        outputMetric: "100 Pemuda Siap Kerja Mandiri",
+        duration: "3–6 Bulan"
+      },
+      {
+        id: "satgas-tanggap",
+        title: "Unit Satgas Tanggap Darurat Bencana Daerah",
+        pillar: "Tanggap Progresif",
+        summary: "Pemberdayaan korps relawan pemuda tanggap darurat sebagai mitra reaksi cepat BPBD dalam mitigasi dan logistik bencana.",
+        outputMetric: "1 Korps Relawan Reaksi Cepat (<24 Jam)",
+        duration: "Program Kesiapsiagaan 1 Tahun"
+      }
+    ],
+    deliverables: [
+      "Dokumen Perjanjian Swakelola / Kemitraan Dinas",
+      "Data By-Name By-Address Terintegrasi Dapodik",
+      "Laporan Akuntabilitas Kinerja Instansi Pemerintah (LAKIP)",
+      "Berita Acara Serah Terima (BAST) Kegiatan Resmi"
+    ],
+    sharedValues: [
+      "Mendongkrak capaian Indeks Pembangunan Manusia (IPM) dan APK Pendidikan daerah",
+      "Model kolaborasi non-profit yang meringankan beban anggaran sosial APBD",
+      "Legalitas lembaga berizin Kemenkumham dengan tata kelola bersih",
+      "Pencegahan tumpang tindih program bansos melalui verifikasi data presisi"
+    ]
+  },
+  {
+    id: "komunitas-filantropi",
+    name: "Komunitas & ZISWAF",
+    tagline: "Penyaluran & Aksi Kemanusiaan",
+    schemes: [
+      {
+        id: "ziswaf-programatis",
+        title: "Penyaluran ZISWAF Programatis Tepat Sasaran",
+        pillar: "Akademi & Vokasi",
+        summary: "Pengelolaan titipan dana zakat, infak, sedekah, dan wakaf produktif untuk biaya operasional PKBM dan sarana belajar santri dhuafa.",
+        outputMetric: "100% Bebas Biaya SPP Mustahik",
+        duration: "Berkelanjutan / Tahunan"
+      },
+      {
+        id: "posko-kesehatan",
+        title: "Posko Kesehatan Keliling & Skrining Nutrisi",
+        pillar: "Progresif Care",
+        summary: "Pemeriksaan kesehatan gratis berkala, pembagian makanan bergizi seimbang, dan edukasi sanitasi di kantong kemiskinan.",
+        outputMetric: "1.200 Penerima Manfaat Terlayani",
+        duration: "Bulanan (12 Titik Posko)"
+      },
+      {
+        id: "reaksi-bencana",
+        title: "Tanggap Cepat Bencana & Relawan Kemanusiaan",
+        pillar: "Tanggap Progresif",
+        summary: "Mobilisasi relawan muda gabungan, dapur umum darurat, dan trauma healing anak-anak pasca-bencana alam.",
+        outputMetric: "Distribusi Tepat Sasaran < 24 Jam",
+        duration: "Fase Tanggap Darurat & Pemulihan"
+      }
+    ],
+    deliverables: [
+      "Laporan Penyaluran Donasi Programatis ZISWAF",
+      "Dokumentasi Lengkap Foto, Video, dan Berita Acara",
+      "Daftar Absensi & Profil Penerima Manfaat (Mustahik)",
+      "Sertifikat Kemitraan Kemanusiaan Bersama"
+    ],
+    sharedValues: [
+      "Jejaring relawan lapangan yang tanggap, terlatih, dan amanah",
+      "Penyaluran sesuai syariat dan akuntabel tanpa potongan biaya terselubung",
+      "Mencegah duplikasi posko dan pemborosan logistik di wilayah krisis",
+      "Melipatgandakan jangkauan syiar dan keberkahan sosial antar-lembaga"
+    ]
+  }
+];
+
+export const WORKFLOW_STEPS = [
+  { step: "01", title: "Inisiasi & Konsultasi", duration: "1–2 Hari", desc: "Pilih skema dan isi formulir minat." },
+  { step: "02", title: "Asesmen Kebutuhan & KAK", duration: "3–5 Hari", desc: "Penyusunan ToR dan kalkulasi RAB." },
+  { step: "03", title: "Legalitas MoU & PKS", duration: "3–7 Hari", desc: "Penandatanganan kontrak operasional resmi." },
+  { step: "04", title: "Eksekusi & Penyaluran", duration: "Sesuai Jadwal", desc: "Pelaksanaan lapangan bersama tim yayasan." },
+  { step: "05", title: "Monitoring, Audit & BAST", duration: "10–14 Hari", desc: "LPJ keuangan, BAST, dan laporan dampak ESG." }
+];
+
+

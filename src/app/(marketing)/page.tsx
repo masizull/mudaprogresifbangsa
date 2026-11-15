@@ -5,7 +5,7 @@ import InteractiveVisionMission from '@/components/sections/InteractiveVisionMis
 import CultureValues from '@/components/sections/CultureValues';
 import PillarEcosystem from '@/components/sections/PillarEcosystem';
 import ImpactStats from '@/components/sections/ImpactStats';
-import CollaborationPortal from '@/components/sections/CollaborationPortal';
+import CollaborationTeaser from '@/components/sections/CollaborationTeaser';
 import PartnersMarquee from '@/components/sections/PartnersMarquee';
 import SectionTransition from '@/components/layout/SectionTransition';
 
@@ -38,9 +38,9 @@ export default function HomePage() {
       {/* 6. Akuntabilitas Dampak Nyata (Trionn-style Pinned Horizontal Scroll) */}
       <ImpactStats />
 
-      {/* 7. Portal Kemitraan & Sinergi Multi-Pihak */}
+      {/* 7. Sinergi & Kolaborasi Strategis (Teaser Minimalis) */}
       <SectionTransition>
-        <CollaborationPortal />
+        <CollaborationTeaser />
       </SectionTransition>
 
       {/* 9. Logo Marquee Ekosistem Kolaborasi */}
